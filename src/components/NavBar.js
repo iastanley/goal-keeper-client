@@ -6,7 +6,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 export default function NavBar(props) {
 
     return (
-      <Navbar fluid collapseOnSelect>
+      <Navbar fixedTop fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="#">Goal Keeper</a>

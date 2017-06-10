@@ -1,0 +1,22 @@
+body * {
+  box-sizing: border-box;
+}
+
+.landing-body {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.hero-section, .landing-section {
+  height: 250px;
+}
+
+.hero-section {
+  padding-top: 50px;
+}
+
+.landing-section {
+  background-color: #ddd;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+}
