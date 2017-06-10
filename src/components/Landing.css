@@ -5,6 +5,7 @@ body * {
 .landing-body {
   text-align: center;
   padding-top: 50px;
+  padding-bottom: 40px;
 }
 
 .hero-section, .landing-section {
@@ -19,4 +20,9 @@ body * {
   background-color: #ddd;
   border-top: 1px solid #aaa;
   border-bottom: 1px solid #aaa;
+}
+
+.landing-button {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }

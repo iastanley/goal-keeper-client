@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import './Landing.css';
@@ -26,6 +27,9 @@ export default function Landing(props) {
           <h2>Section 3</h2>
           <p>[Screenshot placeholder]</p>
           <p>Section 3 text</p>
+        </div>
+        <div className="landing-button">
+          <Button bsSize="large">Get Started!</Button>
         </div>
       </div>
       <Footer />
