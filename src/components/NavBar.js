@@ -22,5 +22,3 @@ export default function NavBar(props) {
         </Navbar>
     );
 }
-
-export default withRouter(NavBar);
