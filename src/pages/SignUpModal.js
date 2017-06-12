@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './SignUpModal.css';
 
 const SignUpModal = (props) => {
@@ -17,7 +18,8 @@ const SignUpModal = (props) => {
           <label>Confirm Password</label>
           <input type="password" className="form-control" placeholder="Password"/>
         </div>
-        <button type="submit" className="btn btn-default">Sign Up</button>
+        <Link className="btn btn-primary" to="/home">Sign Up</Link>
+        <Link className="btn btn-danger" to="/">Cancel</Link>
       </form>
     </div>
   );

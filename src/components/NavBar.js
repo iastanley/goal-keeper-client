@@ -64,7 +64,6 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log(this.props.rightMenu);
     return (
       <Navbar fixedTop fluid collapseOnSelect>
           <Navbar.Header>
