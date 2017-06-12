@@ -1,0 +1,11 @@
+#back-month {
+  float: left;
+}
+
+#forward-month {
+  float: right;
+}
+
+#back-month:hover, #forward-month:hover {
+  cursor: pointer;
+}
