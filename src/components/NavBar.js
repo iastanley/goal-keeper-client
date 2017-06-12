@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-
+//pass a prop that will determine the buttons displayed to the right
 
 export default function NavBar(props) {
 

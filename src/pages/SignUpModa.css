@@ -1,0 +1,10 @@
+.signup form {
+  width: 80%;
+  margin: 50px auto;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+button {
+  text-align: center;
+}
