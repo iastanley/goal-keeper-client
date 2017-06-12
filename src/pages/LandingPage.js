@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import './Landing.css';
+import NavBar from '../components/NavBar';
+import './LandingPage.css';
 
 //the landing-section divs could be components
 //add a NavBar prop to control the right menu button

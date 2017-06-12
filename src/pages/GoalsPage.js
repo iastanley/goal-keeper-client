@@ -4,7 +4,7 @@ import './GoalsPage.css';
 
 const GoalsPage = (props) => {
   return(
-    <div>
+    <div className="goals-page">
       <NavBar rightMenu="show-task-button"/>
       <h1>Goal Progress</h1>
     </div>

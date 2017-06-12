@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoginModal.css';
+import './SignUpModal.css';
 
 const SignUpModal = (props) => {
   return (
