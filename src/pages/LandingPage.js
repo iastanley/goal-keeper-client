@@ -11,6 +11,8 @@ import './LandingPage.css';
 class LandingPage extends Component {
   constructor(props) {
     super(props);
+
+    // NEED TO MOVE TO REDUX STORE
     this.state = {
       showLogin: false,
       showSignUp: false

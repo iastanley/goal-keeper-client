@@ -6,7 +6,10 @@ class TasksList extends Component {
   buildGoalList() {
     return _.map(this.props.goals, (goal) => {
       return (
-        <div className="goal-item" key={goal.id}>
+        <div
+          className="goal-item"
+          style={{border: '3px solid' + goal.color}}
+          key={goal.id}>
           <h3>{goal.title}</h3>
           <ul>
             {this.buildTaskList(goal.tasks)}
@@ -19,7 +22,11 @@ class TasksList extends Component {
   buildTaskList(taskList) {
     return taskList.map(task => {
       return (
-          <li key={task.id}>{task.name}</li>
+          <li className="task-list-item" key={task.id}>
+            <input type="checkbox"/>
+            <input type="text" value={task.name}/>
+            <i className="fa fa-lg fa-times" aria-hidden="true"></i>
+          </li>
       );
     });
   }
@@ -27,7 +34,7 @@ class TasksList extends Component {
   render() {
     return (
       <div className="tasks-list">
-        <h1>Task List</h1>
+        <h3>Task List</h3>
         {this.buildGoalList()}
       </div>
     );

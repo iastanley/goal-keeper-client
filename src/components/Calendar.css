@@ -1,3 +1,7 @@
+.calendar {
+  height: 40vh;
+}
+
 #back-month {
   float: left;
 }
