@@ -13,6 +13,7 @@ class NavBar extends Component {
   handleLogin(event) {
     event.preventDefault();
     //dispatch action.login
+    //this action should open the modal
   }
 
   handleSignUp(event) {

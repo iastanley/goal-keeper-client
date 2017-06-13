@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import NavBar from '../components/NavBar';
+import LoginModal from '../components/LoginModal';
 import './LandingPage.css';
 
 //the landing-section divs could be components
 //add a NavBar prop to control the right menu button
 
 class LandingPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showLogin: false
+    }
+  }
+
+
+
   render() {
     return (
-      <div className="modal-container">
+      <div className="landing-page">
         <NavBar rightMenu="show-login-signup"/>
         <div className="landing-body">
           <div className="hero-section">
@@ -35,6 +45,7 @@ class LandingPage extends Component {
             <Button bsSize="large">Get Started!</Button>
           </div>
         </div>
+        <LoginModal show="true" close={null}/>
       </div>
     );
   }
