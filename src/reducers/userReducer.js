@@ -1,6 +1,13 @@
 // USER REDUCER
 import { handle } from 'redux-pack';
 
+//you will also need to import relevant action constants
+import {
+  MAKE_LOGIN,
+  MAKE_SIGNUP,
+  SHOW_LOGIN,
+  SHOW_SIGNUP } from '../actions';
+
 const initialState = {
   user: null,
   badCredentials: false,

@@ -35,3 +35,12 @@ export function makeLogin() {
     });
   }
 }
+
+//make signup async call
+export const MAKE_SIGNUP = 'MAKE_SIGNUP';
+export function makeSignUp() {
+  return {
+    type: MAKE_SIGNUP,
+    promise: null //implement an async call here
+  }
+}
