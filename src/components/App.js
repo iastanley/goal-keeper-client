@@ -12,8 +12,9 @@ import GoalsPage from '../pages/GoalsPage';
 import NewTaskModal from '../pages/NewTaskModal';
 import NewGoalModal from '../pages/NewGoalModal';
 
-//I think the App component will render the different routes
-// the app componenet might not be the best place to render the NavBar because this will not be the same for all views
+// I think the App component will render the different routes.
+// The app componenet might not be the best place to render the NavBar
+// because this will not be the same for all views
 
 export default function App(props) {
   return (
@@ -26,7 +27,7 @@ export default function App(props) {
         <Route path="/home/newgoal" component={NewGoalModal}/>
         <Route exact path="/home" component={TasksPage}/>
         <Route exact path="/" component={LandingPage}/>
-      
+
       <Footer/>
     </div>
   );
