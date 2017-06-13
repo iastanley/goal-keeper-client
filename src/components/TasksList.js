@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import './TasksList.css';
 
 class TasksList extends Component {
   buildGoalList() {

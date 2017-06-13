@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import NavBar from '../components/NavBar';
 import './LandingPage.css';
 
@@ -8,7 +8,7 @@ import './LandingPage.css';
 
 export default function Landing(props) {
   return (
-    <div>
+    <div className="modal-container">
       <NavBar rightMenu="show-login-signup"/>
       <div className="landing-body">
         <div className="hero-section">

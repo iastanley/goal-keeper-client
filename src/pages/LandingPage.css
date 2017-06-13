@@ -26,3 +26,11 @@ body * {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
+.modal-container {
+  position: relative;
+}
+
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}

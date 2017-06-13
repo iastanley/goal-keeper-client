@@ -10,9 +10,25 @@ class NavBar extends Component {
     this.handleClick = this.handleClick.bind(this);
     }
 
-  handleClick(event) {
+  handleLogin(event) {
+    event.preventDefault();
+    //dispatch action.login
+  }
+
+  handleSignUp(event) {
+    event.preventDefault();
+    //dispatch signup action
+  }
+
+  handleGoals(event) {
+    event.preventDefault();
+    //dispatch show goal action
+  }
+
+  handleHome(event) {
     event.preventDefault();
     this.props.history.push(event.currentTarget.getAttribute('href'));
+
   }
 
   buildRightMenu() {
@@ -23,11 +39,11 @@ class NavBar extends Component {
             <Navbar.Collapse>
               <Nav pullRight>
               <NavItem
-                onClick={this.handleClick}
-                href="/login">Login</NavItem>
+                onClick={this.handleLogin}
+                >Login</NavItem>
               <NavItem
-                onClick={this.handleClick}
-                href="/signup">Signup</NavItem>
+                onClick={this.handleSignUp}
+                >Signup</NavItem>
               </Nav>
             </Navbar.Collapse>
           );
@@ -36,11 +52,11 @@ class NavBar extends Component {
             <Navbar.Collapse>
               <Nav pullRight>
               <NavItem
-                onClick={this.handleClick}
+                onClick={this.handleHome}
                 href="/home">Tasks</NavItem>
               <NavItem
-                onClick={this.handleClick}
-                href="/home/goals" disabled>Goals</NavItem>
+                onClick={this.handleGoals}
+                disabled>Goals</NavItem>
               </Nav>
             </Navbar.Collapse>
           );
@@ -49,11 +65,11 @@ class NavBar extends Component {
             <Navbar.Collapse>
               <Nav pullRight>
               <NavItem
-                onClick={this.handleClick}
+                onClick={this.handleHome}
                 href="/home" disabled>Tasks</NavItem>
               <NavItem
-                onClick={this.handleClick}
-                href="/home/goals">Goals</NavItem>
+                onClick={this.handleGoals}
+                >Goals</NavItem>
               </Nav>
             </Navbar.Collapse>
           );

@@ -18,7 +18,7 @@ import NewGoalModal from '../pages/NewGoalModal';
 export default function App(props) {
   return (
     <div>
-      <Switch>
+
         <Route path="/login" component={LoginModal}/>
         <Route path="/signup" component={SignUpModal}/>
         <Route path="/home/goals" component={GoalsPage}/>
@@ -26,7 +26,7 @@ export default function App(props) {
         <Route path="/home/newgoal" component={NewGoalModal}/>
         <Route exact path="/home" component={TasksPage}/>
         <Route exact path="/" component={LandingPage}/>
-      </Switch>
+      
       <Footer/>
     </div>
   );
