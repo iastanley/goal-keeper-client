@@ -4,14 +4,14 @@ body {
   font-family: sans-serif;
 }
 
-form {
+/*form {
   text-align: center;
   padding: 20px;
   width: 80%;
   margin: 50px auto;
   border: 1px solid #aaa;
   border-radius: 10px;
-}
+}*/
 
 .form-group {
   text-align: left;

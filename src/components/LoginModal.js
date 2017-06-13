@@ -10,7 +10,7 @@ const LoginModal = (props) => {
   return (
     <Modal className="login-modal" show={props.show} onHide={props.close}>
       <Modal.Header closeButton>
-        Login
+        <h3>Login</h3>
       </Modal.Header>
       <Modal.Body>
         <form>

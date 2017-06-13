@@ -45,7 +45,7 @@ class LandingPage extends Component {
             <Button bsSize="large">Get Started!</Button>
           </div>
         </div>
-        <LoginModal show="true" close={null}/>
+        <LoginModal show="false" close={null}/>
       </div>
     );
   }

@@ -7,7 +7,8 @@ import { Link, withRouter } from 'react-router-dom';
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
     }
 
   handleLogin(event) {
