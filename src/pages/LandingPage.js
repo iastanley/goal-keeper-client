@@ -12,16 +12,52 @@ class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showLogin: false
+      showLogin: false,
+      showSignUp: false
     }
+
+    this.openLogin = this.openLogin.bind(this);
+    this.closeLogin = this.closeLogin.bind(this);
+    this.openSignUp = this.openSignUp.bind(this);
+    this.closeSignUp = this.closeSignUp.bind(this);
   }
 
+  openLogin() {
+    // replace with action dispatch later
+    this.setState({
+      showLogin: true
+    })
+  }
+
+  closeLogin() {
+    // replace with action dispatch later
+    this.setState({
+      showLogin: false
+    })
+  }
+
+  openSignUp() {
+    this.setState({
+      showSignUp: true
+    })
+  }
+
+  closeSignUp() {
+    this.setState({
+      showSignUp: false
+    })
+  }
 
 
   render() {
     return (
       <div className="landing-page">
-        <NavBar rightMenu="show-login-signup"/>
+        <NavBar
+        openLink={
+          { openLogin: this.openLogin,
+            openSignUp: this.openSignUp }
+        }
+        rightMenu="show-login-signup"/>
         <div className="landing-body">
           <div className="hero-section">
             <h1>Goal Keeper</h1>
@@ -43,11 +79,16 @@ class LandingPage extends Component {
             <p>Section 3 text</p>
           </div>
           <div className="landing-button">
-            <Button bsSize="large">Get Started!</Button>
+            <Button
+              bsSize="large" onClick={this.openSignUp}>
+              Get Started!
+            </Button>
           </div>
         </div>
-        {/*<LoginModal show="false" close={null}/>*/}
-        <SignUpModal show="true" close={null}/>
+        <LoginModal
+          show={this.state.showLogin} close={this.closeLogin}/>
+        <SignUpModal
+          show={this.state.showSignUp} close={this.closeSignUp}/>
       </div>
     );
   }

@@ -7,20 +7,7 @@ import { Link, withRouter } from 'react-router-dom';
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleSignUp = this.handleSignUp.bind(this);
     }
-
-  handleLogin(event) {
-    event.preventDefault();
-    //dispatch action.login
-    //this action should open the modal
-  }
-
-  handleSignUp(event) {
-    event.preventDefault();
-    //dispatch signup action
-  }
 
   handleGoals(event) {
     event.preventDefault();
@@ -41,10 +28,10 @@ class NavBar extends Component {
             <Navbar.Collapse>
               <Nav pullRight>
               <NavItem
-                onClick={this.handleLogin}
+                onClick={this.props.openLink.openLogin}
                 >Login</NavItem>
               <NavItem
-                onClick={this.handleSignUp}
+                onClick={this.props.openLink.openSignUp}
                 >Signup</NavItem>
               </Nav>
             </Navbar.Collapse>
