@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import NavBar from '../components/NavBar';
 import LoginModal from '../components/LoginModal';
+import SignUpModal from '../components/SignUpModal';
 import './LandingPage.css';
 
 //the landing-section divs could be components
@@ -45,7 +46,8 @@ class LandingPage extends Component {
             <Button bsSize="large">Get Started!</Button>
           </div>
         </div>
-        <LoginModal show="false" close={null}/>
+        {/*<LoginModal show="false" close={null}/>*/}
+        <SignUpModal show="true" close={null}/>
       </div>
     );
   }

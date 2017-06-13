@@ -6,7 +6,6 @@ import Footer from './Footer';
 //views for each route
 import LandingPage from '../pages/LandingPage';
 import TasksPage from '../pages/TasksPage';
-import SignUpModal from '../pages/SignUpModal';
 import GoalsPage from '../pages/GoalsPage';
 import NewTaskModal from '../pages/NewTaskModal';
 import NewGoalModal from '../pages/NewGoalModal';
@@ -18,7 +17,6 @@ import NewGoalModal from '../pages/NewGoalModal';
 export default function App(props) {
   return (
     <div>
-      <Route path="/signup" component={SignUpModal}/>
       <Route path="/home/goals" component={GoalsPage}/>
       <Route path="/home/newtask" component={NewTaskModal}/>
       <Route path="/home/newgoal" component={NewGoalModal}/>
