@@ -6,24 +6,6 @@
 
 // create a task
 
-// show goals view
-
-// show login
-export const SHOW_LOGIN = 'SHOW_LOGIN';
-export function showLogin() {
-  return {
-    type: SHOW_LOGIN
-  }
-}
-
-// show signup
-export const SHOW_SIGNUP = 'SHOW_SIGNUP';
-export function showSignup() {
-  return {
-    type: SHOW_SIGNUP
-  }
-}
-
 // make login
 // make async call
 export const MAKE_LOGIN = 'MAKE_LOGIN';
@@ -42,5 +24,45 @@ export function makeSignUp() {
   return {
     type: MAKE_SIGNUP,
     promise: null //implement an async call here
+  }
+}
+
+// show goals view
+export const TOGGLE_GOAL_VIEW = 'TOGGLE_GOAL_VIEW';
+export function toggleGoalView() {
+  return {
+    type: TOGGLE_GOAL_VIEW
+  }
+}
+
+// show new goal modal
+export const TOGGLE_NEWGOAL = 'TOGGLE_NEWGOAL';
+export function toggleNewGoal() {
+  return {
+    type: TOGGLE_NEWGOAL
+  }
+}
+
+// show new task modal
+export const TOGGLE_NEWTASK = 'TOGGLE_NEWTASK';
+export function toggleNewTask() {
+  return {
+    type: TOGGLE_NEWTASK
+  }
+}
+
+// show login modal
+export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
+export function toggleLogin() {
+  return {
+    type: TOGGLE_LOGIN
+  }
+}
+
+// show signup modal
+export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
+export function toggleSignup() {
+  return {
+    type: TOGGLE_SIGNUP
   }
 }

@@ -5,14 +5,11 @@ import { handle } from 'redux-pack';
 import {
   MAKE_LOGIN,
   MAKE_SIGNUP,
-  SHOW_LOGIN,
-  SHOW_SIGNUP } from '../actions';
+} from '../actions';
 
 const initialState = {
   user: null,
-  badCredentials: false,
-  showLogin: false,
-  showSignup: false
+  badCredentials: false
 }
 
 if (localStorage.user) {
