@@ -19,6 +19,7 @@ class TasksList extends Component {
     });
   }
 
+  // the input field will need to be a controlled component with onChange callback
   buildTaskList(taskList, color) {
     return taskList.map(task => {
       return (
@@ -49,7 +50,7 @@ TasksList.defaultProps = {
   goals: {
     1: {
       id: 1,
-      title: 'Goal #1',
+      title: 'Goal 1',
       color: '#f00',
       tasks: [
         {
@@ -66,7 +67,7 @@ TasksList.defaultProps = {
     }, // end of goal id: 1
     2: {
       id: 2,
-      title: 'Goal #2',
+      title: 'Goal 2',
       color: '#f0f',
       tasks: [
         {
@@ -83,7 +84,7 @@ TasksList.defaultProps = {
     }, // end of goal id: 2
     3: {
       id: 3,
-      title: 'Goal #3',
+      title: 'Goal 3',
       color: '#0f0',
       tasks: [
         {

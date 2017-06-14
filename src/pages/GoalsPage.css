@@ -1,5 +1,51 @@
 .goals-page {
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 40px;
+  padding: 50px 20px 40px 20px;
+}
+
+.goal-progress-list {
+  height: 75vh;
+  overflow-y: scroll;
+}
+
+.goal-progress-list h3 {
+  text-align: left;
+}
+
+.goal-progress-bar {
+  width: 100%;
+  height: 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+}
+
+.goal-color-picker {
+  display: inline-block;
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  margin-right: 10px;
+  vertical-align: top;
+}
+
+.delete-goal {
+  float: right;
+  opacity: 0;
+}
+
+/*TEMPORARY - NEED TO IMPLEMENT WITH JS FOR FULL FUNCTION*/
+.delete-goal:hover {
+  opacity: 100;
+}
+
+.btn-new-goal {
+  width: 100%;
+  margin: 0;
 }
