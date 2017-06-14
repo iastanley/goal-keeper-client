@@ -54,12 +54,12 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="landing-page">
-        <NavBar
+        {/*<NavBar
         openLink={
           { openLogin: this.openLogin,
             openSignUp: this.openSignUp }
         }
-        rightMenu="show-login-signup"/>
+        rightMenu="show-login-signup"/>*/}
         <div className="landing-body">
           <div className="hero-section">
             <h1>Goal Keeper</h1>

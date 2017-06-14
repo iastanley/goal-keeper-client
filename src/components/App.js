@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import Footer from './Footer';
+import NavBar from './NavBar';
 
 //views for each route
 import LandingPage from '../pages/LandingPage';
@@ -17,11 +18,14 @@ import NewGoalModal from '../pages/NewGoalModal';
 export default function App(props) {
   return (
     <div>
-      <Route path="/home/goals" component={GoalsPage}/>
-      <Route path="/home/newtask" component={NewTaskModal}/>
-      <Route path="/home/newgoal" component={NewGoalModal}/>
-      <Route exact path="/home" component={TasksPage}/>
-      <Route exact path="/" component={LandingPage}/>
+      <NavBar/>
+      <div className="main">
+        <Route path="/home/goals" component={GoalsPage}/>
+        <Route path="/home/newtask" component={NewTaskModal}/>
+        <Route path="/home/newgoal" component={NewGoalModal}/>
+        <Route exact path="/home" component={TasksPage}/>
+        <Route exact path="/" component={LandingPage}/>
+      </div>
       <Footer/>
     </div>
   );

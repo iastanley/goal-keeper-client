@@ -32,7 +32,7 @@ export function makeLogin() {
     type: MAKE_LOGIN,
     promise: fetch("/login", {
       method: "POST"
-    });
+    })
   }
 }
 
