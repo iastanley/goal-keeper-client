@@ -8,21 +8,23 @@ class TasksList extends Component {
       return (
         <div
           className="goal-item"
-          style={{border: '3px solid' + goal.color}}
           key={goal.id}>
           <h3>{goal.title}</h3>
           <ul>
-            {this.buildTaskList(goal.tasks)}
+            {this.buildTaskList(goal.tasks, goal.color)}
           </ul>
+
         </div>
       );
     });
   }
 
-  buildTaskList(taskList) {
+  buildTaskList(taskList, color) {
     return taskList.map(task => {
       return (
-          <li className="task-list-item" key={task.id}>
+          <li className="task-list-item"
+          style={{border: '2px solid' + color}}
+          key={task.id}>
             <input type="checkbox"/>
             <input type="text" value={task.name}/>
             <i className="fa fa-lg fa-times" aria-hidden="true"></i>
@@ -34,8 +36,10 @@ class TasksList extends Component {
   render() {
     return (
       <div className="tasks-list">
-        <h3>Task List</h3>
-        {this.buildGoalList()}
+        <div className="goal-list">
+          {this.buildGoalList()}
+        </div>
+        <button className="btn btn-primary btn-new-task">New Task</button>
       </div>
     );
   }
@@ -45,7 +49,7 @@ TasksList.defaultProps = {
   goals: {
     1: {
       id: 1,
-      title: 'Learn',
+      title: 'Goal #1',
       color: '#f00',
       tasks: [
         {
@@ -62,7 +66,7 @@ TasksList.defaultProps = {
     }, // end of goal id: 1
     2: {
       id: 2,
-      title: 'Marathon',
+      title: 'Goal #2',
       color: '#f0f',
       tasks: [
         {
@@ -72,6 +76,23 @@ TasksList.defaultProps = {
         },
         {
           id: 13,
+          name: 'Do this second',
+          complete: false
+        }
+      ]
+    }, // end of goal id: 2
+    3: {
+      id: 3,
+      title: 'Goal #3',
+      color: '#0f0',
+      tasks: [
+        {
+          id: 14,
+          name: 'Do this first',
+          complete: true
+        },
+        {
+          id: 15,
           name: 'Do this second',
           complete: false
         }

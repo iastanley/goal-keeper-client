@@ -1,5 +1,25 @@
+.tasks-list {
+  position: relative;
+  height: 45vh;
+}
+
+.tasks-list button {
+  position: absolute;
+  bottom: 0;
+  left: 34px;
+}
+
+.goal-list {
+  height: 85%;
+  width: 90%;
+  margin: auto;
+  overflow-y: scroll;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
 .goal-item {
-  padding: 10px;
+  /*padding: 10px;*/
   margin: 10px auto;
   width: 90%;
   /*border: 1px solid #aaa;*/
@@ -43,4 +63,9 @@ i {
 
 .fa-lg {
   line-height: 1.2em;
+}
+
+.btn-new-task {
+  width: 90%;
+
 }
