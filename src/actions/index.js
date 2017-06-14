@@ -1,5 +1,6 @@
 //ACTIONS
 
+
 // types of actions
 
 // create a goal
@@ -29,40 +30,60 @@ export function makeSignUp() {
 
 // show goals view
 export const TOGGLE_GOAL_VIEW = 'TOGGLE_GOAL_VIEW';
-export function toggleGoalView() {
+export function toggleGoalView(show) {
   return {
-    type: TOGGLE_GOAL_VIEW
+    type: TOGGLE_GOAL_VIEW,
+    show
   }
 }
 
 // show new goal modal
 export const TOGGLE_NEWGOAL = 'TOGGLE_NEWGOAL';
-export function toggleNewGoal() {
+export function toggleNewGoal(show) {
   return {
-    type: TOGGLE_NEWGOAL
+    type: TOGGLE_NEWGOAL,
+    show
   }
 }
 
 // show new task modal
 export const TOGGLE_NEWTASK = 'TOGGLE_NEWTASK';
-export function toggleNewTask() {
+export function toggleNewTask(show) {
   return {
-    type: TOGGLE_NEWTASK
+    type: TOGGLE_NEWTASK,
+    show
   }
 }
 
 // show login modal
 export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
-export function toggleLogin() {
+export function toggleLogin(show) {
   return {
-    type: TOGGLE_LOGIN
+    type: TOGGLE_LOGIN,
+    show
   }
 }
 
 // show signup modal
 export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
-export function toggleSignup() {
+export function toggleSignup(show) {
   return {
-    type: TOGGLE_SIGNUP
+    type: TOGGLE_SIGNUP,
+    show
+  }
+}
+
+// Constants for changing nav view
+export const navbarOptions = {
+  landingView: 'show-login-signup',
+  taskView: 'show-goal-button',
+  goalView: 'show-task-button'
+}
+
+export const CHANGE_RIGHT_NAV = 'CHANGE_RIGHT_NAV';
+export function changeRightNav(option) {
+  return {
+    type: CHANGE_RIGHT_NAV,
+    option: option
   }
 }

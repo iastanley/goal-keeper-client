@@ -24,8 +24,6 @@ export function userReducer(state = initialState, action) {
           failure: prevState => ({...prevState, badCredentials: true})
           });
     case MAKE_SIGNUP:
-    case SHOW_LOGIN:
-    case SHOW_SIGNUP:
     default:
       return state;
   }
