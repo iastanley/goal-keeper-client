@@ -67,5 +67,10 @@ i {
 
 .btn-new-task {
   width: 90%;
+}
 
+@media (min-width: 768px) {
+  .tasks-list {
+    display: none;
+  }
 }

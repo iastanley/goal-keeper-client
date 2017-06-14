@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import NavBar from '../components/NavBar';
 import LoginModal from '../components/LoginModal';
 import SignUpModal from '../components/SignUpModal';
