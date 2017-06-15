@@ -5,9 +5,7 @@ import { connect } from 'react-redux';
 
 import {
   toggleLogin,
-  toggleSignup,
-  changeRightNav,
-  navbarOptions
+  toggleSignUp
 } from '../actions';
 
 //pass a prop that will determine the buttons displayed to the right
@@ -26,12 +24,7 @@ class NavBar extends Component {
   }
 
   openSignUp() {
-    this.props.dispatch(toggleSignup(true));
-  }
-
-  handleGoals(event) {
-    event.preventDefault();
-    //dispatch show goal action
+    this.props.dispatch(toggleSignUp(true));
   }
 
   handleHome(event) {
@@ -41,7 +34,7 @@ class NavBar extends Component {
   }
 
   buildRightMenu() {
-    if (this.props.rightNavbarMenu) {
+    if (this.props.match) {
       switch(this.props.match.url) {
         case '/':
           return (
@@ -64,7 +57,8 @@ class NavBar extends Component {
                 onClick={this.handleHome}
                 href="/home" disabled>Tasks</NavItem>
               <NavItem
-                onClick={this.handleGoals}
+                onClick={this.handleHome}
+                href="home/goals"
                 >Goals</NavItem>
               </Nav>
             </Navbar.Collapse>
@@ -77,7 +71,8 @@ class NavBar extends Component {
                 onClick={this.handleHome}
                 href="/home">Tasks</NavItem>
               <NavItem
-                onClick={this.handleGoals}
+                onClick={this.handleHome}
+                href="/home/goals"
                 disabled>Goals</NavItem>
               </Nav>
             </Navbar.Collapse>
@@ -105,8 +100,7 @@ class NavBar extends Component {
 
 const mapStateToProps = state => ({
   showLogin: state.navigation.showLogin,
-  showSignUp: state.navigation.showSignUp,
-  rightNavbarMenu: state.navigation.rightNavbarMenu
+  showSignUp: state.navigation.showSignUp
 });
 
 //with router needed to access history object

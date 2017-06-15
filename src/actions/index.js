@@ -66,24 +66,9 @@ export function toggleLogin(show) {
 
 // show signup modal
 export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
-export function toggleSignup(show) {
+export function toggleSignUp(show) {
   return {
     type: TOGGLE_SIGNUP,
     show
-  }
-}
-
-// Constants for changing nav view
-export const navbarOptions = {
-  landingView: 'show-login-signup',
-  taskView: 'show-goal-button',
-  goalView: 'show-task-button'
-}
-
-export const CHANGE_RIGHT_NAV = 'CHANGE_RIGHT_NAV';
-export function changeRightNav(option) {
-  return {
-    type: CHANGE_RIGHT_NAV,
-    option: option
   }
 }

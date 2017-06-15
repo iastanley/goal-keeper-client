@@ -25,7 +25,7 @@ const LoginModal = (props) => {
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Link className="btn btn-primary" to="/home">Log In</Link>
+        <Link onClick={props.close} className="btn btn-primary" to="/home">Log In</Link>
         <button
           className="btn btn-danger" onClick={props.close}>
           Cancel

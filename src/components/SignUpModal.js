@@ -29,7 +29,7 @@ const SignUpModal = (props) => {
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Link className="btn btn-primary" to="/home">
+        <Link onClick={props.close} className="btn btn-primary" to="/home">
           Sign Up
         </Link>
         <button

@@ -7,8 +7,7 @@ import './LandingPage.css';
 
 import {
   toggleLogin,
-  toggleSignup,
-  changeRightNav
+  toggleSignUp
 } from '../actions';
 
 //the landing-section divs could be components
@@ -27,7 +26,7 @@ class LandingPage extends Component {
   }
 
   closeSignUp() {
-    this.props.dispatch(toggleSignup(false));
+    this.props.dispatch(toggleSignUp(false));
   }
 
 
@@ -72,8 +71,7 @@ class LandingPage extends Component {
 
 const mapStateToProps = state => ({
   showLogin: state.navigation.showLogin,
-  showSignUp: state.navigation.showSignUp,
-  rightNavbarMenu: state.navigation.rightNavbarMenu
+  showSignUp: state.navigation.showSignUp
 });
 
 export default connect(mapStateToProps)(LandingPage);

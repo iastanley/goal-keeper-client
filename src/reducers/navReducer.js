@@ -4,17 +4,14 @@ import {
   TOGGLE_NEWTASK,
   TOGGLE_NEWGOAL,
   TOGGLE_GOAL_VIEW,
-  CHANGE_RIGHT_NAV,
-  navbarOptions
 } from '../actions';
 
 export const initialState = {
   showLogin: false,
-  showSignup: false,
+  showSignUp: false,
   showNewTask: false,
   showNewGoal: false,
-  showGoalView: false,
-  rightNavbarMenu: navbarOptions.landingView
+  showGoalView: false
 }
 
 export function navReducer(state = initialState, action) {
@@ -25,7 +22,7 @@ export function navReducer(state = initialState, action) {
       });
     case TOGGLE_SIGNUP:
       return Object.assign({}, state, {
-        showSignup: action.show
+        showSignUp: action.show
       });
     case TOGGLE_NEWTASK:
       return Object.assign({}, state, {
@@ -38,10 +35,6 @@ export function navReducer(state = initialState, action) {
     case TOGGLE_GOAL_VIEW:
       return Object.assign({}, state, {
         showGoalView: action.show
-      });
-    case CHANGE_RIGHT_NAV:
-      return Object.assign({}, state, {
-        rightNavbarMenu: action.option
       });
     default:
       return state;
