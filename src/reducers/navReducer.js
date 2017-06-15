@@ -8,13 +8,13 @@ import {
   navbarOptions
 } from '../actions';
 
-const initialState = {
+export const initialState = {
   showLogin: false,
   showSignup: false,
   showNewTask: false,
   showNewGoal: false,
   showGoalView: false,
-  rightNavbarMenu: 'show-login-signup'
+  rightNavbarMenu: navbarOptions.landingView
 }
 
 export function navReducer(state = initialState, action) {
