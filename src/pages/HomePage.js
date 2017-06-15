@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Calendar from '../components/Calendar';
 import TasksList from '../components/TasksList';
 import NewTaskModal from '../components/NewTaskModal';
@@ -30,7 +29,9 @@ class HomePage extends Component {
       <div className="home-page">
         <Calendar />
         <TasksList goals={this.props.goals} openNewTask={this.openNewTask}/>
-        <GoalsPane goals={this.props.goals}/>
+        <GoalsPane
+          show={this.props.showGoalPane}
+          goals={this.props.goals}/>
         <NewTaskModal
           show={this.props.showNewTask}
           close={this.closeNewTask}
@@ -42,7 +43,8 @@ class HomePage extends Component {
 
 const mapStateToProps = state => ({
   goals: state.goal,
-  showNewTask: state.navigation.showNewTask
+  showNewTask: state.navigation.showNewTask,
+  showGoalPane: state.navigation.showGoalPane
 });
 
 export default connect(mapStateToProps)(HomePage);

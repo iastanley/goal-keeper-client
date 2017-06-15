@@ -36,8 +36,13 @@ class GoalsPane extends Component {
   }
 
   render() {
+    const componentClasses = ['goals-pane'];
+    if (this.props.show) {
+      componentClasses.push('show');
+    }
+
     return(
-      <div className="goals-pane">
+      <div className={componentClasses.join(' ')}>
         <h2>Goal Progress</h2>
         <div className="goal-progress-list">
           {this.buildGoalProgressList()}

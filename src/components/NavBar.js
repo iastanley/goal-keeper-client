@@ -18,6 +18,7 @@ class NavBar extends Component {
     this.openLogin = this.openLogin.bind(this);
     this.openSignUp = this.openSignUp.bind(this);
     this.openGoalPane = this.openGoalPane.bind(this);
+    this.closeGoalPane = this.closeGoalPane.bind(this);
     }
 
   openLogin() {
@@ -33,15 +34,18 @@ class NavBar extends Component {
     this.props.dispatch(toggleGoalPane(true));
   }
 
+  closeGoalPane() {
+    this.props.dispatch(toggleGoalPane(false));
+  }
+
   handleHome(event) {
     event.preventDefault();
-    this.props.dispatch(toggleGoalPane(false));
+    this.closeGoalPane();
     this.props.history.push(event.currentTarget.getAttribute('href'));
 
   }
 
   buildRightMenu() {
-
     switch(window.location.pathname) {
       case '/':
         return (
@@ -82,7 +86,7 @@ class NavBar extends Component {
       <Navbar fixedTop fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Goal Keeper</Link>
+              <Link onClick={this.closeGoalPane} to="/">Goal Keeper</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
