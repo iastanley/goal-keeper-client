@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 import {
   toggleLogin,
-  toggleSignUp
+  toggleSignUp,
+  toggleGoalPane
 } from '../actions';
 
 //pass a prop that will determine the buttons displayed to the right
@@ -16,6 +17,7 @@ class NavBar extends Component {
     this.handleHome = this.handleHome.bind(this);
     this.openLogin = this.openLogin.bind(this);
     this.openSignUp = this.openSignUp.bind(this);
+    this.openGoalPane = this.openGoalPane.bind(this);
     }
 
   openLogin() {
@@ -27,8 +29,13 @@ class NavBar extends Component {
     this.props.dispatch(toggleSignUp(true));
   }
 
+  openGoalPane() {
+    this.props.dispatch(toggleGoalPane(true));
+  }
+
   handleHome(event) {
     event.preventDefault();
+    this.props.dispatch(toggleGoalPane(false));
     this.props.history.push(event.currentTarget.getAttribute('href'));
 
   }
@@ -55,25 +62,12 @@ class NavBar extends Component {
             <Nav pullRight>
             <NavItem
               onClick={this.handleHome}
-              href="/home" disabled>Tasks</NavItem>
+              href="/home"
+              disabled={!this.props.showGoalPane}>Tasks</NavItem>
             <NavItem
-              onClick={this.handleHome}
-              href="home/goals"
+              onClick={this.openGoalPane}
+              disabled={this.props.showGoalPane}
               >Goals</NavItem>
-            </Nav>
-          </Navbar.Collapse>
-        );
-      case '/home/goals':
-        return (
-          <Navbar.Collapse>
-            <Nav pullRight>
-            <NavItem
-              onClick={this.handleHome}
-              href="/home">Tasks</NavItem>
-            <NavItem
-              onClick={this.handleHome}
-              href="/home/goals"
-              disabled>Goals</NavItem>
             </Nav>
           </Navbar.Collapse>
         );
@@ -100,7 +94,8 @@ class NavBar extends Component {
 
 const mapStateToProps = state => ({
   showLogin: state.navigation.showLogin,
-  showSignUp: state.navigation.showSignUp
+  showSignUp: state.navigation.showSignUp,
+  showGoalPane: state.navigation.showGoalPane
 });
 
 //with router needed to access history object

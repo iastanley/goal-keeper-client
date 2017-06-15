@@ -26,7 +26,6 @@ class HomePage extends Component {
   }
 
   render() {
-    console.log(this.props.showNewTask);
     return (
       <div className="home-page">
         <Calendar />
