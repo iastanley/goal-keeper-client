@@ -47,7 +47,11 @@ class GoalsPane extends Component {
         <div className="goal-progress-list">
           {this.buildGoalProgressList()}
         </div>
-        <button className="btn btn-primary btn-new-goal">New Goal</button>
+        <button
+          className="btn btn-primary btn-new-goal"
+          onClick={this.props.openNewGoal}>
+          New Goal
+        </button>
       </div>
     );
   }
