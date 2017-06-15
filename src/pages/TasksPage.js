@@ -8,11 +8,13 @@ import './TasksPage.css';
 
 const TasksPage = (props) => {
   return (
-    <div className="tasks-page">
-      <NavBar rightMenu="show-goal-button"/>
-      <Calendar />
-      <TasksList />
+    <div>
+      <div className="tasks-page">
+        <Calendar />
+        <TasksList />
+      </div>
     </div>
+
   );
 }
 

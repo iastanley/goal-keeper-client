@@ -34,53 +34,53 @@ class NavBar extends Component {
   }
 
   buildRightMenu() {
-    if (this.props.match) {
-      switch(this.props.match.url) {
-        case '/':
-          return (
-            <Navbar.Collapse>
-              <Nav pullRight>
-              <NavItem
-                onClick={this.openLogin}
-                >Login</NavItem>
-              <NavItem
-                onClick={this.openSignUp}
-                >Signup</NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          );
-        case '/home':
-          return (
-            <Navbar.Collapse>
-              <Nav pullRight>
-              <NavItem
-                onClick={this.handleHome}
-                href="/home" disabled>Tasks</NavItem>
-              <NavItem
-                onClick={this.handleHome}
-                href="home/goals"
-                >Goals</NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          );
-        case '/home/goals':
-          return (
-            <Navbar.Collapse>
-              <Nav pullRight>
-              <NavItem
-                onClick={this.handleHome}
-                href="/home">Tasks</NavItem>
-              <NavItem
-                onClick={this.handleHome}
-                href="/home/goals"
-                disabled>Goals</NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          );
-        default:
-          return;
-      }
+
+    switch(window.location.pathname) {
+      case '/':
+        return (
+          <Navbar.Collapse>
+            <Nav pullRight>
+            <NavItem
+              onClick={this.openLogin}
+              >Login</NavItem>
+            <NavItem
+              onClick={this.openSignUp}
+              >Signup</NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        );
+      case '/home':
+        return (
+          <Navbar.Collapse>
+            <Nav pullRight>
+            <NavItem
+              onClick={this.handleHome}
+              href="/home" disabled>Tasks</NavItem>
+            <NavItem
+              onClick={this.handleHome}
+              href="home/goals"
+              >Goals</NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        );
+      case '/home/goals':
+        return (
+          <Navbar.Collapse>
+            <Nav pullRight>
+            <NavItem
+              onClick={this.handleHome}
+              href="/home">Tasks</NavItem>
+            <NavItem
+              onClick={this.handleHome}
+              href="/home/goals"
+              disabled>Goals</NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        );
+      default:
+        return;
     }
+
   }
 
   render() {

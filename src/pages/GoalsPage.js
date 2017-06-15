@@ -38,13 +38,15 @@ class GoalsPage extends Component {
 
   render() {
     return(
-      <div className="goals-page">
-        <NavBar rightMenu="show-task-button"/>
-        <h2>Goal Progress</h2>
-        <div className="goal-progress-list">
-          {this.buildGoalProgressList()}
+      <div>
+        <div className="goals-page">
+
+          <h2>Goal Progress</h2>
+          <div className="goal-progress-list">
+            {this.buildGoalProgressList()}
+          </div>
+          <button className="btn btn-primary btn-new-goal">New Goal</button>
         </div>
-        <button className="btn btn-primary btn-new-goal">New Goal</button>
       </div>
     );
   }
