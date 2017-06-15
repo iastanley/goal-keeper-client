@@ -29,10 +29,10 @@ export function makeSignUp() {
 }
 
 // show goals view
-export const TOGGLE_GOAL_VIEW = 'TOGGLE_GOAL_VIEW';
-export function toggleGoalView(show) {
+export const TOGGLE_GOAL_PANE = 'TOGGLE_GOAL_PANE';
+export function toggleGoalPane(show) {
   return {
-    type: TOGGLE_GOAL_VIEW,
+    type: TOGGLE_GOAL_PANE,
     show
   }
 }

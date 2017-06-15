@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import NavBar from '../components/NavBar';
-import './GoalsPage.css';
+import './GoalsPane.css';
 
-class GoalsPage extends Component {
+class GoalsPane extends Component {
   // consider making each goal-progress-item a separate component
   buildGoalProgressList() {
     return _.map(this.props.goals, (goal) => {
@@ -38,7 +37,7 @@ class GoalsPage extends Component {
 
   render() {
     return(
-      <div className="goals-page">
+      <div className="goals-pane">
         <h2>Goal Progress</h2>
         <div className="goal-progress-list">
           {this.buildGoalProgressList()}
@@ -49,4 +48,4 @@ class GoalsPage extends Component {
   }
 }
 
-export default GoalsPage;
+export default GoalsPane;

@@ -1,4 +1,4 @@
-.goals-page {
+.goals-pane {
   text-align: center;
   position: absolute;
   z-index: 500;
@@ -10,8 +10,8 @@
   padding: 50px 20px 40px 20px;
 }
 
-.goals-page {
-  left: 1000px;
+.goals-pane {
+  left: 10000px;
 }
 
 .goal-progress-list {

@@ -3,7 +3,7 @@ import {
   TOGGLE_SIGNUP,
   TOGGLE_NEWTASK,
   TOGGLE_NEWGOAL,
-  TOGGLE_GOAL_VIEW,
+  TOGGLE_GOAL_PANE,
 } from '../actions';
 
 export const initialState = {
@@ -11,7 +11,7 @@ export const initialState = {
   showSignUp: false,
   showNewTask: false,
   showNewGoal: false,
-  showGoalView: false
+  showGoalPane: false
 }
 
 export function navReducer(state = initialState, action) {
@@ -32,9 +32,9 @@ export function navReducer(state = initialState, action) {
       return Object.assign({}, state, {
         showNewGoal: action.show
       });
-    case TOGGLE_GOAL_VIEW:
+    case TOGGLE_GOAL_PANE:
       return Object.assign({}, state, {
-        showGoalView: action.show
+        showGoalPane: action.show
       });
     default:
       return state;

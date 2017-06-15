@@ -6,8 +6,7 @@ import NavBar from './NavBar';
 
 //views for each route
 import LandingPage from '../pages/LandingPage';
-import TasksPage from '../pages/TasksPage';
-import GoalsPage from '../pages/GoalsPage';
+import HomePage from '../pages/HomePage';
 
 // I think the App component will render the different routes.
 // The app componenet might not be the best place to render the NavBar
@@ -18,8 +17,7 @@ export default function App(props) {
     <div>
       <NavBar/>
       <div className="main">
-        {/*<Route path="/home/goals" component={GoalsPage}/>*/}
-        <Route exact path="/home" component={TasksPage}/>
+        <Route exact path="/home" component={HomePage}/>
         <Route exact path="/" component={LandingPage}/>
       </div>
       <Footer/>
