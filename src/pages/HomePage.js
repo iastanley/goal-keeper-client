@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Calendar from '../components/Calendar';
+import CalendarContainer from '../components/CalendarContainer';
 import TasksList from '../components/TasksList';
 import NewTaskModal from '../components/NewTaskModal';
 import NewGoalModal from '../components/NewGoalModal';
@@ -36,7 +36,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="home-page">
-        <Calendar />
+        <CalendarContainer />
         <TasksList goals={this.props.goals} openNewTask={this.openNewTask}/>
         <GoalsPane
           show={this.props.showGoalPane}

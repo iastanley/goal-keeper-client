@@ -69,8 +69,8 @@ i {
   width: 90%;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .tasks-list {
     display: none;
   }
-}
+}*/

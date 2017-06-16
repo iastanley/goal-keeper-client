@@ -18,6 +18,7 @@ class LandingPage extends Component {
     super(props);
     this.closeLogin = this.closeLogin.bind(this);
     this.closeSignUp = this.closeSignUp.bind(this);
+    this.openSignUp = this.openSignUp.bind(this);
   }
 
   closeLogin() {
@@ -27,6 +28,10 @@ class LandingPage extends Component {
 
   closeSignUp() {
     this.props.dispatch(toggleSignUp(false));
+  }
+
+  openSignUp() {
+    this.props.dispatch(toggleSignUp(true));
   }
 
 
