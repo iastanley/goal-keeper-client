@@ -3,67 +3,67 @@
 
 export const initialState = {
   1: {
-    id: 1,
+    _id: 1,
     title: 'Goal 1',
     color: '#f00',
     tasks: [
       {
-        id: 10,
+        _id: 10,
         name: 'Do this first',
-        complete: true
+        completed: true
       },
       {
-        id: 11,
+        _id: 11,
         name: 'Do this second',
-        complete: false
+        completed: false
       }
     ]
-  }, // end of goal id: 1
+  }, // end of goal _id: 1
   2: {
-    id: 2,
+    _id: 2,
     title: 'Goal 2',
     color: '#f0f',
     tasks: [
       {
-        id: 12,
+        _id: 12,
         name: 'Do this first',
-        complete: true
+        completed: true
       },
       {
-        id: 13,
+        _id: 13,
         name: 'Do this second',
-        complete: false
+        completed: false
       },
       {
-        id: 14,
+        _id: 14,
         name: 'Do this second',
-        complete: false
+        completed: false
       },
       {
-        id: 15,
+        _id: 15,
         name: 'Do this second',
-        complete: false
+        completed: false
       }
 
     ]
-  }, // end of goal id: 2
+  }, // end of goal _id: 2
   3: {
-    id: 3,
+    _id: 3,
     title: 'Goal 3',
     color: '#0f0',
     tasks: [
       {
-        id: 16,
+        _id: 16,
         name: 'Do this first',
-        complete: true
+        completed: true
       },
       {
-        id: 17,
+        _id: 17,
         name: 'Do this second',
-        complete: false
+        completed: false
       }
     ]
-  } // end of goal id: 2
+  } // end of goal _id: 2
 }
 
 export default function goalReducer(state = initialState, action) {
