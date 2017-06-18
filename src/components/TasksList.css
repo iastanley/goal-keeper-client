@@ -58,6 +58,13 @@ i {
 
 .fa-times {
   color: grey;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.task-list-item:hover .fa-times {
+  opacity: 100;
+  cursor: pointer;
 }
 
 
