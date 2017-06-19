@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import createDateObjects from './createDateObjects';
+import WeekDayNames from './WeekDayNames';
 import './Calendar.css';
 
 
@@ -64,6 +65,7 @@ export default class Calendar extends Component {
           </div>
           <button onClick={this.handleNextMonth}>»</button>
         </div>
+        <WeekDayNames />
         <div className="Calendar-grid">
           {createDateObjects(date, weekOffset).map((day, i) => (
             <div
