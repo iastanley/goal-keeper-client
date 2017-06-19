@@ -1,4 +1,4 @@
-/* ADD TRANSITION LATER FOR SLIDE IN ANIMATION*/
+/*Transition only applied for desktop view*/
 .goals-pane {
   text-align: center;
   position: absolute;
@@ -9,7 +9,6 @@
   height: 100vh;
   background-color: #fff;
   padding: 50px 20px 40px 20px;
-
 }
 
 .goals-pane.show {
@@ -38,24 +37,15 @@
   border-radius: 10px 0 0 10px;
 }
 
-.goal-color-picker {
-  display: inline-block;
-  border: 1px solid #000;
-  border-radius: 50%;
-  width: 1em;
-  height: 1em;
-  margin-right: 10px;
-  vertical-align: top;
-}
-
-.delete-goal {
+.edit-goal {
+  color: #aaa;
   float: right;
   opacity: 0;
 }
 
-/*TEMPORARY - NEED TO IMPLEMENT WITH JS FOR FULL FUNCTION*/
-.delete-goal:hover {
+.goal-progress-item:hover .edit-goal {
   opacity: 100;
+  cursor: pointer;
 }
 
 .btn-new-goal {

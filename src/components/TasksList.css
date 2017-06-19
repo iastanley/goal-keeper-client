@@ -1,17 +1,17 @@
 .tasks-list {
   position: relative;
-  height: 45vh;
+  height: 40vh;
 }
 
 .tasks-list button {
   position: absolute;
   bottom: 0;
-  left: 30px;
+  left: 0;
 }
 
 .goal-list {
   height: 85%;
-  width: 90%;
+  width: 100%;
   margin: auto;
   overflow-y: scroll;
   border: 1px solid grey;
@@ -73,7 +73,7 @@ i {
 }
 
 .btn-new-task {
-  width: 90%;
+  width: 100%;
 }
 
 /*Can't get calendar to fill height in desktop view*/
