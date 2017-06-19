@@ -1,3 +1,6 @@
+// for dummy store
+import moment from 'moment';
+
 //GOAL REDUCER GOES HERE
 // eventually import actions
 
@@ -10,12 +13,14 @@ export const initialState = {
       {
         _id: 10,
         name: 'Do this first',
-        completed: true
+        completed: true,
+        date: moment('2017-07-02')
       },
       {
         _id: 11,
         name: 'Do this second',
-        completed: false
+        completed: false,
+        date: moment('2017-06-01')
       }
     ]
   }, // end of goal _id: 1
@@ -27,22 +32,26 @@ export const initialState = {
       {
         _id: 12,
         name: 'Do this first',
-        completed: true
+        completed: true,
+        date: moment('2017-06-01')
       },
       {
         _id: 13,
         name: 'Do this second',
-        completed: false
+        completed: false,
+        date: moment('2017-06-12')
       },
       {
         _id: 14,
         name: 'Do this second',
-        completed: false
+        completed: false,
+        date: moment('2017-06-23')
       },
       {
         _id: 15,
         name: 'Do this second',
-        completed: false
+        completed: false,
+        date: moment('2017-06-24')
       }
 
     ]
@@ -55,12 +64,14 @@ export const initialState = {
       {
         _id: 16,
         name: 'Do this first',
-        completed: true
+        completed: true,
+        date: moment('2017-06-01')
       },
       {
         _id: 17,
         name: 'Do this second',
-        completed: false
+        completed: false,
+        date: moment('2017-06-12')
       }
     ]
   } // end of goal _id: 2

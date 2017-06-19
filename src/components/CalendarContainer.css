@@ -1,0 +1,30 @@
+.day-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day-content .task-list-item {
+  padding: 2px;
+  margin: 2px auto;
+  display: none;
+}
+
+.day-content .task-list-item input {
+  margin-left: 2px;
+}
+
+.day-content input[type="text"] {
+  width: 70%;
+  overflow-x: hidden;
+}
+
+.day-content input[type="text"]:hover {
+  overflow-x: visible;
+}
+
+@media (min-width: 768px) {
+  .day-content .task-list-item {
+    display: block;
+  }
+}

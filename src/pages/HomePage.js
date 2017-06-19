@@ -36,7 +36,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="home-page">
-        <CalendarContainer />
+        <CalendarContainer goals={this.props.goals}/>
         <TasksList goals={this.props.goals} openNewTask={this.openNewTask}/>
         <GoalsPane
           show={this.props.showGoalPane}
