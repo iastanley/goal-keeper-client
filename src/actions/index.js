@@ -1,9 +1,25 @@
 //ACTIONS
-
+const BASE_URL = 'https://goal-keeper-api.herokuapp.com/';
 
 // types of actions
 
+// load goals from server
+export const LOAD_GOAL = 'LOAD_GOAL';
+export function loadGoal() {
+  return {
+    type: LOAD_GOAL,
+    promise: '' // where ajax request goes
+  }
+}
+
 // create a goal
+export const CREATE_GOAL = 'CREATE_GOAL';
+export function createGoal(goal) {
+  return {
+    type: CREATE_GOAL,
+    goal
+  }
+}
 
 // create a task
 

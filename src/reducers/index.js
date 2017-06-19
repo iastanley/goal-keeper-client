@@ -7,7 +7,7 @@ import dayReducer from './dayReducer';
 
 //REDUCER
 export const rootReducer = combineReducers({
-  // user: userReducer,
+  user: 'defaultUser',
   goal: goalReducer,
   navigation: navReducer,
   selectedDay: dayReducer
