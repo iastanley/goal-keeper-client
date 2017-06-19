@@ -69,3 +69,11 @@ body {
 .Calendar-grid-item:nth-child(-n+7) {
   border-top: 1px solid #ddd;
 }
+
+@media (min-width: 768px) {
+  .Calendar-grid-item {
+    text-align: left;
+    justify-content: start;
+    min-height: 14vh;
+  }
+}

@@ -10,6 +10,27 @@ class CalendarContainer extends Component {
     date: moment()
   };
 
+  renderDay(date) {
+    const taskList = [];
+
+    // loop through all goals
+    // loop through all tasks for each goal
+    // push to taskList
+    // only show task-list-items in day-content on desktop
+
+    return (
+      <div className="day-content">
+        <span
+          style={{
+            color: date.isSame(moment(), 'day') ? '#f00' : 'inherit'
+            }}>
+          {date.format('D')}
+        </span>
+        { taskList }
+      </div>
+    );
+  }
+
   render() {
     return (
       <div id="calendar">
@@ -17,15 +38,7 @@ class CalendarContainer extends Component {
           onChangeMonth={date => this.setState({ date })}
           date={this.state.date}
           onPickDate={date => console.log(date)}
-          renderDay={date => (
-            <span
-              style={{
-                fontWeight: date.isSame(moment(), 'day') ? 700 : 400
-              }}
-            >
-              {date.format('D')}
-            </span>
-          )}
+          renderDay={date => this.renderDay(date)}
         />
       </div>
 
