@@ -47,14 +47,14 @@ body {
 .Calendar-grid-item {
   flex-grow: 0;
   flex-basis: 14.28571%;
-  /*flex: 0 14.28571%; */
   text-align: center;
+  min-height: 44px;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  padding: 1rem;
+  padding: 0.1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
 }
 
 .Calendar-grid-item.nextMonth,
@@ -75,5 +75,6 @@ body {
     text-align: left;
     justify-content: start;
     min-height: 14vh;
+    padding: 1rem;
   }
 }
