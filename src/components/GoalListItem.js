@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskListItem from './TaskListItem';
 
-const GoalListItem = (props) => {
+const GoalListItem = props => {
   const taskList = props.goal.tasks.map(task => {
     return (
       <TaskListItem

@@ -8,10 +8,6 @@ import NavBar from './NavBar';
 import LandingPage from '../pages/LandingPage';
 import HomePage from '../pages/HomePage';
 
-// I think the App component will render the different routes.
-// The app componenet might not be the best place to render the NavBar
-// because this will not be the same for all views
-
 export default function App(props) {
   return (
     <div>
