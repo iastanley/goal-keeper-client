@@ -14,7 +14,7 @@ export const initialState = {
   showGoalPane: false
 }
 
-export function navReducer(state = initialState, action) {
+export default function navReducer(state = initialState, action) {
   switch(action.type) {
     case TOGGLE_LOGIN:
       return Object.assign({}, state, {

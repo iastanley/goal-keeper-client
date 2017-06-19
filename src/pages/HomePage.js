@@ -5,7 +5,7 @@ import TasksList from '../components/TasksList';
 import NewTaskModal from '../components/NewTaskModal';
 import NewGoalModal from '../components/NewGoalModal';
 import GoalsPane from '../components/GoalsPane';
-import { toggleNewTask, toggleNewGoal } from '../actions';
+import { toggleNewTask, toggleNewGoal, setDay } from '../actions';
 import './HomePage.css';
 
 class HomePage extends Component {
@@ -15,6 +15,7 @@ class HomePage extends Component {
     this.closeNewTask = this.closeNewTask.bind(this);
     this.openNewGoal = this.openNewGoal.bind(this);
     this.closeNewGoal = this.closeNewGoal.bind(this);
+    this.setDay = this.setDay.bind(this);
   }
 
   openNewTask() {
@@ -33,11 +34,21 @@ class HomePage extends Component {
     this.props.dispatch(toggleNewGoal(false));
   }
 
+  setDay(day) {
+    this.props.dispatch(setDay(day));
+  }
+
   render() {
     return (
       <div className="home-page">
-        <CalendarContainer goals={this.props.goals}/>
-        <TasksList goals={this.props.goals} openNewTask={this.openNewTask}/>
+        <CalendarContainer
+          goals={this.props.goals}
+          selectedDay={this.props.selectedDay}
+          setDay={this.setDay}/>
+        <TasksList
+          goals={this.props.goals}
+          selectedDay={this.props.selectedDay}
+          openNewTask={this.openNewTask}/>
         <GoalsPane
           show={this.props.showGoalPane}
           goals={this.props.goals}
@@ -55,6 +66,7 @@ class HomePage extends Component {
 
 const mapStateToProps = state => ({
   goals: state.goal,
+  selectedDay: state.selectedDay,
   showNewTask: state.navigation.showNewTask,
   showNewGoal: state.navigation.showNewGoal,
   showGoalPane: state.navigation.showGoalPane

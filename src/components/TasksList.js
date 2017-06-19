@@ -8,7 +8,7 @@ class TasksList extends Component {
   buildGoalList() {
     return _.map(this.props.goals, (goal) => {
       return (
-        <GoalListItem key={goal._id} goal={goal}/>
+        <GoalListItem key={goal._id} goal={goal} selectedDay={this.props.selectedDay}/>
       );
     });
   }

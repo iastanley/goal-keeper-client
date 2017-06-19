@@ -72,3 +72,12 @@ export function toggleSignUp(show) {
     show
   }
 }
+
+// set selectedDay
+export const SET_DAY = 'SET_DAY';
+export function setDay(day) {
+  return {
+    type: SET_DAY,
+    day
+  }
+}

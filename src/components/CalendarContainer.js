@@ -31,15 +31,12 @@ class CalendarContainer extends Component {
         }
       })
     });
-    // loop through all tasks for each goal
-    // push to taskList
-    // only show task-list-items in day-content on desktop
 
     return (
       <div className="day-content">
         <span
           style={{
-            color: date.isSame(moment(), 'day') ? '#f00' : 'inherit'
+            color: date.isSame(this.props.selectedDay, 'day') ? '#f00' : 'inherit'
             }}>
           {date.format('D')}
         </span>
@@ -56,7 +53,7 @@ class CalendarContainer extends Component {
         <Calendar
           onChangeMonth={date => this.setState({ date })}
           date={this.state.date}
-          onPickDate={date => console.log(date)}
+          onPickDate={date => this.props.setDay(date)}
           renderDay={date => this.renderDay(date)}
         />
       </div>
