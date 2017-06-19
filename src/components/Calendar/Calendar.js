@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import createDateObjects from './createDateObjects';
 import WeekDayNames from './WeekDayNames';
 import './Calendar.css';
@@ -50,9 +49,12 @@ export default class Calendar extends Component {
       date,
       weekOffset,
       renderDay,
+      // eslint-disable-next-line
       onNextMonth,
+      // eslint-disable-next-line
       onPrevMonth,
       onPickDate,
+      // eslint-disable-next-line
       onChange
     } = this.props;
 
