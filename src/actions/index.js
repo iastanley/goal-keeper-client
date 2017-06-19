@@ -1,14 +1,15 @@
+import axios from 'axios';
 //ACTIONS
-const BASE_URL = 'https://goal-keeper-api.herokuapp.com/';
+const BASE_URL = 'https://goal-keeper-api.herokuapp.com';
 
 // types of actions
 
 // load goals from server
 export const LOAD_GOAL = 'LOAD_GOAL';
-export function loadGoal() {
+export function loadGoal(currentUser) {
   return {
     type: LOAD_GOAL,
-    promise: '' // where ajax request goes
+    promise: axios.get(`${BASE_URL}/goals?user=${currentUser}`)
   }
 }
 

@@ -5,18 +5,23 @@ import TasksList from '../components/TasksList';
 import NewTaskModal from '../components/NewTaskModal';
 import NewGoalModal from '../components/NewGoalModal';
 import GoalsPane from '../components/GoalsPane';
-import { toggleNewTask, toggleNewGoal, setDay } from '../actions';
+import { toggleNewTask, toggleNewGoal, setDay, loadGoal } from '../actions';
 import './HomePage.css';
 
 class HomePage extends Component {
   constructor(props) {
     super(props);
+    this.props.dispatch(loadGoal(this.props.user));
     this.openNewTask = this.openNewTask.bind(this);
     this.closeNewTask = this.closeNewTask.bind(this);
     this.openNewGoal = this.openNewGoal.bind(this);
     this.closeNewGoal = this.closeNewGoal.bind(this);
     this.setDay = this.setDay.bind(this);
   }
+  //
+  // componentDidMount() {
+  //   this.props.dispatch(loadGoal('defaultUser'));
+  // }
 
   openNewTask() {
     this.props.dispatch(toggleNewTask(true));
@@ -65,7 +70,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  goals: state.goal,
+  user: state.user,
+  goals: state.goal.goalList,
   selectedDay: state.selectedDay,
   showNewTask: state.navigation.showNewTask,
   showNewGoal: state.navigation.showNewGoal,
