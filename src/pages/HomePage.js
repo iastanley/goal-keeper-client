@@ -59,6 +59,7 @@ class HomePage extends Component {
           goals={this.props.goals}
           openNewGoal={this.openNewGoal}/>
         <NewTaskModal
+          goals={this.props.goals}
           show={this.props.showNewTask}
           close={this.closeNewTask}/>
         <NewGoalModal

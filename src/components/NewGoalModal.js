@@ -15,7 +15,7 @@ const NewGoalModal = (props) => {
       <form>
         <div className="form-group">
           <label>Goal Name</label>
-          <input className="form-control" placeholder="Username"/>
+          <input className="form-control" placeholder="Title of Goal"/>
         </div>
       </form>
       </Modal.Body>
