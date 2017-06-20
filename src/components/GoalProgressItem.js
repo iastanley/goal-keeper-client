@@ -14,7 +14,9 @@ const GoalProgressItem = props => {
     <div className="goal-progress-item">
       <h3>
         {props.goal.title}
-        <span className="edit-goal">EDIT</span>
+        <span
+          onClick={event => props.onEdit(props.goal._id)} 
+          className="edit-goal">EDIT</span>
       </h3>
       <div className="goal-progress-bar">
         <div className="progress" style={{width: percentage +'%', backgroundColor: props.goal.color}}></div>

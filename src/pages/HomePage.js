@@ -4,24 +4,33 @@ import CalendarContainer from '../components/CalendarContainer';
 import TasksList from '../components/TasksList';
 import NewTaskModal from '../components/NewTaskModal';
 import NewGoalModal from '../components/NewGoalModal';
+import EditGoalModal from '../components/EditGoalModal';
 import GoalsPane from '../components/GoalsPane';
-import { toggleNewTask, toggleNewGoal, setDay, loadGoal } from '../actions';
+import {
+  toggleNewTask,
+  toggleNewGoal,
+  toggleEditGoal,
+  setDay,
+  loadGoal } from '../actions';
 import './HomePage.css';
 
 class HomePage extends Component {
   constructor(props) {
     super(props);
-
+  
     this.openNewTask = this.openNewTask.bind(this);
     this.closeNewTask = this.closeNewTask.bind(this);
     this.openNewGoal = this.openNewGoal.bind(this);
     this.closeNewGoal = this.closeNewGoal.bind(this);
+    this.openEditGoal = this.openEditGoal.bind(this);
+    this.closeEditGoal = this.closeEditGoal.bind(this);
     this.setDay = this.setDay.bind(this);
   }
 
-  componentDidMount() {
-    this.props.dispatch(loadGoal(this.props.user));
-  }
+  // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
+  // componentDidMount() {
+  //   this.props.dispatch(loadGoal(this.props.user));
+  // }
 
   openNewTask() {
     this.props.dispatch(toggleNewTask(true));
@@ -37,6 +46,14 @@ class HomePage extends Component {
 
   closeNewGoal() {
     this.props.dispatch(toggleNewGoal(false));
+  }
+
+  openEditGoal(editGoalId) {
+    this.props.dispatch(toggleEditGoal(true, editGoalId));
+  }
+
+  closeEditGoal() {
+    this.props.dispatch(toggleEditGoal(false, null));
   }
 
   setDay(day) {
@@ -57,7 +74,8 @@ class HomePage extends Component {
         <GoalsPane
           show={this.props.showGoalPane}
           goals={this.props.goals}
-          openNewGoal={this.openNewGoal}/>
+          openNewGoal={this.openNewGoal}
+          openEditGoal={this.openEditGoal}/>
         <NewTaskModal
           goals={this.props.goals}
           show={this.props.showNewTask}
@@ -65,6 +83,10 @@ class HomePage extends Component {
         <NewGoalModal
           show={this.props.showNewGoal}
           close={this.closeNewGoal}/>
+        <EditGoalModal
+          goal={this.props.goals[this.props.editGoalId]}
+          show={this.props.showEditGoal}
+          close={this.closeEditGoal}/>
       </div>
     );
   }
@@ -76,6 +98,8 @@ const mapStateToProps = state => ({
   selectedDay: state.selectedDay,
   showNewTask: state.navigation.showNewTask,
   showNewGoal: state.navigation.showNewGoal,
+  showEditGoal: state.navigation.showEditGoal.show,
+  editGoalId: state.navigation.showEditGoal.goalId,
   showGoalPane: state.navigation.showGoalPane
 });
 

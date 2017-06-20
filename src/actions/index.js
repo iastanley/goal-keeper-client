@@ -64,6 +64,16 @@ export function toggleNewGoal(show) {
   }
 }
 
+// show edit goal modal
+export const TOGGLE_EDITGOAL = 'TOGGLE_EDITGOAL';
+export function toggleEditGoal(show, goalId) {
+  return {
+    type: TOGGLE_EDITGOAL,
+    show,
+    goalId
+  }
+}
+
 // show new task modal
 export const TOGGLE_NEWTASK = 'TOGGLE_NEWTASK';
 export function toggleNewTask(show) {

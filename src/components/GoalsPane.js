@@ -6,7 +6,7 @@ import './GoalsPane.css';
 const GoalsPane = props => {
   const goalProgressList = _.map(props.goals, goal => {
     return (
-      <GoalProgressItem key={goal._id} goal={goal}/>
+      <GoalProgressItem key={goal._id} goal={goal} onEdit={props.openEditGoal}/>
     );
   });
 
