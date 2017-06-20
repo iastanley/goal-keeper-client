@@ -1,8 +1,5 @@
 import axios from 'axios';
-//ACTIONS
 const BASE_URL = 'https://goal-keeper-api.herokuapp.com';
-
-// types of actions
 
 // load goals from server
 export const LOAD_GOAL = 'LOAD_GOAL';
@@ -18,7 +15,7 @@ export const CREATE_GOAL = 'CREATE_GOAL';
 export function createGoal(goal) {
   return {
     type: CREATE_GOAL,
-    goal
+    promise: axios.post(`${BASE_URL}/goals/`, goal)
   }
 }
 
@@ -27,11 +24,15 @@ export function createGoal(goal) {
 // make login
 // make async call
 export const MAKE_LOGIN = 'MAKE_LOGIN';
-export function makeLogin() {
+export function makeLogin(user, password) {
   return {
     type: MAKE_LOGIN,
-    promise: fetch("/login", {
-      method: "POST"
+    user,
+    password,
+    promise: axios.get(`${BASE_URL}/users/`, {
+      headers: {
+        Authorization: 'Basic ' + btoa(user + ':' + password)
+      }
     })
   }
 }

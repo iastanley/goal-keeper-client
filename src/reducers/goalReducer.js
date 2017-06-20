@@ -4,9 +4,6 @@ import _ from 'lodash';
 import { handle } from 'redux-pack';
 import { LOAD_GOAL } from '../actions';
 
-//GOAL REDUCER GOES HERE
-// eventually import actions
-
 export const initialState = {
   isLoading: false,
   goalError: null,
