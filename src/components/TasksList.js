@@ -19,11 +19,13 @@ class TasksList extends Component {
         <div className="goal-list">
           {this.buildGoalList()}
         </div>
-        <button
-          className="btn btn-primary btn-new-task"
-          onClick={this.props.openNewTask}>
-          New Task
-        </button>
+        <div className="btn-container">
+          <button
+            className="btn btn-primary btn-new-task"
+            onClick={this.props.openNewTask}>
+            New Task
+          </button>
+        </div>
       </div>
     );
   }
