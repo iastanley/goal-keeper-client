@@ -11,13 +11,14 @@ import {
   toggleNewGoal,
   toggleEditGoal,
   setDay,
-  loadGoal } from '../actions';
+  // loadGoal
+ } from '../actions';
 import './HomePage.css';
 
 class HomePage extends Component {
   constructor(props) {
     super(props);
-  
+
     this.openNewTask = this.openNewTask.bind(this);
     this.closeNewTask = this.closeNewTask.bind(this);
     this.openNewGoal = this.openNewGoal.bind(this);
