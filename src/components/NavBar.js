@@ -83,10 +83,12 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar fixedTop fluid collapseOnSelect>
+      <Navbar inverse fixedTop fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link onClick={this.closeGoalPane} to="/">Goal Keeper</Link>
+              <Link onClick={this.closeGoalPane} to="/">
+                <strong>Goal Keeper</strong>
+              </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
