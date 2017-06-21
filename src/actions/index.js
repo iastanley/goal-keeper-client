@@ -30,6 +30,20 @@ export function createGoal(newGoal) {
 }
 
 // create a task
+export const CREATE_TASK = 'CREATE_TASK';
+export function createTask(goalId, newTask) {
+  return {
+    type: CREATE_TASK,
+    promise: axios({
+      method: 'post',
+      url: `${BASE_URL}/goals/${goalId}/tasks`,
+      data: newTask
+    }),
+    meta: {
+      onSuccess: response => console.log(response)
+    }
+  }
+}
 
 // make login
 // make async call

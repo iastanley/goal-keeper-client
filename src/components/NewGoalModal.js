@@ -8,7 +8,6 @@ class NewGoalModal extends Component {
     super(props);
 
     this.state = {
-      user: this.props.user,
       title: '',
       color: ''
     }
@@ -31,12 +30,15 @@ class NewGoalModal extends Component {
   }
 
   handleSave() {
-    this.props.createGoal(this.state);
+    this.props.createGoal({
+        user: this.props.user,
+        title: this.state.title,
+        color: this.state.color
+    });
     this.handleCancel();
   }
 
   render() {
-    console.log(this.state);
     return (
       <Modal
         className="new-goal-modal"

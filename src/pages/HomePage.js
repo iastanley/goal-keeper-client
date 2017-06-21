@@ -12,7 +12,8 @@ import {
   toggleEditGoal,
   setDay,
   loadGoal,
-  createGoal
+  createGoal,
+  createTask
  } from '../actions';
 import './HomePage.css';
 
@@ -28,6 +29,7 @@ class HomePage extends Component {
     this.closeEditGoal = this.closeEditGoal.bind(this);
     this.setDay = this.setDay.bind(this);
     this.createGoal = this.createGoal.bind(this);
+    this.createTask = this.createTask.bind(this);
   }
 
   // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
@@ -67,6 +69,10 @@ class HomePage extends Component {
     this.props.dispatch(createGoal(newGoal));
   }
 
+  createTask(goalId, newTask) {
+    this.props.dispatch(createTask(goalId, newTask));
+  }
+
   render() {
     return (
       <div className="home-page">
@@ -85,8 +91,10 @@ class HomePage extends Component {
           openEditGoal={this.openEditGoal}/>
         <NewTaskModal
           goals={this.props.goals}
+          date={this.props.selectedDay}
           show={this.props.showNewTask}
-          close={this.closeNewTask}/>
+          close={this.closeNewTask}
+          createTask={this.createTask}/>
         <NewGoalModal
           user={this.props.user}
           show={this.props.showNewGoal}

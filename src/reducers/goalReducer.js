@@ -1,8 +1,6 @@
-// for dummy store
-import moment from 'moment';
 import _ from 'lodash';
 import { handle } from 'redux-pack';
-import { LOAD_GOAL, CREATE_GOAL } from '../actions';
+import { LOAD_GOAL, CREATE_GOAL, CREATE_TASK } from '../actions';
 
 export const initialState = {
   isLoading: false,
@@ -111,6 +109,23 @@ export default function goalReducer(state = initialState, action) {
           }
         }
       });
+    case CREATE_TASK:
+      return handle(state, action, {
+        start: prevState => ({
+          ...prevState,
+          isLoading: true,
+          goalError: null
+        }),
+        finish: prevState => ({...prevState, isLoading: false}),
+        failure: prevState => ({...prevState, goalError: action.payload.data}),
+        success: prevState => {
+          const updatedGoalList = {...prevState.goalList, [action.payload.data._id]: action.payload.data};
+          return {
+            ...prevState,
+            goalList: updatedGoalList
+          }
+        }
+      })
     default:
       return state;
   }
