@@ -37,26 +37,35 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div className="landing-page">
+      <div className="landing-page container-fluid">
         <div className="landing-body">
-          <div className="hero-section">
+          <div className="hero-section row">
             <h1>Goal Keeper</h1>
             <h4>An app to help you track your personal goals</h4>
           </div>
-          <div className="landing-section">
-            <h2>Section 1</h2>
-            <p>[Screenshot placeholder]</p>
-            <p>Section 1 text</p>
+          <div className="landing-section row">
+            <h2>Make Your Own Goals</h2>
+            <div className="col-sm-12">
+              <h4>Successful people set goals and stick to them. Keeping your goals in mind to increase productivity!</h4>
+            </div>
           </div>
-          <div className="landing-section">
-            <h2>Section 2</h2>
-            <p>[Screenshot placeholder]</p>
-            <p>Section 2 text</p>
+          <div className="landing-section row">
+            <h2>Break Each Goal Into Tasks</h2>
+            <div className="col-md-6 text-left">
+              <p>Breaking down a problem into steps is the key to solving complex problems. Or perhaps you just need to schedule time to practice a skill. Either way, Goal Keeper helps you break down your goals into small tasks that you schedule. Use the calendar to identify gaps in your schedule where you can squeeze in another task.</p>
+            </div>
+            <div className="col-md-6">
+              <p>[Screenshot placeholder]</p>
+            </div>
           </div>
-          <div className="landing-section">
-            <h2>Section 3</h2>
-            <p>[Screenshot placeholder]</p>
-            <p>Section 3 text</p>
+          <div className="landing-section row">
+            <h2>Track Your Progress</h2>
+            <div className="col-md-6">
+              <p>[Screenshot placeholder]</p>
+            </div>
+            <div className="col-md-6 text-left">
+              <p>Positive feedback always feels good! Once you have set up tasks for a specific goal you can check off tasks as you complete them and see how close you are to completing your goal</p>
+            </div>
           </div>
           <div className="landing-button">
             <Button

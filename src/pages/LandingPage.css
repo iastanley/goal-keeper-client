@@ -1,3 +1,8 @@
+h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .landing-body {
   text-align: center;
   padding-top: 50px;
@@ -5,7 +10,7 @@
 }
 
 .hero-section, .landing-section {
-  height: 250px;
+  height: 300px;
 }
 
 .hero-section {
@@ -14,8 +19,8 @@
 
 .landing-section {
   background-color: #ddd;
-  border-top: 1px solid #aaa;
-  border-bottom: 1px solid #aaa;
+  /*border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;*/
 }
 
 .landing-button {
