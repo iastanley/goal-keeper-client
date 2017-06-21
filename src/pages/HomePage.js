@@ -11,7 +11,7 @@ import {
   toggleNewGoal,
   toggleEditGoal,
   setDay,
-  // loadGoal
+  loadGoal
  } from '../actions';
 import './HomePage.css';
 
@@ -29,9 +29,9 @@ class HomePage extends Component {
   }
 
   // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
-  // componentDidMount() {
-  //   this.props.dispatch(loadGoal(this.props.user));
-  // }
+  componentDidMount() {
+    this.props.dispatch(loadGoal(this.props.user));
+  }
 
   openNewTask() {
     this.props.dispatch(toggleNewTask(true));

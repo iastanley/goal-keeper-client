@@ -1,10 +1,10 @@
 // USER REDUCER
-// import { handle } from 'redux-pack';
-//
-// import {
-//   MAKE_LOGIN,
-//   MAKE_SIGNUP,
-// } from '../actions';
+import { handle } from 'redux-pack';
+
+import {
+  MAKE_LOGIN,
+  MAKE_SIGNUP,
+} from '../actions';
 
 // const initialState = {
 //   user: null,
