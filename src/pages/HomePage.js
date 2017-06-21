@@ -13,6 +13,7 @@ import {
   setDay,
   loadGoal,
   createGoal,
+  editGoal,
   createTask
  } from '../actions';
 import './HomePage.css';
@@ -30,6 +31,7 @@ class HomePage extends Component {
     this.setDay = this.setDay.bind(this);
     this.createGoal = this.createGoal.bind(this);
     this.createTask = this.createTask.bind(this);
+    this.editGoal = this.editGoal.bind(this);
   }
 
   // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
@@ -73,6 +75,10 @@ class HomePage extends Component {
     this.props.dispatch(createTask(goalId, newTask));
   }
 
+  editGoal(editGoalId, update) {
+    this.props.dispatch(editGoal(editGoalId, update));
+  }
+
   render() {
     return (
       <div className="home-page">
@@ -103,7 +109,8 @@ class HomePage extends Component {
         <EditGoalModal
           goal={this.props.goals[this.props.editGoalId]}
           show={this.props.showEditGoal}
-          close={this.closeEditGoal}/>
+          close={this.closeEditGoal}
+          editGoal={this.editGoal}/>
       </div>
     );
   }

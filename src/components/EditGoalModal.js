@@ -16,14 +16,49 @@ class EditGoalModal extends Component {
     }
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.goal && ) {
+  //     if (this.props.goal.title != nextProps.goal.title) {
+  //       this.setState({ title: nextProps.goal.title });
+  //     }
+  //   }
+  // }
+
   handleTitleChange(title) {
     this.setState({title});
   }
 
   handleColorChange(color) {
-    this.setState({color});
+    this.setState({ color: color.hex });
   }
+
+  handleCancel() {
+    this.setState({
+      color: '',
+      title: ''
+    });
+    this.props.close();
+  }
+
+  handleSave() {
+    const update = {}
+
+    if (this.state.color.length > 0) {
+      update.color = this.state.color;
+    }
+    if (this.state.title.length > 0) {
+      update.title = this.state.title;
+    }
+    if (this.props.goal && Object.keys(update).length) {
+      //api requires req.body.id == goal._id
+      update.id = this.props.goal._id;
+      this.props.editGoal(this.props.goal._id, update);
+    }
+    this.handleCancel();
+  }
+
   render() {
+    console.log(this.props.goal, this.state);
     return (
       <Modal
         className="edit-goal-modal"
@@ -44,7 +79,9 @@ class EditGoalModal extends Component {
           <div className="form-group color-picker-input">
             <label>Pick a Color</label>
             <div className="color-container">
-              <CirclePicker color={this.state.color}/>
+              <CirclePicker
+                color={this.state.color}
+                onChangeComplete={color => this.handleColorChange(color)}/>
             </div>
 
           </div>
@@ -53,11 +90,11 @@ class EditGoalModal extends Component {
         <Modal.Footer>
           <button
             className="btn btn-primary"
-            onClick={this.props.close}>
+            onClick={()=>this.handleSave()}>
             Save
           </button>
           <button
-            className="btn btn-danger" onClick={this.props.close}>
+            className="btn btn-danger" onClick={()=>this.handleCancel()}>
             Cancel
           </button>
         </Modal.Footer>

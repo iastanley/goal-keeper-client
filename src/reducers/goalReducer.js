@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { handle } from 'redux-pack';
-import { LOAD_GOAL, CREATE_GOAL, CREATE_TASK } from '../actions';
+import { LOAD_GOAL, CREATE_GOAL, CREATE_TASK, EDIT_GOAL } from '../actions';
 
 export const initialState = {
   isLoading: false,
@@ -109,6 +109,23 @@ export default function goalReducer(state = initialState, action) {
           }
         }
       });
+    case EDIT_GOAL:
+      // return handle(state, action, {
+      //   start: prevState => ({
+      //     ...prevState,
+      //     isLoading: true,
+      //     goalError: null
+      //   }),
+      //   finish: prevState => ({...prevState, isLoading: false}),
+      //   failure: prevState => ({...prevState, goalError: action.payload.data}),
+      //   success: prevState => {
+      //     const updatedGoalList = {...prevState.goalList, [action.payload.data._id]: action.payload.data};
+      //     return {
+      //       ...prevState,
+      //       goalList: updatedGoalList
+      //     }
+      //   }
+      // })
     case CREATE_TASK:
       return handle(state, action, {
         start: prevState => ({
