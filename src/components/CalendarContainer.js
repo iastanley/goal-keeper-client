@@ -25,7 +25,9 @@ class CalendarContainer extends Component {
             <TaskListItem
               key={task._id}
               task={task}
+              goalId={goal._id}
               color={goal.color}
+              editTask={this.props.editTask}
             />
           );
         }

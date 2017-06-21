@@ -6,7 +6,6 @@ import './EditGoalModal.css';
 class EditGoalModal extends Component {
   constructor(props) {
     super(props);
-    // NOT USED YET
 
     //for some reason setting initial state is not working...
     // check out componentWillReceiveProps implementation - might help
@@ -58,7 +57,6 @@ class EditGoalModal extends Component {
   }
 
   render() {
-    console.log(this.props.goal, this.state);
     return (
       <Modal
         className="edit-goal-modal"

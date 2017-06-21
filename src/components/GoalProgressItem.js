@@ -11,7 +11,7 @@ const GoalProgressItem = props => {
   let percentage = 0;
   // handle 0/0 situation
   if (taskTotal > 0) {
-    percentage = numComplete / taskTotal * 100;
+    percentage = Math.round(numComplete / taskTotal * 100);
   }
 
 

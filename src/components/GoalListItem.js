@@ -9,7 +9,9 @@ const GoalListItem = props => {
         <TaskListItem
           key={task._id}
           task={task}
+          goalId={props.goal._id}
           color={props.goal.color}
+          editTask={props.editTask}
           />
       );
     }

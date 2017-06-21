@@ -14,7 +14,8 @@ import {
   loadGoal,
   createGoal,
   editGoal,
-  createTask
+  createTask,
+  editTask
  } from '../actions';
 import './HomePage.css';
 
@@ -32,6 +33,7 @@ class HomePage extends Component {
     this.createGoal = this.createGoal.bind(this);
     this.createTask = this.createTask.bind(this);
     this.editGoal = this.editGoal.bind(this);
+    this.editTask = this.editTask.bind(this);
   }
 
   // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
@@ -79,17 +81,23 @@ class HomePage extends Component {
     this.props.dispatch(editGoal(editGoalId, update));
   }
 
+  editTask(update) {
+    this.props.dispatch(editTask(update));
+  }
+
   render() {
     return (
       <div className="home-page">
         <CalendarContainer
           goals={this.props.goals}
           selectedDay={this.props.selectedDay}
-          setDay={this.setDay}/>
+          setDay={this.setDay}
+          editTask={this.editTask}/>
         <TasksList
           goals={this.props.goals}
           selectedDay={this.props.selectedDay}
-          openNewTask={this.openNewTask}/>
+          openNewTask={this.openNewTask}
+          editTask={this.editTask}/>
         <GoalsPane
           show={this.props.showGoalPane}
           goals={this.props.goals}

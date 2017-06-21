@@ -57,6 +57,21 @@ export function createTask(goalId, newTask) {
   }
 }
 
+export const EDIT_TASK = 'EDIT_TASK';
+export function editTask(update) {
+  return {
+    type: EDIT_TASK,
+    promise: axios({
+      method: 'put',
+      url: `${BASE_URL}/goals/${update.goalId}/tasks/${update.taskId}`,
+      data: update
+    }),
+    meta: {
+      onSuccess: response => console.log(response)
+    }
+  }
+}
+
 // make login
 // make async call
 export const MAKE_LOGIN = 'MAKE_LOGIN';
