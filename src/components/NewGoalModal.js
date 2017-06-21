@@ -6,12 +6,37 @@ import './NewGoalModal.css';
 class NewGoalModal extends Component {
   constructor(props) {
     super(props);
-    // NOT USED YET
+
     this.state = {
-      color: "#607d8b"
+      user: this.props.user,
+      title: '',
+      color: ''
     }
   }
+
+  handleInputChange(title){
+    this.setState({ title });
+  }
+
+  handleColorChange(color) {
+    this.setState({ color: color.hex });
+  }
+
+  handleCancel() {
+    this.setState({
+      title: '',
+      color: ''
+    });
+    this.props.close();
+  }
+
+  handleSave() {
+    this.props.createGoal(this.state);
+    this.handleCancel();
+  }
+
   render() {
+    console.log(this.state);
     return (
       <Modal
         className="new-goal-modal"
@@ -24,12 +49,17 @@ class NewGoalModal extends Component {
         <form>
           <div className="form-group">
             <label>Goal Title</label>
-            <input className="form-control" placeholder="Title of Goal"/>
+            <input
+              className="form-control"
+              placeholder="Title of Goal"
+              onChange={e => this.handleInputChange(e.target.value)}/>
           </div>
           <div className="form-group color-picker-input">
             <label>Pick a Color</label>
             <div className="color-container">
-              <CirclePicker />
+              <CirclePicker
+                color={this.state.color}
+                onChangeComplete={color => this.handleColorChange(color)}/>
             </div>
 
           </div>
@@ -38,11 +68,11 @@ class NewGoalModal extends Component {
         <Modal.Footer>
           <button
             className="btn btn-primary"
-            onClick={this.props.close}>
+            onClick={() => this.handleSave()}>
             Save
           </button>
           <button
-            className="btn btn-danger" onClick={this.props.close}>
+            className="btn btn-danger" onClick={() => this.handleCancel()}>
             Cancel
           </button>
         </Modal.Footer>

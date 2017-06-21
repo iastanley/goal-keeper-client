@@ -27,7 +27,6 @@ const GoalProgressItem = props => {
         <div className="progress" style={{width: percentage +'%', backgroundColor: props.goal.color}}></div>
       </div>
       <p>{percentage}% Done ({numComplete}/{taskTotal})</p>
-
     </div>
   );
 }

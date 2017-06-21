@@ -2,7 +2,7 @@
 import moment from 'moment';
 import _ from 'lodash';
 import { handle } from 'redux-pack';
-import { LOAD_GOAL } from '../actions';
+import { LOAD_GOAL, CREATE_GOAL } from '../actions';
 
 export const initialState = {
   isLoading: false,
@@ -93,6 +93,23 @@ export default function goalReducer(state = initialState, action) {
         finish: prevState => ({...prevState, isLoading: false}),
         failure: prevState => ({...prevState, goalError: action.payload.data}),
         success: prevState => ({...prevState, goalList: _.mapKeys(action.payload.data, '_id')})
+      });
+    case CREATE_GOAL:
+      return handle(state, action, {
+        start: prevState => ({
+          ...prevState,
+          isLoading: true,
+          goalError: null
+        }),
+        finish: prevState => ({...prevState, isLoading: false}),
+        failure: prevState => ({...prevState, goalError: action.payload.data}),
+        success: prevState => {
+          const newGoalList = {...prevState.goalList, [action.payload.data._id]: action.payload.data};
+          return {
+            ...prevState,
+            goalList: newGoalList
+          }
+        }
       });
     default:
       return state;
