@@ -9,6 +9,7 @@ class EditGoalModal extends Component {
     // NOT USED YET
 
     //for some reason setting initial state is not working...
+    // check out componentWillReceiveProps implementation - might help
     this.state = {
       color: this.props.goal ? this.props.goal.color : '',
       title: this.props.goal ? this.props.goal.title : ''

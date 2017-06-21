@@ -6,7 +6,10 @@ export const LOAD_GOAL = 'LOAD_GOAL';
 export function loadGoal(currentUser) {
   return {
     type: LOAD_GOAL,
-    promise: axios.get(`${BASE_URL}/goals?user=${currentUser}`)
+    promise: axios.get(`${BASE_URL}/goals?user=${currentUser}`),
+    meta: {
+      onSuccess: response => console.log(response)
+    }
   }
 }
 
@@ -15,7 +18,10 @@ export const CREATE_GOAL = 'CREATE_GOAL';
 export function createGoal(goal) {
   return {
     type: CREATE_GOAL,
-    promise: axios.post(`${BASE_URL}/goals/`, goal)
+    promise: axios.post(`${BASE_URL}/goals/`, goal),
+    meta: {
+      onSuccess: response => console.log(response)
+    }
   }
 }
 
