@@ -100,6 +100,23 @@ export function editGoal(editGoalId, update) {
   }
 }
 
+export const DELETE_GOAL = 'DELETE_GOAL';
+export function deleteGoal(goalId) {
+  return {
+    type: DELETE_GOAL,
+    promise: axios({
+      method: 'delete',
+      url: `${BASE_URL}/goals/${goalId}`,
+      headers: {
+        Authorization: `Basic ${localStorage.userToken}`
+      }
+    }),
+    meta: {
+      onSuccess: response => console.log(response)
+    }
+  }
+}
+
 // create a task
 export const CREATE_TASK = 'CREATE_TASK';
 export function createTask(goalId, newTask) {
@@ -127,6 +144,23 @@ export function editTask(update) {
       method: 'put',
       url: `${BASE_URL}/goals/${update.goalId}/tasks/${update.taskId}`,
       data: update,
+      headers: {
+        Authorization: `Basic ${localStorage.userToken}`
+      }
+    }),
+    meta: {
+      onSuccess: response => console.log(response)
+    }
+  }
+}
+
+export const DELETE_TASK = 'DELETE_TASK';
+export function deleteTask(goalId, taskId) {
+  return {
+    type: DELETE_TASK,
+    promise: axios({
+      method: 'delete',
+      url: `${BASE_URL}/goals/${goalId}/tasks/${taskId}`,
       headers: {
         Authorization: `Basic ${localStorage.userToken}`
       }
