@@ -7,7 +7,8 @@ import './LandingPage.css';
 
 import {
   toggleLogin,
-  toggleSignUp
+  toggleSignUp,
+  makeSignUp
 } from '../actions';
 
 //the landing-section divs could be components
@@ -19,6 +20,7 @@ class LandingPage extends Component {
     this.closeLogin = this.closeLogin.bind(this);
     this.closeSignUp = this.closeSignUp.bind(this);
     this.openSignUp = this.openSignUp.bind(this);
+    this.makeSignUp = this.makeSignUp.bind(this);
   }
 
   closeLogin() {
@@ -32,6 +34,10 @@ class LandingPage extends Component {
 
   openSignUp() {
     this.props.dispatch(toggleSignUp(true));
+  }
+
+  makeSignUp(username, password) {
+    this.props.dispatch(makeSignUp(username, password));
   }
 
 
@@ -77,7 +83,9 @@ class LandingPage extends Component {
         <LoginModal
           show={this.props.showLogin} close={this.closeLogin}/>
         <SignUpModal
-          show={this.props.showSignUp} close={this.closeSignUp}/>
+          show={this.props.showSignUp}
+          close={this.closeSignUp}
+          makeSignUp={this.makeSignUp}/>
       </div>
     );
   }
@@ -85,7 +93,8 @@ class LandingPage extends Component {
 
 const mapStateToProps = state => ({
   showLogin: state.navigation.showLogin,
-  showSignUp: state.navigation.showSignUp
+  showSignUp: state.navigation.showSignUp,
+  badCredentials: state.user.badCredentials
 });
 
 export default connect(mapStateToProps)(LandingPage);

@@ -38,7 +38,11 @@ class HomePage extends Component {
 
   // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
   componentDidMount() {
-    this.props.dispatch(loadGoal(this.props.user));
+    if (localStorage.userToken) {
+      this.props.dispatch(loadGoal(this.props.user));
+    } else {
+      console.log('Bad login');
+    }
   }
 
   openNewTask() {

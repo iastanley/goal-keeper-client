@@ -1,12 +1,53 @@
 import axios from 'axios';
 const BASE_URL = 'https://goal-keeper-api.herokuapp.com';
 
+
+// make login
+// make async call
+export const MAKE_LOGIN = 'MAKE_LOGIN';
+export function makeLogin(username, password) {
+  return {
+    type: MAKE_LOGIN,
+    username,
+    password,
+    promise: axios.get(`${BASE_URL}/users/`, {
+      headers: {
+        Authorization: 'Basic ' + btoa(username + ':' + password)
+      }
+    })
+  }
+}
+
+//make signup async call
+export const MAKE_SIGNUP = 'MAKE_SIGNUP';
+export function makeSignUp(username, password) {
+  return {
+    type: MAKE_SIGNUP,
+    username: username,
+    password: password,
+    promise: axios({
+      url: `${BASE_URL}/users`,
+      method: 'post',
+      data: { username: username, password: password }
+    }),
+    meta: {
+      onSuccess: response => console.log(response)
+    }
+  }
+}
+
 // load goals from server
 export const LOAD_GOAL = 'LOAD_GOAL';
 export function loadGoal(currentUser) {
   return {
     type: LOAD_GOAL,
-    promise: axios.get(`${BASE_URL}/goals?user=${currentUser}`)
+    promise: axios({
+      url: `${BASE_URL}/goals?user=${currentUser}`,
+      method: 'get',
+      headers: {
+        Authorization: `Basic ${localStorage.userToken}`
+      }
+    })
   }
 }
 
@@ -72,30 +113,6 @@ export function editTask(update) {
   }
 }
 
-// make login
-// make async call
-export const MAKE_LOGIN = 'MAKE_LOGIN';
-export function makeLogin(user, password) {
-  return {
-    type: MAKE_LOGIN,
-    user,
-    password,
-    promise: axios.get(`${BASE_URL}/users/`, {
-      headers: {
-        Authorization: 'Basic ' + btoa(user + ':' + password)
-      }
-    })
-  }
-}
-
-//make signup async call
-export const MAKE_SIGNUP = 'MAKE_SIGNUP';
-export function makeSignUp() {
-  return {
-    type: MAKE_SIGNUP,
-    promise: null //implement an async call here
-  }
-}
 
 // show goals view
 export const TOGGLE_GOAL_PANE = 'TOGGLE_GOAL_PANE';
