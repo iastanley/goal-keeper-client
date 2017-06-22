@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import './SignUpModal.css';
 
@@ -11,14 +10,18 @@ class SignUpModal extends Component {
       password: '',
       confirmPassword: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(username, password, confirmPassword) {
-    if (password !== confirmPassword) {
+  handleSubmit(event) {
+    event.preventDefault();
+    if (this.state.password !== this.state.confirmPassword) {
       console.log('passwords do not match');
       return;
     }
-    this.props.makeSignUp(username, password);
+    this.props.makeSignUp(this.state.username, this.state.password);
+    this.props.close();
+
   }
 
   handleInput(inputObj) {
@@ -36,6 +39,8 @@ class SignUpModal extends Component {
 
   render() {
     return (
+      <form onSubmit={this.handleSubmit}>
+
       <Modal
       className="signup-modal"
       show={this.props.show}
@@ -44,7 +49,6 @@ class SignUpModal extends Component {
           <h3>Sign Up</h3>
         </Modal.Header>
         <Modal.Body>
-          <form>
             <div className="form-group">
               <label>User Name</label>
               <input
@@ -71,18 +75,22 @@ class SignUpModal extends Component {
                 placeholder="Password"
                 onChange={e => this.handleInput({confirmPassword: e.target.value})}/>
             </div>
-          </form>
+
         </Modal.Body>
         <Modal.Footer>
-          <Link onClick={this.props.close} className="btn btn-primary" to="/home">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={this.handleSubmit}>
             Sign Up
-          </Link>
+          </button>
           <button
             className="btn btn-danger" onClick={() => this.handleCancel()}>
             Cancel
           </button>
         </Modal.Footer>
       </Modal>
+      </form>
     );
   }
 

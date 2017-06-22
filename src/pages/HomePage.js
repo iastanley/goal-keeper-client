@@ -129,14 +129,15 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user,
+  user: state.user.user,
   goals: state.goal.goalList,
   selectedDay: state.selectedDay,
   showNewTask: state.navigation.showNewTask,
   showNewGoal: state.navigation.showNewGoal,
   showEditGoal: state.navigation.showEditGoal.show,
   editGoalId: state.navigation.showEditGoal.goalId,
-  showGoalPane: state.navigation.showGoalPane
+  showGoalPane: state.navigation.showGoalPane,
+  loggedIn: state.user.loggedIn
 });
 
 export default connect(mapStateToProps)(HomePage);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import LoginModal from '../components/LoginModal';
 import SignUpModal from '../components/SignUpModal';
@@ -8,7 +9,8 @@ import './LandingPage.css';
 import {
   toggleLogin,
   toggleSignUp,
-  makeSignUp
+  makeSignUp,
+  makeLogin
 } from '../actions';
 
 //the landing-section divs could be components
@@ -21,6 +23,7 @@ class LandingPage extends Component {
     this.closeSignUp = this.closeSignUp.bind(this);
     this.openSignUp = this.openSignUp.bind(this);
     this.makeSignUp = this.makeSignUp.bind(this);
+    this.makeLogin = this.makeLogin.bind(this);
   }
 
   closeLogin() {
@@ -40,8 +43,18 @@ class LandingPage extends Component {
     this.props.dispatch(makeSignUp(username, password));
   }
 
+  makeLogin(username, password) {
+    this.props.dispatch(makeLogin(username, password));
+  }
+
 
   render() {
+    if (this.props.loggedIn) {
+      return (
+        <Redirect to="/home" />
+      )
+    }
+
     return (
       <div className="landing-page container-fluid">
         <div className="landing-body">
@@ -81,7 +94,8 @@ class LandingPage extends Component {
           </div>
         </div>
         <LoginModal
-          show={this.props.showLogin} close={this.closeLogin}/>
+          show={this.props.showLogin} close={this.closeLogin}
+          makeLogin={this.makeLogin}/>
         <SignUpModal
           show={this.props.showSignUp}
           close={this.closeSignUp}
@@ -92,9 +106,11 @@ class LandingPage extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user.user,
   showLogin: state.navigation.showLogin,
   showSignUp: state.navigation.showSignUp,
-  badCredentials: state.user.badCredentials
+  badCredentials: state.user.badCredentials,
+  loggedIn: state.user.loggedIn
 });
 
 export default connect(mapStateToProps)(LandingPage);

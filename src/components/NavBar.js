@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import {
   toggleLogin,
   toggleSignUp,
-  toggleGoalPane
+  toggleGoalPane,
+  logOut
 } from '../actions';
 
 //pass a prop that will determine the buttons displayed to the right
@@ -19,6 +20,7 @@ class NavBar extends Component {
     this.openSignUp = this.openSignUp.bind(this);
     this.openGoalPane = this.openGoalPane.bind(this);
     this.closeGoalPane = this.closeGoalPane.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
     }
 
   openLogin() {
@@ -36,6 +38,12 @@ class NavBar extends Component {
 
   closeGoalPane() {
     this.props.dispatch(toggleGoalPane(false));
+  }
+
+  handleLogOut() {
+    delete localStorage.userToken;
+    this.props.dispatch(toggleGoalPane(false));
+    this.props.dispatch(logOut());
   }
 
   handleHome(event) {
@@ -86,7 +94,7 @@ class NavBar extends Component {
       <Navbar inverse fixedTop fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link onClick={this.closeGoalPane} to="/">
+              <Link onClick={this.handleLogOut} to="/">
                 <strong>Goal Keeper</strong>
               </Link>
             </Navbar.Brand>

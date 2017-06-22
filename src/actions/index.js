@@ -1,5 +1,6 @@
 import axios from 'axios';
 const BASE_URL = 'https://goal-keeper-api.herokuapp.com';
+// const BASE_URL = 'http://localhost:8080';
 
 
 // make login
@@ -8,13 +9,17 @@ export const MAKE_LOGIN = 'MAKE_LOGIN';
 export function makeLogin(username, password) {
   return {
     type: MAKE_LOGIN,
-    username,
-    password,
-    promise: axios.get(`${BASE_URL}/users/`, {
+    promise: axios({
+      url: `${BASE_URL}/users`,
+      method: 'get',
       headers: {
-        Authorization: 'Basic ' + btoa(username + ':' + password)
+        Authorization: `Basic ${btoa(username + ":" + password)}`
       }
-    })
+    }),
+    meta: {
+      onSuccess: response => console.log(username, response),
+      username, password
+    }
   }
 }
 
@@ -23,16 +28,23 @@ export const MAKE_SIGNUP = 'MAKE_SIGNUP';
 export function makeSignUp(username, password) {
   return {
     type: MAKE_SIGNUP,
-    username: username,
-    password: password,
     promise: axios({
       url: `${BASE_URL}/users`,
       method: 'post',
       data: { username: username, password: password }
     }),
     meta: {
-      onSuccess: response => console.log(response)
+      onSuccess: response => console.log(response),
+      username, password
     }
+  }
+}
+
+// logout
+export const LOGOUT = 'LOGOUT';
+export function logOut() {
+  return {
+    type: LOGOUT
   }
 }
 
@@ -59,7 +71,10 @@ export function createGoal(newGoal) {
     promise: axios({
       method: 'post',
       url: `${BASE_URL}/goals/`,
-      data: newGoal
+      data: newGoal,
+      headers: {
+        Authorization: `Basic ${localStorage.userToken}`
+      }
     }),
     meta: {
       onSuccess: response => console.log(response)
@@ -74,7 +89,10 @@ export function editGoal(editGoalId, update) {
     promise: axios({
       method: 'put',
       url: `${BASE_URL}/goals/${editGoalId}`,
-      data: update
+      data: update,
+      headers: {
+        Authorization: `Basic ${localStorage.userToken}`
+      }
     }),
     meta: {
       onSuccess: response => console.log(response)
@@ -90,7 +108,10 @@ export function createTask(goalId, newTask) {
     promise: axios({
       method: 'post',
       url: `${BASE_URL}/goals/${goalId}/tasks`,
-      data: newTask
+      data: newTask,
+      headers: {
+        Authorization: `Basic ${localStorage.userToken}`
+      }
     }),
     meta: {
       onSuccess: response => console.log(response)
@@ -105,7 +126,10 @@ export function editTask(update) {
     promise: axios({
       method: 'put',
       url: `${BASE_URL}/goals/${update.goalId}/tasks/${update.taskId}`,
-      data: update
+      data: update,
+      headers: {
+        Authorization: `Basic ${localStorage.userToken}`
+      }
     }),
     meta: {
       onSuccess: response => console.log(response)
