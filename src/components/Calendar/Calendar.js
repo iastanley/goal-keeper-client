@@ -55,7 +55,10 @@ export default class Calendar extends Component {
       onPrevMonth,
       onPickDate,
       // eslint-disable-next-line
-      onChange
+      onChange,
+      handleDragOver,
+      handleDrop,
+      selectedDay
     } = this.props;
 
     return (
@@ -72,8 +75,11 @@ export default class Calendar extends Component {
           {createDateObjects(date, weekOffset).map((day, i) => (
             <div
               key={`day-${i}`}
+              style={{ backgroundColor: day.day.isSame(selectedDay, 'day') ? '#f1f1f1' : '#fff'}}
               className={`Calendar-grid-item ${day.classNames || ''}`}
               onClick={e => onPickDate(day.day)}
+              onDrop={e => handleDrop(e, day.day)}
+              onDragOver={e => handleDragOver(e)}
             >
               {renderDay(day.day)}
             </div>

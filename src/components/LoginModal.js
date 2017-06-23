@@ -1,38 +1,90 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import './LoginModal.css';
 
-// We'll need to connect the login button with a ajax POST request async action to the server and handle the response before
-// but for testing we'll use a Link to get to home page
+class LoginModal extends Component {
+  constructor(props) {
+    super(props);
 
-const LoginModal = (props) => {
-  return (
-    <Modal className="login-modal" show={props.show} onHide={props.close}>
-      <Modal.Header closeButton>
-        <h3>Login</h3>
-      </Modal.Header>
-      <Modal.Body>
+    this.state = {
+      username: '',
+      password: ''
+    }
+  }
+
+  handleInput(inputObj) {
+    this.setState(inputObj);
+  }
+
+  // It would be better if handleLogin was assigned to a onSubmit event
+  handleLogin(event) {
+    event.preventDefault();
+    if (this.state.username.length && this.state.password.length) {
+      this.props.makeLogin(this.state.username, this.state.password);
+    }
+    this.setState({
+      username: '',
+      password: ''
+    });
+  }
+
+  handleCancel() {
+    this.setState({
+      username: '',
+      password: ''
+    });
+    this.props.close();
+  }
+
+  render() {
+    let loginHeader;
+    if (this.props.isLoading) {
+      loginHeader = <h3>Loading...</h3>;
+    } else {
+      loginHeader = <h3>Login</h3>;
+    }
+    return (
+      <Modal className="login-modal" show={this.props.show} onHide={this.props.close}>
+        <Modal.Header closeButton>
+          {loginHeader}
+        </Modal.Header>
         <form>
-          <div className="form-group">
-            <label>User Name:</label>
-            <input className="form-control" placeholder="Username"/>
-          </div>
-          <div className="form-group">
-            <label>Password:</label>
-            <input type="password" className="form-control" placeholder="Password"/>
-          </div>
+        <Modal.Body>
+            <div className="form-group">
+              <label>Username:</label>
+              <input
+                required
+                className="form-control"
+                placeholder="Username"
+                onChange={e => this.handleInput({username: e.target.value})}/>
+            </div>
+            <div className="form-group">
+              <label>Password:</label>
+              <input
+                required
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                onChange={e => this.handleInput({password: e.target.value})}/>
+            </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            type="submit"
+            onClick={(e) => this.handleLogin(e)}
+            className="btn btn-primary">
+            Log In
+          </button>
+          <button
+            className="btn btn-default"
+            onClick={() => this.handleCancel()}>
+            Cancel
+          </button>
+        </Modal.Footer>
         </form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Link onClick={props.close} className="btn btn-primary" to="/home">Log In</Link>
-        <button
-          className="btn btn-danger" onClick={props.close}>
-          Cancel
-        </button>
-      </Modal.Footer>
-    </Modal>
-  );
+      </Modal>
+    );
+  }
 }
 
 export default LoginModal;

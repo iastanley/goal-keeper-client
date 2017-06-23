@@ -10,9 +10,17 @@ import './CalendarContainer.css';
 // and connected to store
 
 class CalendarContainer extends Component {
-  state = {
-    date: moment()
-  };
+  // state = {
+  //   date: moment()
+  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: moment()
+    }
+    this.handleDrop = this.handleDrop.bind(this);
+    this.handleDragOver = this.handleDragOver.bind(this);
+  }
 
   renderDay(date) {
     const taskList = [];
@@ -25,7 +33,10 @@ class CalendarContainer extends Component {
             <TaskListItem
               key={task._id}
               task={task}
+              goalId={goal._id}
               color={goal.color}
+              editTask={this.props.editTask}
+              deleteTask={this.props.deleteTask}
             />
           );
         }
@@ -45,6 +56,25 @@ class CalendarContainer extends Component {
         </ul>
       </div>
     );
+  } // end of renderDay method
+
+  handleDrop(event, date) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text");
+    const goalId = event.dataTransfer.getData('goalId');
+    const taskId = event.dataTransfer.getData('taskId');
+    console.log(`goalId: ${goalId}, taskId: ${taskId}, date: ${date} `);
+    event.target.querySelector('ul').appendChild(document.getElementById(data));
+    this.props.editTask({
+      date: date,
+      goalId: goalId,
+      taskId: taskId
+    });
+  }
+
+  handleDragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
   }
 
   render() {
@@ -53,8 +83,11 @@ class CalendarContainer extends Component {
         <Calendar
           onChangeMonth={date => this.setState({ date })}
           date={this.state.date}
+          selectedDay={this.props.selectedDay}
           onPickDate={date => this.props.setDay(date)}
           renderDay={date => this.renderDay(date)}
+          handleDrop={this.handleDrop}
+          handleDragOver={this.handleDragOver}
         />
       </div>
 

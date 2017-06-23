@@ -8,21 +8,25 @@ const GoalProgressItem = props => {
       numComplete++;
     }
   }
-  let percentage = numComplete / taskTotal * 100;
+  let percentage = 0;
+  // handle 0/0 situation
+  if (taskTotal > 0) {
+    percentage = Math.round(numComplete / taskTotal * 100);
+  }
+
 
   return (
     <div className="goal-progress-item">
       <h3>
         {props.goal.title}
         <span
-          onClick={event => props.onEdit(props.goal._id)} 
+          onClick={event => props.onEdit(props.goal._id)}
           className="edit-goal">EDIT</span>
       </h3>
       <div className="goal-progress-bar">
         <div className="progress" style={{width: percentage +'%', backgroundColor: props.goal.color}}></div>
       </div>
       <p>{percentage}% Done ({numComplete}/{taskTotal})</p>
-
     </div>
   );
 }

@@ -7,11 +7,19 @@ import NewGoalModal from '../components/NewGoalModal';
 import EditGoalModal from '../components/EditGoalModal';
 import GoalsPane from '../components/GoalsPane';
 import {
+  toggleLogin,
+  toggleSignUp,
   toggleNewTask,
   toggleNewGoal,
   toggleEditGoal,
   setDay,
-  // loadGoal
+  loadGoal,
+  createGoal,
+  editGoal,
+  createTask,
+  editTask,
+  deleteGoal,
+  deleteTask
  } from '../actions';
 import './HomePage.css';
 
@@ -26,12 +34,24 @@ class HomePage extends Component {
     this.openEditGoal = this.openEditGoal.bind(this);
     this.closeEditGoal = this.closeEditGoal.bind(this);
     this.setDay = this.setDay.bind(this);
+    this.createGoal = this.createGoal.bind(this);
+    this.createTask = this.createTask.bind(this);
+    this.editGoal = this.editGoal.bind(this);
+    this.editTask = this.editTask.bind(this);
+    this.deleteGoal = this.deleteGoal.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
-  // componentDidMount() {
-  //   this.props.dispatch(loadGoal(this.props.user));
-  // }
+  componentDidMount() {
+    if (localStorage.userToken) {
+      this.props.dispatch(loadGoal(this.props.user));
+      this.props.dispatch(toggleLogin(false));
+      this.props.dispatch(toggleSignUp(false));
+    } else {
+      console.log('Bad login');
+    }
+  }
 
   openNewTask() {
     this.props.dispatch(toggleNewTask(true));
@@ -61,17 +81,45 @@ class HomePage extends Component {
     this.props.dispatch(setDay(day));
   }
 
+  createGoal(newGoal) {
+    this.props.dispatch(createGoal(newGoal));
+  }
+
+  createTask(goalId, newTask) {
+    this.props.dispatch(createTask(goalId, newTask));
+  }
+
+  editGoal(editGoalId, update) {
+    this.props.dispatch(editGoal(editGoalId, update));
+  }
+
+  editTask(update) {
+    this.props.dispatch(editTask(update));
+  }
+
+  deleteGoal(goalId) {
+    this.props.dispatch(deleteGoal(goalId));
+  }
+
+  deleteTask(goalId, taskId) {
+    this.props.dispatch(deleteTask(goalId, taskId));
+  }
+
   render() {
     return (
       <div className="home-page">
         <CalendarContainer
           goals={this.props.goals}
           selectedDay={this.props.selectedDay}
-          setDay={this.setDay}/>
+          setDay={this.setDay}
+          editTask={this.editTask}
+          deleteTask={this.deleteTask}/>
         <TasksList
           goals={this.props.goals}
           selectedDay={this.props.selectedDay}
-          openNewTask={this.openNewTask}/>
+          openNewTask={this.openNewTask}
+          editTask={this.editTask}
+          deleteTask={this.deleteTask}/>
         <GoalsPane
           show={this.props.showGoalPane}
           goals={this.props.goals}
@@ -79,29 +127,36 @@ class HomePage extends Component {
           openEditGoal={this.openEditGoal}/>
         <NewTaskModal
           goals={this.props.goals}
+          date={this.props.selectedDay}
           show={this.props.showNewTask}
-          close={this.closeNewTask}/>
+          close={this.closeNewTask}
+          createTask={this.createTask}/>
         <NewGoalModal
+          user={this.props.user}
           show={this.props.showNewGoal}
-          close={this.closeNewGoal}/>
+          close={this.closeNewGoal}
+          createGoal={this.createGoal}/>
         <EditGoalModal
           goal={this.props.goals[this.props.editGoalId]}
           show={this.props.showEditGoal}
-          close={this.closeEditGoal}/>
+          close={this.closeEditGoal}
+          editGoal={this.editGoal}
+          deleteGoal={this.deleteGoal}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.user,
+  user: state.user.user,
   goals: state.goal.goalList,
   selectedDay: state.selectedDay,
   showNewTask: state.navigation.showNewTask,
   showNewGoal: state.navigation.showNewGoal,
   showEditGoal: state.navigation.showEditGoal.show,
   editGoalId: state.navigation.showEditGoal.goalId,
-  showGoalPane: state.navigation.showGoalPane
+  showGoalPane: state.navigation.showGoalPane,
+  loggedIn: state.user.loggedIn
 });
 
 export default connect(mapStateToProps)(HomePage);
