@@ -39,7 +39,8 @@ class EditGoalModal extends Component {
     this.props.close();
   }
 
-  handleSave() {
+  handleSave(event) {
+    event.preventDefault();
     const update = {}
 
     if (this.state.color.length > 0) {
@@ -70,42 +71,44 @@ class EditGoalModal extends Component {
         <Modal.Header closeButton>
           <h3>Edit Goal</h3>
         </Modal.Header>
-        <Modal.Body>
         <form>
-          <div className="form-group">
-            <label>Goal Title</label>
-            <input
-              className="form-control"
-              defaultValue={this.props.goal ? this.props.goal.title : ''}
-              onChange={event => this.handleTitleChange(event.target.value)}/>
-          </div>
-          <div className="form-group color-picker-input">
-            <label>Pick a Color</label>
-            <div className="color-container">
-              <CirclePicker
-                color={this.state.color}
-                onChangeComplete={color => this.handleColorChange(color)}/>
+          <Modal.Body>
+            <div className="form-group">
+              <label>Goal Title</label>
+              <input
+                className="form-control"
+                defaultValue={this.props.goal ? this.props.goal.title : ''}
+                onChange={event => this.handleTitleChange(event.target.value)}/>
+            </div>
+            <div className="form-group color-picker-input">
+              <label>Pick a Color</label>
+              <div className="color-container">
+                <CirclePicker
+                  color={this.state.color}
+                  onChangeComplete={color => this.handleColorChange(color)}/>
+              </div>
+
             </div>
 
-          </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <button
+              className="btn btn-danger btn-goal-delete"
+              onClick={()=>this.handleDelete()}>
+              Delete Goal
+            </button>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={(e)=>this.handleSave(e)}>
+              Save
+            </button>
+            <button
+              className="btn btn-default" onClick={()=>this.handleCancel()}>
+              Cancel
+            </button>
+          </Modal.Footer>
         </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <button
-            className="btn btn-danger btn-goal-delete"
-            onClick={()=>this.handleDelete()}>
-            Delete Goal
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={()=>this.handleSave()}>
-            Save
-          </button>
-          <button
-            className="btn btn-default" onClick={()=>this.handleCancel()}>
-            Cancel
-          </button>
-        </Modal.Footer>
       </Modal>
     );
   }

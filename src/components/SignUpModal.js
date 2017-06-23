@@ -83,7 +83,6 @@ class SignUpModal extends Component {
                 placeholder="Password"
                 onChange={e => this.handleInput({confirmPassword: e.target.value})}/>
             </div>
-
         </Modal.Body>
         <Modal.Footer>
           <button

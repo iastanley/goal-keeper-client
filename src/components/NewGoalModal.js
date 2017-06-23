@@ -29,7 +29,8 @@ class NewGoalModal extends Component {
     this.props.close();
   }
 
-  handleSave() {
+  handleSave(event) {
+    event.preventDefault();
     this.props.createGoal({
         user: this.props.user,
         title: this.state.title,
@@ -47,8 +48,8 @@ class NewGoalModal extends Component {
         <Modal.Header closeButton>
           <h3>New Goal</h3>
         </Modal.Header>
-        <Modal.Body>
         <form>
+        <Modal.Body>
           <div className="form-group">
             <label>Goal Title</label>
             <input
@@ -63,14 +64,13 @@ class NewGoalModal extends Component {
                 color={this.state.color}
                 onChangeComplete={color => this.handleColorChange(color)}/>
             </div>
-
           </div>
-        </form>
         </Modal.Body>
         <Modal.Footer>
           <button
+            type="submit"
             className="btn btn-primary"
-            onClick={() => this.handleSave()}>
+            onClick={(e) => this.handleSave(e)}>
             Save
           </button>
           <button
@@ -78,6 +78,7 @@ class NewGoalModal extends Component {
             Cancel
           </button>
         </Modal.Footer>
+        </form>
       </Modal>
     );
   }

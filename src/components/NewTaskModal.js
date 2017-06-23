@@ -28,7 +28,8 @@ class NewTaskModal extends Component {
     this.props.close()
   }
 
-  handleSave() {
+  handleSave(event) {
+    event.preventDefault();
     this.props.createTask(this.state.goalId, {
       name: this.state.name,
       date: this.props.date
@@ -51,8 +52,8 @@ class NewTaskModal extends Component {
         <Modal.Header closeButton>
           <h3>New Task</h3>
         </Modal.Header>
-        <Modal.Body>
         <form>
+        <Modal.Body>
           <div className="form-group">
             <label>Task Name</label>
             <input
@@ -70,12 +71,13 @@ class NewTaskModal extends Component {
               {goalTitles}
             </select>
           </div>
-        </form>
+
         </Modal.Body>
         <Modal.Footer>
           <button
+            type="submit"
             className="btn btn-primary"
-            onClick={()=>this.handleSave()}>
+            onClick={(e)=>this.handleSave(e)}>
             Save
           </button>
           <button
@@ -84,6 +86,7 @@ class NewTaskModal extends Component {
             Cancel
           </button>
         </Modal.Footer>
+        </form>
       </Modal>
     );
   }
