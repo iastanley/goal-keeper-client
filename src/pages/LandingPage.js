@@ -61,6 +61,10 @@ class LandingPage extends Component {
           <div className="hero-section row">
             <h1>Goal Keeper</h1>
             <h4>An app to help you track your personal goals</h4>
+            <br/>
+            <br/>
+            <p>username: defaultUser</p>
+            <p>password: pw</p>
           </div>
           <div className="landing-section row">
             <h2>Make Your Own Goals</h2>
