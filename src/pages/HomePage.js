@@ -102,6 +102,7 @@ class HomePage extends Component {
   }
 
   render() {
+    console.log('HomePage line 105: ' + this.props.user);
     return (
       <div className="home-page">
         <CalendarContainer

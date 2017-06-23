@@ -16,7 +16,7 @@ const initialState = {
 }
 
 if (localStorage.user) {
-  initialState.user = JSON.parse(localStorage.user);
+  initialState.user = localStorage.user;
 }
 
 export default function userReducer(state = initialState, action) {
@@ -27,6 +27,7 @@ export default function userReducer(state = initialState, action) {
         finish: prevState => ({...prevState, isLoading: false}),
         success: prevState => {
           localStorage.userToken = btoa(`${action.meta.username}:${action.meta.password}`);
+          localStorage.user = action.meta.username;
           return {...prevState, user: action.payload.data.username, badCredentials: false, loggedIn: true}
         },
         failure: prevState => ({...prevState, badCredentials: true, userError: action.payload.data})
@@ -38,6 +39,7 @@ export default function userReducer(state = initialState, action) {
         success: prevState => {
           console.log(action.meta.username, action.meta.password);
           localStorage.userToken = btoa(`${action.meta.username}:${action.meta.password}`);
+          localStorage.user = action.meta.username;
           return {...prevState, user: action.payload.data.username, badCredentials: false, loggedIn: true}
         },
         failure: prevState => ({...prevState, badCredentials: true, userError: action.payload.data})

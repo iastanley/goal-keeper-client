@@ -76,7 +76,8 @@ export function createGoal(newGoal) {
       }
     }),
     meta: {
-      onSuccess: response => console.log(response)
+      onSuccess: response => console.log(response),
+      onFailure: response => console.log(response)
     }
   }
 }

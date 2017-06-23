@@ -33,13 +33,29 @@ class TaskListItem extends Component {
     this.props.deleteTask(this.props.goalId, this.props.task._id);
   }
 
-  render() {
-    //to prevent input changes from firing every time a key is pressed
-    const handleInputChange = _.debounce(name => this.handleInputChange(name), 300);
+  handleDragStart(event) {
+    console.log('drag started');
+    event.dataTransfer.setData('text/plain', event.target.id);
+    event.dataTransfer.setData('goalId', this.props.goalId);
+    event.dataTransfer.setData('taskId', this.props.task._id);
+    event.dataTransfer.dropEffect = "move";
+  }
 
+  // handleDragEnd(event) {
+  //   console.log('drag ended')
+  //   if (event.target.parentNode) {
+  //     console.log('drag end if statement entered');
+  //     event.target.parentNode.removeChild(event.target);
+  //   }
+  // }
+
+  render() {
     return (
       <li
+        id={this.props.task._id}
         className="task-list-item"
+        draggable="true"
+        onDragStart={(e)=>this.handleDragStart(e)}
         style={{border: '2px solid' + this.props.color}}>
         <input
           onChange={event => this.handleChange({completed: event.target.checked})}
@@ -50,7 +66,7 @@ class TaskListItem extends Component {
           onChange={event => this.handleInputChange(event.target.value)}
           value={this.state.name}/>
         <i onClick={() => this.handleDelete()}
-          className="fa fa-lg fa-times" 
+          className="fa fa-lg fa-times"
           aria-hidden="true"></i>
       </li>
     );
