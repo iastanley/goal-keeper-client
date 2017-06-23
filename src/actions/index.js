@@ -1,6 +1,5 @@
 import axios from 'axios';
 const BASE_URL = 'https://goal-keeper-api.herokuapp.com';
-// const BASE_URL = 'http://localhost:8080';
 
 
 // make login

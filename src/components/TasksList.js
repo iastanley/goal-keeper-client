@@ -12,7 +12,8 @@ class TasksList extends Component {
           key={goal._id}
           goal={goal}
           selectedDay={this.props.selectedDay}
-          editTask={this.props.editTask}/>
+          editTask={this.props.editTask}
+          deleteTask={this.props.deleteTask}/>
       );
     });
   }

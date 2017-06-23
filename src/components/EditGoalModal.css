@@ -15,3 +15,7 @@ input[type="color"] {
   margin-right: auto;
   text-align: center;
 }
+
+.btn-goal-delete {
+  float: left;
+}

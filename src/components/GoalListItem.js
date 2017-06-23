@@ -12,6 +12,7 @@ const GoalListItem = props => {
           goalId={props.goal._id}
           color={props.goal.color}
           editTask={props.editTask}
+          deleteTask={props.deleteTask}
           />
       );
     }

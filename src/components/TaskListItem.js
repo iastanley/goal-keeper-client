@@ -29,6 +29,10 @@ class TaskListItem extends Component {
     this.props.editTask(update);
   }
 
+  handleDelete() {
+    this.props.deleteTask(this.props.goalId, this.props.task._id);
+  }
+
   render() {
     //to prevent input changes from firing every time a key is pressed
     const handleInputChange = _.debounce(name => this.handleInputChange(name), 300);
@@ -45,7 +49,9 @@ class TaskListItem extends Component {
           type="text"
           onChange={event => this.handleInputChange(event.target.value)}
           value={this.state.name}/>
-        <i className="fa fa-lg fa-times" aria-hidden="true"></i>
+        <i onClick={() => this.handleDelete()}
+          className="fa fa-lg fa-times" 
+          aria-hidden="true"></i>
       </li>
     );
   }

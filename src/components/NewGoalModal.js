@@ -74,7 +74,7 @@ class NewGoalModal extends Component {
             Save
           </button>
           <button
-            className="btn btn-danger" onClick={() => this.handleCancel()}>
+            className="btn btn-default" onClick={() => this.handleCancel()}>
             Cancel
           </button>
         </Modal.Footer>

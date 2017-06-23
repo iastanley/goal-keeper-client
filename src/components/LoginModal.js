@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
 import './LoginModal.css';
 
-// We'll need to connect the login button with a ajax POST request async action to the server and handle the response before
-// but for testing we'll use a Link to get to home page
-
 class LoginModal extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +16,7 @@ class LoginModal extends Component {
     this.setState(inputObj);
   }
 
+  // It would be better if handleLogin was assigned to a onSubmit event
   handleLogin() {
     if (this.state.username.length && this.state.password.length) {
       this.props.makeLogin(this.state.username, this.state.password);
@@ -69,7 +67,7 @@ class LoginModal extends Component {
             Log In
           </button>
           <button
-            className="btn btn-danger"
+            className="btn btn-default"
             onClick={() => this.handleCancel()}>
             Cancel
           </button>

@@ -28,6 +28,7 @@ class CalendarContainer extends Component {
               goalId={goal._id}
               color={goal.color}
               editTask={this.props.editTask}
+              deleteTask={this.props.deleteTask}
             />
           );
         }

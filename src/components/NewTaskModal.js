@@ -79,7 +79,7 @@ class NewTaskModal extends Component {
             Save
           </button>
           <button
-            className="btn btn-danger"
+            className="btn btn-default"
             onClick={()=>this.handleCancel()}>
             Cancel
           </button>

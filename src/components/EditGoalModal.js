@@ -56,12 +56,17 @@ class EditGoalModal extends Component {
     this.handleCancel();
   }
 
+  handleDelete() {
+    this.props.deleteGoal(this.props.goal._id);
+    this.handleCancel();
+  }
+
   render() {
     return (
       <Modal
         className="edit-goal-modal"
         show={this.props.show}
-        onHide={this.props.close}>
+        onHide={()=>this.handleCancel()}>
         <Modal.Header closeButton>
           <h3>Edit Goal</h3>
         </Modal.Header>
@@ -87,12 +92,17 @@ class EditGoalModal extends Component {
         </Modal.Body>
         <Modal.Footer>
           <button
+            className="btn btn-danger btn-goal-delete"
+            onClick={()=>this.handleDelete()}>
+            Delete Goal
+          </button>
+          <button
             className="btn btn-primary"
             onClick={()=>this.handleSave()}>
             Save
           </button>
           <button
-            className="btn btn-danger" onClick={()=>this.handleCancel()}>
+            className="btn btn-default" onClick={()=>this.handleCancel()}>
             Cancel
           </button>
         </Modal.Footer>

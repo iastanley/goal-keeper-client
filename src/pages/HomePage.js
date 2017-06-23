@@ -15,7 +15,9 @@ import {
   createGoal,
   editGoal,
   createTask,
-  editTask
+  editTask,
+  deleteGoal,
+  deleteTask
  } from '../actions';
 import './HomePage.css';
 
@@ -34,6 +36,8 @@ class HomePage extends Component {
     this.createTask = this.createTask.bind(this);
     this.editGoal = this.editGoal.bind(this);
     this.editTask = this.editTask.bind(this);
+    this.deleteGoal = this.deleteGoal.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
@@ -89,6 +93,14 @@ class HomePage extends Component {
     this.props.dispatch(editTask(update));
   }
 
+  deleteGoal(goalId) {
+    this.props.dispatch(deleteGoal(goalId));
+  }
+
+  deleteTask(goalId, taskId) {
+    this.props.dispatch(deleteTask(goalId, taskId));
+  }
+
   render() {
     return (
       <div className="home-page">
@@ -96,12 +108,14 @@ class HomePage extends Component {
           goals={this.props.goals}
           selectedDay={this.props.selectedDay}
           setDay={this.setDay}
-          editTask={this.editTask}/>
+          editTask={this.editTask}
+          deleteTask={this.deleteTask}/>
         <TasksList
           goals={this.props.goals}
           selectedDay={this.props.selectedDay}
           openNewTask={this.openNewTask}
-          editTask={this.editTask}/>
+          editTask={this.editTask}
+          deleteTask={this.deleteTask}/>
         <GoalsPane
           show={this.props.showGoalPane}
           goals={this.props.goals}
@@ -122,7 +136,8 @@ class HomePage extends Component {
           goal={this.props.goals[this.props.editGoalId]}
           show={this.props.showEditGoal}
           close={this.closeEditGoal}
-          editGoal={this.editGoal}/>
+          editGoal={this.editGoal}
+          deleteGoal={this.deleteGoal}/>
       </div>
     );
   }
