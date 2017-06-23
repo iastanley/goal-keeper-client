@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 
 class TaskListItem extends Component {
   constructor(props) {

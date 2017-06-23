@@ -164,7 +164,7 @@ export default function goalReducer(state = initialState, action) {
         failure: prevState => ({...prevState, goalError: action.payload.data}),
         success: prevState => {
           const updatedTasks = prevState.goalList[action.meta.goalId].tasks.filter(task => {
-            return task._id != action.meta.taskId;
+            return task._id !== action.meta.taskId;
           });
           const updatedGoal = {...prevState.goalList[action.meta.goalId], tasks: updatedTasks};
           return {

@@ -20,8 +20,11 @@ class SignUpModal extends Component {
       return;
     }
     this.props.makeSignUp(this.state.username, this.state.password);
-    this.props.close();
-
+    this.setState({
+      username: '',
+      password: '',
+      confirmPassword: ''
+    });
   }
 
   handleInput(inputObj) {
@@ -38,16 +41,21 @@ class SignUpModal extends Component {
   }
 
   render() {
+    let signUpHeader;
+    if (this.props.isLoading) {
+      signUpHeader = <h3>Loading...</h3>;
+    } else {
+      signUpHeader = <h3>Sign Up</h3>;
+    }
     return (
-      <form onSubmit={this.handleSubmit}>
-
       <Modal
       className="signup-modal"
       show={this.props.show}
       onHide={this.props.close}>
         <Modal.Header>
-          <h3>Sign Up</h3>
+          {signUpHeader}
         </Modal.Header>
+        <form>
         <Modal.Body>
             <div className="form-group">
               <label>User Name</label>
@@ -89,8 +97,9 @@ class SignUpModal extends Component {
             Cancel
           </button>
         </Modal.Footer>
+        </form>
       </Modal>
-      </form>
+
     );
   }
 

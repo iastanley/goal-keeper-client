@@ -17,12 +17,15 @@ class LoginModal extends Component {
   }
 
   // It would be better if handleLogin was assigned to a onSubmit event
-  handleLogin() {
+  handleLogin(event) {
+    event.preventDefault();
     if (this.state.username.length && this.state.password.length) {
       this.props.makeLogin(this.state.username, this.state.password);
     }
-    console.log('login failed');
-    this.handleCancel();
+    this.setState({
+      username: '',
+      password: ''
+    });
   }
 
   handleCancel() {
@@ -34,13 +37,19 @@ class LoginModal extends Component {
   }
 
   render() {
+    let loginHeader;
+    if (this.props.isLoading) {
+      loginHeader = <h3>Loading...</h3>;
+    } else {
+      loginHeader = <h3>Login</h3>;
+    }
     return (
       <Modal className="login-modal" show={this.props.show} onHide={this.props.close}>
         <Modal.Header closeButton>
-          <h3>Login</h3>
+          {loginHeader}
         </Modal.Header>
+        <form>
         <Modal.Body>
-          <form>
             <div className="form-group">
               <label>Username:</label>
               <input
@@ -58,11 +67,11 @@ class LoginModal extends Component {
                 placeholder="Password"
                 onChange={e => this.handleInput({password: e.target.value})}/>
             </div>
-          </form>
         </Modal.Body>
         <Modal.Footer>
           <button
-            onClick={() => this.handleLogin()}
+            type="submit"
+            onClick={(e) => this.handleLogin(e)}
             className="btn btn-primary">
             Log In
           </button>
@@ -72,6 +81,7 @@ class LoginModal extends Component {
             Cancel
           </button>
         </Modal.Footer>
+        </form>
       </Modal>
     );
   }

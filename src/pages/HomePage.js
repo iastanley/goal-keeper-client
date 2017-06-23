@@ -7,6 +7,8 @@ import NewGoalModal from '../components/NewGoalModal';
 import EditGoalModal from '../components/EditGoalModal';
 import GoalsPane from '../components/GoalsPane';
 import {
+  toggleLogin,
+  toggleSignUp,
   toggleNewTask,
   toggleNewGoal,
   toggleEditGoal,
@@ -44,6 +46,8 @@ class HomePage extends Component {
   componentDidMount() {
     if (localStorage.userToken) {
       this.props.dispatch(loadGoal(this.props.user));
+      this.props.dispatch(toggleLogin(false));
+      this.props.dispatch(toggleSignUp(false));
     } else {
       console.log('Bad login');
     }
@@ -102,7 +106,6 @@ class HomePage extends Component {
   }
 
   render() {
-    console.log('HomePage line 105: ' + this.props.user);
     return (
       <div className="home-page">
         <CalendarContainer
