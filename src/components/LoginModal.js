@@ -38,10 +38,13 @@ class LoginModal extends Component {
 
   render() {
     let loginHeader;
+
     if (this.props.isLoading) {
       loginHeader = <h3>Loading...</h3>;
+    } else if (this.props.userError) {
+      loginHeader = <h3 style={{color: '#f00'}}>Login Failed. Try Again.</h3>;
     } else {
-      loginHeader = <h3>Login</h3>;
+      loginHeader = <h3>Login</h3>
     }
     return (
       <Modal className="login-modal" show={this.props.show} onHide={this.props.close}>

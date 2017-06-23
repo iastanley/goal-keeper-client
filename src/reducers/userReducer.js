@@ -30,7 +30,7 @@ export default function userReducer(state = initialState, action) {
           localStorage.user = action.meta.username;
           return {...prevState, user: action.payload.data.username, badCredentials: false, loggedIn: true}
         },
-        failure: prevState => ({...prevState, badCredentials: true, userError: action.payload.data})
+        failure: prevState => ({...prevState, badCredentials: true, userError: action.payload})
         });
     case MAKE_SIGNUP:
       return handle(state, action, {

@@ -17,6 +17,7 @@ export function makeLogin(username, password) {
     }),
     meta: {
       onSuccess: response => console.log(username, response),
+      onFailure: response => console.log(response),
       username, password
     }
   }

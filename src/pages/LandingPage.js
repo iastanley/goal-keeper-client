@@ -100,12 +100,14 @@ class LandingPage extends Component {
         <LoginModal
           show={this.props.showLogin} close={this.closeLogin}
           isLoading={this.props.isLoading}
-          makeLogin={this.makeLogin}/>
+          makeLogin={this.makeLogin}
+          userError={this.props.userError}/>
         <SignUpModal
           show={this.props.showSignUp}
           close={this.closeSignUp}
           isLoading={this.props.isLoading}
-          makeSignUp={this.makeSignUp}/>
+          makeSignUp={this.makeSignUp}
+          userError={this.props.userError}/>
       </div>
     );
   }
@@ -113,6 +115,7 @@ class LandingPage extends Component {
 
 const mapStateToProps = state => ({
   user: state.user.user,
+  userError: state.user.userError,
   showLogin: state.navigation.showLogin,
   showSignUp: state.navigation.showSignUp,
   badCredentials: state.user.badCredentials,
