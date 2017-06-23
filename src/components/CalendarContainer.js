@@ -83,6 +83,7 @@ class CalendarContainer extends Component {
         <Calendar
           onChangeMonth={date => this.setState({ date })}
           date={this.state.date}
+          selectedDay={this.props.selectedDay}
           onPickDate={date => this.props.setDay(date)}
           renderDay={date => this.renderDay(date)}
           handleDrop={this.handleDrop}
