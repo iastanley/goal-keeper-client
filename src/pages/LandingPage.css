@@ -18,7 +18,13 @@ h2 {
 }
 
 .landing-section {
-  background-color: #ddd;
+  background-color: #000;
+  color: #fff;
+}
+
+.landing-section:nth-of-type(3) {
+  background-color: #fff;
+  color: #000;
 }
 
 .landing-button {

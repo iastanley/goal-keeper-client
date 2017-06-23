@@ -112,7 +112,8 @@ export function deleteGoal(goalId) {
       }
     }),
     meta: {
-      onSuccess: response => console.log(response)
+      onSuccess: response => console.log(response),
+      goalId
     }
   }
 }
@@ -166,7 +167,9 @@ export function deleteTask(goalId, taskId) {
       }
     }),
     meta: {
-      onSuccess: response => console.log(response)
+      onSuccess: response => console.log(response),
+      goalId,
+      taskId
     }
   }
 }

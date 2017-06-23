@@ -5,7 +5,9 @@ import {
   CREATE_GOAL,
   CREATE_TASK,
   EDIT_GOAL,
-  EDIT_TASK } from '../actions';
+  EDIT_TASK,
+  DELETE_GOAL,
+  DELETE_TASK} from '../actions';
 
 export const initialState = {
   isLoading: false,
@@ -132,7 +134,45 @@ export default function goalReducer(state = initialState, action) {
             goalList: updatedGoalList
           }
         }
-      })
+      });
+    case DELETE_GOAL:
+      return handle(state, action, {
+        start: prevState => ({
+          ...prevState,
+          isLoading: true,
+          goalError: null
+        }),
+        finish: prevState => ({...prevState, isLoading: false}),
+        failure: prevState => ({...prevState, goalError: action.payload.data}),
+        success: prevState => {
+          const updatedGoalList = {...prevState.goalList};
+          delete updatedGoalList[action.meta.goalId];
+          return {
+            ...prevState,
+            goalList: updatedGoalList
+          }
+        }
+      });
+    case DELETE_TASK:
+      return handle(state, action, {
+        start: prevState => ({
+          ...prevState,
+          isLoading: true,
+          goalError: null
+        }),
+        finish: prevState => ({...prevState, isLoading: false}),
+        failure: prevState => ({...prevState, goalError: action.payload.data}),
+        success: prevState => {
+          const updatedTasks = prevState.goalList[action.meta.goalId].tasks.filter(task => {
+            return task._id != action.meta.taskId;
+          });
+          const updatedGoal = {...prevState.goalList[action.meta.goalId], tasks: updatedTasks};
+          return {
+            ...prevState,
+            goalList: {...prevState.goalList, [action.meta.goalId]: updatedGoal}
+          }
+        }
+      });
     default:
       return state;
   }
