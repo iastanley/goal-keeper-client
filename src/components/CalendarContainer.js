@@ -64,7 +64,7 @@ class CalendarContainer extends Component {
     const goalId = event.dataTransfer.getData('goalId');
     const taskId = event.dataTransfer.getData('taskId');
     console.log(`goalId: ${goalId}, taskId: ${taskId}, date: ${date} `);
-    event.target.querySelector('ul').appendChild(document.getElementById(data));
+    // event.target.querySelector('ul').appendChild(document.getElementById(data));
     this.props.editTask({
       date: date,
       goalId: goalId,

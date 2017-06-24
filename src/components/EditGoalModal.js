@@ -15,6 +15,13 @@ class EditGoalModal extends Component {
     }
   }
 
+  // componentWillUpdate() {
+  //   this.setState({
+  //     color: this.props.goal ? this.props.goal.color : '',
+  //     title: this.props.goal ? this.props.goal.title : ''
+  //   });
+  // }
+
   // componentWillReceiveProps(nextProps) {
   //   if (nextProps.goal && ) {
   //     if (this.props.goal.title != nextProps.goal.title) {
@@ -63,6 +70,8 @@ class EditGoalModal extends Component {
   }
 
   render() {
+    console.log(this.state);
+    console.log(this.props.goal && this.props.goal.color);
     return (
       <Modal
         className="edit-goal-modal"
@@ -104,6 +113,7 @@ class EditGoalModal extends Component {
               Save
             </button>
             <button
+              type="button"
               className="btn btn-default" onClick={()=>this.handleCancel()}>
               Cancel
             </button>
