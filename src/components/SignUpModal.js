@@ -95,7 +95,9 @@ class SignUpModal extends Component {
             Sign Up
           </button>
           <button
-            className="btn btn-default" onClick={() => this.handleCancel()}>
+            type="button"
+            className="btn btn-default"
+            onClick={() => this.handleCancel()}>
             Cancel
           </button>
         </Modal.Footer>

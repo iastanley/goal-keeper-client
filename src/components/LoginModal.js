@@ -79,6 +79,7 @@ class LoginModal extends Component {
             Log In
           </button>
           <button
+            type="button"
             className="btn btn-default"
             onClick={() => this.handleCancel()}>
             Cancel
