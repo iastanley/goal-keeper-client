@@ -70,8 +70,6 @@ class EditGoalModal extends Component {
   }
 
   render() {
-    console.log(this.state);
-    console.log(this.props.goal && this.props.goal.color);
     return (
       <Modal
         className="edit-goal-modal"

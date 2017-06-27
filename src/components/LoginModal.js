@@ -41,6 +41,7 @@ class LoginModal extends Component {
 
 
   render() {
+    console.log(this.state);
     let loginHeader;
 
     if (this.props.isLoading) {
@@ -52,7 +53,10 @@ class LoginModal extends Component {
     }
 
     return (
-      <Modal className="login-modal" show={this.props.show} onHide={this.props.close}>
+      <Modal
+        className="login-modal"
+        show={this.props.show}
+        onHide={() => this.handleCancel()}>
         <Modal.Header closeButton>
           {loginHeader}
         </Modal.Header>
@@ -61,18 +65,18 @@ class LoginModal extends Component {
             <div className="form-group">
               <label>Username:</label>
               <input
-
                 className="form-control"
                 placeholder="Username"
+                value={this.state.username}
                 onChange={e => this.handleInput({username: e.target.value})}/>
             </div>
             <div className="form-group">
               <label>Password:</label>
               <input
-
                 type="password"
                 className="form-control"
                 placeholder="Password"
+                value={this.state.password}
                 onChange={e => this.handleInput({password: e.target.value})}/>
             </div>
         </Modal.Body>

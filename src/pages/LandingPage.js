@@ -36,6 +36,7 @@ class LandingPage extends Component {
 
   closeSignUp() {
     this.props.dispatch(toggleSignUp(false));
+    this.props.dispatch(setUserError(null));
   }
 
   openSignUp() {
@@ -114,7 +115,8 @@ class LandingPage extends Component {
           close={this.closeSignUp}
           isLoading={this.props.isLoading}
           makeSignUp={this.makeSignUp}
-          userError={this.props.userError}/>
+          userError={this.props.userError}
+          setUserError={this.setUserError}/>
       </div>
     );
   }
