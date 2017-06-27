@@ -19,7 +19,8 @@ import {
   createTask,
   editTask,
   deleteGoal,
-  deleteTask
+  deleteTask,
+  setGoalError
  } from '../actions';
 import './HomePage.css';
 
@@ -40,6 +41,7 @@ class HomePage extends Component {
     this.editTask = this.editTask.bind(this);
     this.deleteGoal = this.deleteGoal.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.setGoalError = this.setGoalError.bind(this);
   }
 
   // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
@@ -59,6 +61,7 @@ class HomePage extends Component {
 
   closeNewTask() {
     this.props.dispatch(toggleNewTask(false));
+    this.props.dispatch(setGoalError(null));
   }
 
   openNewGoal() {
@@ -105,6 +108,11 @@ class HomePage extends Component {
     this.props.dispatch(deleteTask(goalId, taskId));
   }
 
+  setGoalError(goalError) {
+    console.log(goalError);
+    this.props.dispatch(setGoalError(goalError));
+  }
+
   render() {
     return (
       <div className="home-page">
@@ -129,8 +137,11 @@ class HomePage extends Component {
           goals={this.props.goals}
           date={this.props.selectedDay}
           show={this.props.showNewTask}
+          isLoading={this.props.isLoading}
+          goalError={this.props.goalError}
           close={this.closeNewTask}
-          createTask={this.createTask}/>
+          createTask={this.createTask}
+          setGoalError={this.setGoalError}/>
         <NewGoalModal
           user={this.props.user}
           show={this.props.showNewGoal}
@@ -156,7 +167,9 @@ const mapStateToProps = state => ({
   showEditGoal: state.navigation.showEditGoal.show,
   editGoalId: state.navigation.showEditGoal.goalId,
   showGoalPane: state.navigation.showGoalPane,
-  loggedIn: state.user.loggedIn
+  loggedIn: state.user.loggedIn,
+  isLoading: state.goal.isLoading,
+  goalError: state.goal.goalError
 });
 
 export default connect(mapStateToProps)(HomePage);

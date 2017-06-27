@@ -30,14 +30,34 @@ class NewTaskModal extends Component {
 
   handleSave(event) {
     event.preventDefault();
-    this.props.createTask(this.state.goalId, {
-      name: this.state.name,
-      date: this.props.date
-    });
-    this.handleCancel();
+    if (!this.state.name) {
+      this.props.setGoalError('Please provide a task name.');
+    } else if (!this.state.goalId) {
+      this.props.setGoalError('Please select a goal for this task.');
+    } else {
+      this.props.createTask(this.state.goalId, {
+        name: this.state.name,
+        date: this.props.date
+      });
+      this.handleCancel();
+    }
   }
 
   render() {
+    let taskHeader;
+
+    if (this.props.isLoading) {
+      taskHeader = <h3>Loading...</h3>;
+    } else if (this.props.goalError) {
+      taskHeader = (
+        <h3 style={{color: '#f00'}}>
+          {this.props.goalError.message ? this.props.goalError.message : this.props.goalError}
+        </h3>
+      );
+    } else {
+      taskHeader = <h3>New Task</h3>
+    }
+
     const goalTitles = _.map(this.props.goals, goal => {
       return (
         <option value={goal._id} key={goal._id}>{goal.title}</option>
@@ -50,7 +70,7 @@ class NewTaskModal extends Component {
         show={this.props.show}
         onHide={this.props.close}>
         <Modal.Header closeButton>
-          <h3>New Task</h3>
+          {taskHeader}
         </Modal.Header>
         <form>
         <Modal.Body>
@@ -59,6 +79,7 @@ class NewTaskModal extends Component {
             <input
               className="form-control"
               placeholder="Task Name"
+              value={this.state.name}
               onChange={e => this.handleInputChange(e.target.value)}/>
           </div>
           <div className="form-group">

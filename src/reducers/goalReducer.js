@@ -7,7 +7,8 @@ import {
   EDIT_GOAL,
   EDIT_TASK,
   DELETE_GOAL,
-  DELETE_TASK} from '../actions';
+  DELETE_TASK,
+  SET_GOAL_ERROR} from '../actions';
 
 export const initialState = {
   isLoading: false,
@@ -173,6 +174,8 @@ export default function goalReducer(state = initialState, action) {
           }
         }
       });
+    case SET_GOAL_ERROR:
+      return {...state, goalError: action.goalError}
     default:
       return state;
   }

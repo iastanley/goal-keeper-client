@@ -183,6 +183,14 @@ export function deleteTask(goalId, taskId) {
   }
 }
 
+export const SET_GOAL_ERROR = 'SET_GOAL_ERROR';
+export function setGoalError(goalError) {
+  return {
+    type: SET_GOAL_ERROR,
+    goalError
+  }
+}
+
 
 // show goals view
 export const TOGGLE_GOAL_PANE = 'TOGGLE_GOAL_PANE';

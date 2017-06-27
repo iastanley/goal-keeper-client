@@ -41,7 +41,6 @@ class LoginModal extends Component {
 
 
   render() {
-    console.log(this.state);
     let loginHeader;
 
     if (this.props.isLoading) {
