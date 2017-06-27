@@ -145,8 +145,11 @@ class HomePage extends Component {
         <NewGoalModal
           user={this.props.user}
           show={this.props.showNewGoal}
+          isLoading={this.props.isLoading}
+          goalError={this.props.goalError}
           close={this.closeNewGoal}
-          createGoal={this.createGoal}/>
+          createGoal={this.createGoal}
+          setGoalError={this.setGoalError}/>
         <EditGoalModal
           goal={this.props.goals[this.props.editGoalId]}
           show={this.props.showEditGoal}

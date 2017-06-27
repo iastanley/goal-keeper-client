@@ -31,22 +31,42 @@ class NewGoalModal extends Component {
 
   handleSave(event) {
     event.preventDefault();
-    this.props.createGoal({
-        user: this.props.user,
-        title: this.state.title,
-        color: this.state.color
-    });
-    this.handleCancel();
+    if (!this.state.title) {
+      this.props.setGoalError('Please provide a goal title.');
+    } else if (!this.state.color) {
+      this.props.setGoalError('Please select a goal color.');
+    } else {
+      this.props.createGoal({
+          user: this.props.user,
+          title: this.state.title,
+          color: this.state.color
+      });
+      this.handleCancel();
+    }
   }
 
   render() {
+    let goalHeader;
+
+    if (this.props.isLoading) {
+      goalHeader = <h3>Loading...</h3>;
+    } else if (this.props.goalError) {
+      goalHeader = (
+        <h3 style={{color: '#f00'}}>
+          {this.props.goalError.message ? this.props.goalError.message : this.props.goalError}
+        </h3>
+      );
+    } else {
+      goalHeader = <h3>New Goal</h3>
+    }
+
     return (
       <Modal
         className="new-goal-modal"
         show={this.props.show}
         onHide={this.props.close}>
         <Modal.Header closeButton>
-          <h3>New Goal</h3>
+          {goalHeader}
         </Modal.Header>
         <form>
         <Modal.Body>
@@ -55,6 +75,7 @@ class NewGoalModal extends Component {
             <input
               className="form-control"
               placeholder="Title of Goal"
+              value={this.state.title}
               onChange={e => this.handleInputChange(e.target.value)}/>
           </div>
           <div className="form-group color-picker-input">
@@ -74,7 +95,9 @@ class NewGoalModal extends Component {
             Save
           </button>
           <button
-            className="btn btn-default" onClick={() => this.handleCancel()}>
+            type="button"
+            className="btn btn-default"
+            onClick={() => this.handleCancel()}>
             Cancel
           </button>
         </Modal.Footer>

@@ -100,6 +100,7 @@ class EditGoalModal extends Component {
           </Modal.Body>
           <Modal.Footer>
             <button
+              type="button"
               className="btn btn-danger btn-goal-delete"
               onClick={()=>this.handleDelete()}>
               Delete Goal
