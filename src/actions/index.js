@@ -48,6 +48,14 @@ export function logOut() {
   }
 }
 
+export const SET_USER_ERROR = 'SET_USER_ERROR';
+export function setUserError(userError) {
+  return {
+    type: SET_USER_ERROR,
+    userError
+  }
+}
+
 // load goals from server
 export const LOAD_GOAL = 'LOAD_GOAL';
 export function loadGoal(currentUser) {

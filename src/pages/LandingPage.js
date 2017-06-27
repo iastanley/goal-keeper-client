@@ -10,7 +10,8 @@ import {
   toggleLogin,
   toggleSignUp,
   makeSignUp,
-  makeLogin
+  makeLogin,
+  setUserError
 } from '../actions';
 
 //the landing-section divs could be components
@@ -24,11 +25,13 @@ class LandingPage extends Component {
     this.openSignUp = this.openSignUp.bind(this);
     this.makeSignUp = this.makeSignUp.bind(this);
     this.makeLogin = this.makeLogin.bind(this);
+    this.setUserError = this.setUserError.bind(this);
   }
 
   closeLogin() {
     // replace with action dispatch later
     this.props.dispatch(toggleLogin(false));
+    this.props.dispatch(setUserError(null));
   }
 
   closeSignUp() {
@@ -47,6 +50,9 @@ class LandingPage extends Component {
     this.props.dispatch(makeLogin(username, password));
   }
 
+  setUserError(userError) {
+    this.props.dispatch(setUserError(userError));
+  }
 
   render() {
     if (this.props.loggedIn) {
@@ -101,7 +107,8 @@ class LandingPage extends Component {
           show={this.props.showLogin} close={this.closeLogin}
           isLoading={this.props.isLoading}
           makeLogin={this.makeLogin}
-          userError={this.props.userError}/>
+          userError={this.props.userError}
+          setUserError={this.setUserError}/>
         <SignUpModal
           show={this.props.showSignUp}
           close={this.closeSignUp}

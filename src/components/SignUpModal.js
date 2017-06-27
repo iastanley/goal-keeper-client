@@ -41,7 +41,6 @@ class SignUpModal extends Component {
   }
 
   render() {
-    console.log(this.props.userError);
     let signUpHeader;
     if (this.props.userError) {
       signUpHeader = <h3 style={{color: '#f00'}}>{this.props.userError.message}</h3>
