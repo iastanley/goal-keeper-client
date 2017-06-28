@@ -78,6 +78,7 @@ class HomePage extends Component {
 
   closeEditGoal() {
     this.props.dispatch(toggleEditGoal(false, null));
+    this.props.dispatch(setGoalError(null));
   }
 
   setDay(day) {
@@ -153,9 +154,12 @@ class HomePage extends Component {
         <EditGoalModal
           goal={this.props.goals[this.props.editGoalId]}
           show={this.props.showEditGoal}
+          isLoading={this.props.isLoading}
+          goalError={this.props.goalError}
           close={this.closeEditGoal}
           editGoal={this.editGoal}
-          deleteGoal={this.deleteGoal}/>
+          deleteGoal={this.deleteGoal}
+          setGoalError={this.setGoalError}/>
       </div>
     );
   }
