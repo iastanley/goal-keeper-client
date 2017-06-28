@@ -76,7 +76,7 @@ class LandingPage extends Component {
           <div className="landing-section row">
             <h2>Make Your Own Goals</h2>
             <div className="col-sm-12">
-              <h4 className="tag-line">Successful people set goals and stick to them. Keeping your goals in mind to increase productivity!</h4>
+              <h4 className="tag-line">Successful people set goals and stick to them. Keep your goals in mind to increase productivity!</h4>
             </div>
           </div>
           <div className="landing-section row">
