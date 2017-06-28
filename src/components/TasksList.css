@@ -76,6 +76,11 @@
   margin-left: 10px;
 }
 
+.task-list-item input[type="text"] {
+  width: 80%;
+  overflow-x: hidden;
+}
+
 i {
   float: right;
   vertical-align: middle;
@@ -106,6 +111,6 @@ i {
   }
 
   .tasks-list {
-    height: 10%;
+    height: 12%;
   }
 }
