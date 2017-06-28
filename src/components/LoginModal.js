@@ -21,6 +21,8 @@ class LoginModal extends Component {
     event.preventDefault();
     if (this.state.username.length && this.state.password.length) {
       this.props.makeLogin(this.state.username, this.state.password);
+    } else {
+      this.props.setUserError('Username or Password Missing');
     }
     this.setState({
       username: '',
@@ -36,15 +38,24 @@ class LoginModal extends Component {
     this.props.close();
   }
 
+
+
   render() {
     let loginHeader;
+
     if (this.props.isLoading) {
       loginHeader = <h3>Loading...</h3>;
+    } else if (this.props.userError) {
+      loginHeader = <h3 style={{color: '#f00'}}>{this.props.userError}</h3>;
     } else {
-      loginHeader = <h3>Login</h3>;
+      loginHeader = <h3>Login</h3>
     }
+
     return (
-      <Modal className="login-modal" show={this.props.show} onHide={this.props.close}>
+      <Modal
+        className="login-modal"
+        show={this.props.show}
+        onHide={() => this.handleCancel()}>
         <Modal.Header closeButton>
           {loginHeader}
         </Modal.Header>
@@ -53,18 +64,18 @@ class LoginModal extends Component {
             <div className="form-group">
               <label>Username:</label>
               <input
-                required
                 className="form-control"
                 placeholder="Username"
+                value={this.state.username}
                 onChange={e => this.handleInput({username: e.target.value})}/>
             </div>
             <div className="form-group">
               <label>Password:</label>
               <input
-                required
                 type="password"
                 className="form-control"
                 placeholder="Password"
+                value={this.state.password}
                 onChange={e => this.handleInput({password: e.target.value})}/>
             </div>
         </Modal.Body>
@@ -76,6 +87,7 @@ class LoginModal extends Component {
             Log In
           </button>
           <button
+            type="button"
             className="btn btn-default"
             onClick={() => this.handleCancel()}>
             Cancel

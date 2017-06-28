@@ -10,7 +10,8 @@ import {
   toggleLogin,
   toggleSignUp,
   makeSignUp,
-  makeLogin
+  makeLogin,
+  setUserError
 } from '../actions';
 
 //the landing-section divs could be components
@@ -24,15 +25,18 @@ class LandingPage extends Component {
     this.openSignUp = this.openSignUp.bind(this);
     this.makeSignUp = this.makeSignUp.bind(this);
     this.makeLogin = this.makeLogin.bind(this);
+    this.setUserError = this.setUserError.bind(this);
   }
 
   closeLogin() {
     // replace with action dispatch later
     this.props.dispatch(toggleLogin(false));
+    this.props.dispatch(setUserError(null));
   }
 
   closeSignUp() {
     this.props.dispatch(toggleSignUp(false));
+    this.props.dispatch(setUserError(null));
   }
 
   openSignUp() {
@@ -47,6 +51,9 @@ class LandingPage extends Component {
     this.props.dispatch(makeLogin(username, password));
   }
 
+  setUserError(userError) {
+    this.props.dispatch(setUserError(userError));
+  }
 
   render() {
     if (this.props.loggedIn) {
@@ -69,7 +76,7 @@ class LandingPage extends Component {
           <div className="landing-section row">
             <h2>Make Your Own Goals</h2>
             <div className="col-sm-12">
-              <h4 className="tag-line">Successful people set goals and stick to them. Keeping your goals in mind to increase productivity!</h4>
+              <h4 className="tag-line">Successful people set goals and stick to them. Keep your goals in mind to increase productivity!</h4>
             </div>
           </div>
           <div className="landing-section row">
@@ -100,12 +107,16 @@ class LandingPage extends Component {
         <LoginModal
           show={this.props.showLogin} close={this.closeLogin}
           isLoading={this.props.isLoading}
-          makeLogin={this.makeLogin}/>
+          makeLogin={this.makeLogin}
+          userError={this.props.userError}
+          setUserError={this.setUserError}/>
         <SignUpModal
           show={this.props.showSignUp}
           close={this.closeSignUp}
           isLoading={this.props.isLoading}
-          makeSignUp={this.makeSignUp}/>
+          makeSignUp={this.makeSignUp}
+          userError={this.props.userError}
+          setUserError={this.setUserError}/>
       </div>
     );
   }
@@ -113,6 +124,7 @@ class LandingPage extends Component {
 
 const mapStateToProps = state => ({
   user: state.user.user,
+  userError: state.user.userError,
   showLogin: state.navigation.showLogin,
   showSignUp: state.navigation.showSignUp,
   badCredentials: state.user.badCredentials,

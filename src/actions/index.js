@@ -17,6 +17,7 @@ export function makeLogin(username, password) {
     }),
     meta: {
       onSuccess: response => console.log(username, response),
+      onFailure: response => console.log(response),
       username, password
     }
   }
@@ -44,6 +45,14 @@ export const LOGOUT = 'LOGOUT';
 export function logOut() {
   return {
     type: LOGOUT
+  }
+}
+
+export const SET_USER_ERROR = 'SET_USER_ERROR';
+export function setUserError(userError) {
+  return {
+    type: SET_USER_ERROR,
+    userError
   }
 }
 
@@ -171,6 +180,14 @@ export function deleteTask(goalId, taskId) {
       goalId,
       taskId
     }
+  }
+}
+
+export const SET_GOAL_ERROR = 'SET_GOAL_ERROR';
+export function setGoalError(goalError) {
+  return {
+    type: SET_GOAL_ERROR,
+    goalError
   }
 }
 

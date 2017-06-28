@@ -15,11 +15,13 @@ class SignUpModal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if (this.state.password !== this.state.confirmPassword) {
-      console.log('passwords do not match');
-      return;
+    if (!this.state.username || !this.state.password || !this.state.confirmPassword) {
+      this.props.setUserError('Missing Required Field.');
+    } else if (this.state.password !== this.state.confirmPassword) {
+      this.props.setUserError('Confirmation Password Does Not Match.');
+    } else {
+      this.props.makeSignUp(this.state.username, this.state.password);
     }
-    this.props.makeSignUp(this.state.username, this.state.password);
     this.setState({
       username: '',
       password: '',
@@ -42,17 +44,24 @@ class SignUpModal extends Component {
 
   render() {
     let signUpHeader;
+
     if (this.props.isLoading) {
       signUpHeader = <h3>Loading...</h3>;
+    } else if (this.props.userError) {
+      signUpHeader = (
+        <h3 style={{color: '#f00'}}>
+          {this.props.userError.message ? this.props.userError.message : this.props.userError}
+        </h3>);
     } else {
       signUpHeader = <h3>Sign Up</h3>;
     }
+
     return (
       <Modal
-      className="signup-modal"
-      show={this.props.show}
-      onHide={this.props.close}>
-        <Modal.Header>
+        className="signup-modal"
+        show={this.props.show}
+        onHide={() => this.handleCancel()}>
+        <Modal.Header closeButton>
           {signUpHeader}
         </Modal.Header>
         <form>
@@ -63,6 +72,7 @@ class SignUpModal extends Component {
                 required
                 className="form-control"
                 placeholder="Username"
+                value={this.state.username}
                 onChange={e => this.handleInput({username: e.target.value})}/>
             </div>
             <div className="form-group">
@@ -72,6 +82,7 @@ class SignUpModal extends Component {
                 type="password"
                 className="form-control"
                 placeholder="Password"
+                value={this.state.password}
                 onChange={e => this.handleInput({password: e.target.value})}/>
             </div>
             <div className="form-group">
@@ -81,9 +92,9 @@ class SignUpModal extends Component {
                 type="password"
                 className="form-control"
                 placeholder="Password"
+                value={this.state.confirmPassword}
                 onChange={e => this.handleInput({confirmPassword: e.target.value})}/>
             </div>
-
         </Modal.Body>
         <Modal.Footer>
           <button
@@ -93,7 +104,9 @@ class SignUpModal extends Component {
             Sign Up
           </button>
           <button
-            className="btn btn-default" onClick={() => this.handleCancel()}>
+            type="button"
+            className="btn btn-default"
+            onClick={() => this.handleCancel()}>
             Cancel
           </button>
         </Modal.Footer>

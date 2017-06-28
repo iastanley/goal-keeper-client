@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import './NavBar.css';
 
 import {
   toggleLogin,

@@ -5,14 +5,7 @@ import Calendar from './Calendar/Calendar';
 import TaskListItem from './TaskListItem';
 import './CalendarContainer.css';
 
-
-// this will almost certainly eventually be a class component
-// and connected to store
-
 class CalendarContainer extends Component {
-  // state = {
-  //   date: moment()
-  // };
   constructor(props) {
     super(props);
     this.state = {
@@ -64,7 +57,7 @@ class CalendarContainer extends Component {
     const goalId = event.dataTransfer.getData('goalId');
     const taskId = event.dataTransfer.getData('taskId');
     console.log(`goalId: ${goalId}, taskId: ${taskId}, date: ${date} `);
-    event.target.querySelector('ul').appendChild(document.getElementById(data));
+    // event.target.querySelector('ul').appendChild(document.getElementById(data));
     this.props.editTask({
       date: date,
       goalId: goalId,

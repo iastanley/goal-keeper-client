@@ -4,7 +4,8 @@ import { handle } from 'redux-pack';
 import {
   MAKE_LOGIN,
   MAKE_SIGNUP,
-  LOGOUT
+  LOGOUT,
+  SET_USER_ERROR
 } from '../actions';
 
 const initialState = {
@@ -30,22 +31,25 @@ export default function userReducer(state = initialState, action) {
           localStorage.user = action.meta.username;
           return {...prevState, user: action.payload.data.username, badCredentials: false, loggedIn: true}
         },
-        failure: prevState => ({...prevState, badCredentials: true, userError: action.payload.data})
+        failure: prevState => ({...prevState, badCredentials: true, userError: 'Login Failed. Try Again.'})
         });
     case MAKE_SIGNUP:
       return handle(state, action, {
         start: prevState => ({...prevState, isLoading: true}),
         finish: prevState => ({...prevState, isLoading: false}),
         success: prevState => {
-          console.log(action.meta.username, action.meta.password);
           localStorage.userToken = btoa(`${action.meta.username}:${action.meta.password}`);
           localStorage.user = action.meta.username;
           return {...prevState, user: action.payload.data.username, badCredentials: false, loggedIn: true}
         },
-        failure: prevState => ({...prevState, badCredentials: true, userError: action.payload.data})
+        failure: prevState => {
+          return {...prevState, badCredentials: true, userError: action.payload.response.data}
+        }
       });
     case LOGOUT:
       return {...initialState}
+    case SET_USER_ERROR:
+      return {...state, userError: action.userError}
     default:
       return state;
   }
