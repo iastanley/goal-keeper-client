@@ -5,14 +5,7 @@ import Calendar from './Calendar/Calendar';
 import TaskListItem from './TaskListItem';
 import './CalendarContainer.css';
 
-
-// this will almost certainly eventually be a class component
-// and connected to store
-
 class CalendarContainer extends Component {
-  // state = {
-  //   date: moment()
-  // };
   constructor(props) {
     super(props);
     this.state = {

@@ -18,6 +18,10 @@ body {
   margin-top: 10px;
 }
 
+.Calendar {
+  border: 1px solid #dadada;
+}
+
 .Calendar-grid {
   display: flex;
   flex-wrap: wrap;

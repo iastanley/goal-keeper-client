@@ -5,6 +5,7 @@
 }
 
 .day-name {
+  background: #fff;
   font-weight: 700;
   flex-grow: 0;
   flex-basis: 14.28571%;
