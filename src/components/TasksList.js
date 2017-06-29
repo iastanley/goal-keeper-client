@@ -30,7 +30,7 @@ class TasksList extends Component {
         </div>
         <div className="btn-container">
           <button
-            className="btn btn-primary btn-new-task"
+            className="btn btn-custom btn-new-task"
             onClick={this.props.openNewTask}>
             New Task
           </button>

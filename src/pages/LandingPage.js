@@ -17,7 +17,7 @@ import {
 //the landing-section divs could be components
 //add a NavBar prop to control the right menu button
 
-class LandingPage extends Component {
+export class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.closeLogin = this.closeLogin.bind(this);

@@ -76,7 +76,7 @@
   margin-left: 10px;
 }
 
-.task-list-item input[type="text"] {
+.goal-list-item .task-list-item input[type="text"] {
   width: 80%;
   overflow-x: hidden;
 }

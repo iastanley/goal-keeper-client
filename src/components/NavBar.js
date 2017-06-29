@@ -13,7 +13,7 @@ import {
 
 //pass a prop that will determine the buttons displayed to the right
 
-class NavBar extends Component {
+export class NavBar extends Component {
   constructor(props) {
     super(props);
     this.handleHome = this.handleHome.bind(this);

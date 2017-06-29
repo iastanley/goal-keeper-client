@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import { HomePage } from '../HomePage';
+import { NavBar } from '../NavBar';
 
-describe('HomePage', () => {
+describe('NavBar', () => {
   it('should shallow render', () => {
-    shallow(<HomePage />);
-  });
+    shallow(<NavBar />);
+  })
 });
