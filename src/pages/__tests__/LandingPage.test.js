@@ -2,6 +2,13 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import { LandingPage } from '../LandingPage';
+import {
+  toggleLogin,
+  toggleSignUp,
+  makeSignUp,
+  makeLogin,
+  setUserError
+} from '../../actions';
 
 describe('LandingPage', () => {
   it('should shallow render', () => {
@@ -14,32 +21,55 @@ describe('LandingPage', () => {
       <LandingPage
         user="user"
         showLogin={false}
+        showSignUp={false}
         userError="userError"
         isLoading={true}
       />);
     expect(wrapper.find('LoginModal')).toHaveLength(1);
     expect(wrapper.find('SignUpModal')).toHaveLength(1);
     expect(wrapper.find('Button')).toHaveLength(1);
+    expect(wrapper.find('Footer')).toHaveLength(1);
+
     const loginModal = wrapper.find('LoginModal');
-    console.log(loginModal.makeLogin);
     expect(loginModal.prop('show')).toEqual(false);
     expect(loginModal.prop('userError')).toEqual("userError");
     expect(loginModal.prop('isLoading')).toEqual(true);
-    // expect(loginModal.prop('makeLogin')).toHaveLength(1);
+
+    const signUpModal = wrapper.find('SignUpModal');
+    expect(signUpModal.prop('show')).toEqual(false);
+    expect(signUpModal.prop('userError')).toEqual('userError');
+    expect(signUpModal.prop('isLoading')).toEqual(true);
+
   });
 
-  // it('should call callbacks', () => {
-  //   const dispatchSpy = jest.fn();
-  //
-  //   const wrapper = shallow(
-  //     <LandingPage
-  //       dispatch={dispatchSpy}
-  //     />
-  //   )
-  // });
+  it('should call dispatch on Button click', () => {
+    const dispatch = jest.fn();
+    const wrapper = shallow(
+      <LandingPage
+        dispatch={dispatch}
+        showSignUp={false}
+      />);
+    wrapper.find('Button').simulate('click');
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(toggleSignUp(true));
+  });
+
+  it('should dispatch actions on calling methods', () => {
+    const userError = 'bad login';
+
+    const dispatch = jest.fn();
+    const wrapper = shallow(<LandingPage dispatch={dispatch}/>);
+
+    wrapper.instance().closeLogin();
+    expect(dispatch).toHaveBeenCalledWith(toggleLogin(false));
+    expect(dispatch).toHaveBeenCalledWith(setUserError(null));
+    wrapper.instance().closeSignUp();
+    expect(dispatch).toHaveBeenCalledWith(toggleSignUp(false));
+    expect(dispatch).toHaveBeenCalledWith(setUserError(null));
+    wrapper.instance().openSignUp();
+    expect(dispatch).toHaveBeenCalledWith(toggleSignUp(true));
+    wrapper.instance().setUserError(userError);
+    expect(dispatch).toHaveBeenCalledWith(setUserError(userError));
+  });
 
 });
-
-// test props
-
-// test callback and events
