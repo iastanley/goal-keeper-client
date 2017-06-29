@@ -40,14 +40,6 @@ class TaskListItem extends Component {
     event.dataTransfer.dropEffect = "move";
   }
 
-  // handleDragEnd(event) {
-  //   console.log('drag ended')
-  //   if (event.target.parentNode) {
-  //     console.log('drag end if statement entered');
-  //     event.target.parentNode.removeChild(event.target);
-  //   }
-  // }
-
   render() {
     return (
       <li

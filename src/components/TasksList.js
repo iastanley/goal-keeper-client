@@ -19,7 +19,6 @@ class TasksList extends Component {
   }
 
   render() {
-    console.log(this.buildGoalList());
     return (
       <div className="tasks-list">
         <div className="goal-list">
