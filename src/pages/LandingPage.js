@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import LoginModal from '../components/LoginModal';
 import SignUpModal from '../components/SignUpModal';
+import Footer from '../components/Footer';
 import './LandingPage.css';
 
 import {
@@ -97,11 +98,14 @@ export class LandingPage extends Component {
               <p>Positive feedback always feels good! Once you have set up tasks for a specific goal you can check off tasks as you complete them and see how close you are to completing your goal</p>
             </div>
           </div>
-          <div className="landing-button">
+          <div className="landing-button row">
             <Button
               bsSize="large" onClick={this.openSignUp}>
               Get Started!
             </Button>
+          </div>
+          <div className="row">
+            <Footer />
           </div>
         </div>
         <LoginModal
