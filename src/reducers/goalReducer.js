@@ -98,7 +98,12 @@ export default function goalReducer(state = initialState, action) {
         }),
         finish: prevState => ({...prevState, isLoading: false}),
         failure: prevState => ({...prevState, goalError: action.payload.data}),
-        success: prevState => ({...prevState, goalList: _.mapKeys(action.payload.data, '_id')})
+        success: prevState => {
+          return {
+            ...prevState,
+            goalList: _.mapKeys(action.payload.data, '_id')
+          }
+        }
       });
     case CREATE_GOAL:
       return handle(state, action, {

@@ -12,3 +12,7 @@ body {
 .form-group {
   text-align: left;
 }
+
+.modal-header h3 {
+  margin: 0;
+}
