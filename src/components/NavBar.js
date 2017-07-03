@@ -96,7 +96,7 @@ export class NavBar extends Component {
           <Navbar.Header>
             <Navbar.Brand>
               <Link onClick={this.handleLogOut} to="/">
-                <strong>Goal Keeper</strong>
+                <strong>GOAL KEEPER</strong>
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />

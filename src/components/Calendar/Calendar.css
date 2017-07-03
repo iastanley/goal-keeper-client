@@ -31,7 +31,8 @@ body {
 
 .Calendar-header {
   height: 50px;
-  background: #222;
+  /*background: #222;*/
+  background: #1982C4;
   color: #fff;
   text-align: center;
   line-height: 50px;
@@ -47,6 +48,10 @@ body {
   background: transparent;
   color: #ddd;
   cursor: pointer;
+}
+
+.Calendar-header i {
+  float: none;
 }
 
 .Calendar-grid-item {

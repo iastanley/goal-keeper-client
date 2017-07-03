@@ -6,7 +6,6 @@ h2 {
 .landing-body {
   text-align: center;
   padding-top: 50px;
-  /*padding-bottom: 40px;*/
 }
 
 .hero-section, .landing-section {
@@ -20,23 +19,25 @@ h2 {
       rgba(0, 0, 0, 0.5)
     ), url(../images/steps-image-withblur.jpg) no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
+  color: #f6f4f3;
   height: 50vh;
 }
 
 .landing-section {
-  background-color: #000;
-  color: #fff;
+  background-color: #191716;
+  color: #f6f4f3;
 }
 
 .landing-section:nth-of-type(3) {
-  background-color: #fff;
-  color: #000;
+  background-color: #1982c4;
+  color: #f6f4f3;
 }
 
 .landing-button {
   padding-top: 50px;
   padding-bottom: 50px;
+  background-color: #1982c4;
+  color: #f6f4f3;
 }
 
 .tag-line {

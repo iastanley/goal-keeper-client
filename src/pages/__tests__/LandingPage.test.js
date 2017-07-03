@@ -27,7 +27,6 @@ describe('LandingPage', () => {
       />);
     expect(wrapper.find('LoginModal')).toHaveLength(1);
     expect(wrapper.find('SignUpModal')).toHaveLength(1);
-    expect(wrapper.find('Button')).toHaveLength(1);
     expect(wrapper.find('Footer')).toHaveLength(1);
 
     const loginModal = wrapper.find('LoginModal');
@@ -49,7 +48,7 @@ describe('LandingPage', () => {
         dispatch={dispatch}
         showSignUp={false}
       />);
-    wrapper.find('Button').simulate('click');
+    wrapper.find('button').simulate('click');
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(toggleSignUp(true));
   });

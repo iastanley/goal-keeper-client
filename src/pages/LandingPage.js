@@ -64,7 +64,7 @@ export class LandingPage extends Component {
       <div className="landing-page container-fluid">
         <div className="landing-body">
           <div className="hero-section row">
-            <h1>Goal Keeper</h1>
+            <h1>GOAL KEEPER</h1>
             <h4>An app to help you track your personal goals</h4>
             <br/>
             <br/>
@@ -96,10 +96,11 @@ export class LandingPage extends Component {
             </div>
           </div>
           <div className="landing-button row">
-            <Button
-              bsSize="large" onClick={this.openSignUp}>
+            <button
+              className="btn btn-custom btn-lg"
+              onClick={this.openSignUp}>
               Get Started!
-            </Button>
+            </button>
           </div>
           <div className="row">
             <Footer />
