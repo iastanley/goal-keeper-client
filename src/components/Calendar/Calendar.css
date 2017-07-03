@@ -84,7 +84,7 @@ body {
   .Calendar-grid-item {
     text-align: left;
     justify-content: start;
-    min-height: 14vh;
+    min-height: 12.5vh;
     padding: 1rem;
   }
 
