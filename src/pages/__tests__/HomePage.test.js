@@ -35,5 +35,4 @@ describe('HomePage', () => {
     expect(wrapper.find('EditGoalModal')).toHaveLength(1);
   });
 
-  
 });

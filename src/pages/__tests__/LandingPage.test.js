@@ -41,7 +41,7 @@ describe('LandingPage', () => {
 
   });
 
-  it('should call dispatch on Button click', () => {
+  it('should call dispatch on button click', () => {
     const dispatch = jest.fn();
     const wrapper = shallow(
       <LandingPage
@@ -53,6 +53,7 @@ describe('LandingPage', () => {
     expect(dispatch).toHaveBeenCalledWith(toggleSignUp(true));
   });
 
+  // only testing non-async actions
   it('should dispatch actions on calling methods', () => {
     const userError = 'bad login';
 
