@@ -70,7 +70,7 @@ class SignUpModal extends Component {
               <label>User Name</label>
               <input
                 required
-                className="form-control"
+                className="form-control user-input"
                 placeholder="Username"
                 value={this.state.username}
                 onChange={e => this.handleInput({username: e.target.value})}/>
@@ -80,7 +80,7 @@ class SignUpModal extends Component {
               <input
                 required
                 type="password"
-                className="form-control"
+                className="form-control password-input"
                 placeholder="Password"
                 value={this.state.password}
                 onChange={e => this.handleInput({password: e.target.value})}/>
@@ -90,7 +90,7 @@ class SignUpModal extends Component {
               <input
                 required
                 type="password"
-                className="form-control"
+                className="form-control confirm-input"
                 placeholder="Password"
                 value={this.state.confirmPassword}
                 onChange={e => this.handleInput({confirmPassword: e.target.value})}/>
@@ -99,13 +99,13 @@ class SignUpModal extends Component {
         <Modal.Footer>
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary signup-btn"
             onClick={this.handleSubmit}>
             Sign Up
           </button>
           <button
             type="button"
-            className="btn btn-default"
+            className="btn btn-default cancel-btn"
             onClick={() => this.handleCancel()}>
             Cancel
           </button>

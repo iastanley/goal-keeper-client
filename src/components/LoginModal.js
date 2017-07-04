@@ -83,12 +83,12 @@ class LoginModal extends Component {
           <button
             type="submit"
             onClick={(e) => this.handleLogin(e)}
-            className="btn btn-primary">
+            className="btn btn-primary login-btn">
             Log In
           </button>
           <button
             type="button"
-            className="btn btn-default"
+            className="btn btn-default cancel-btn"
             onClick={() => this.handleCancel()}>
             Cancel
           </button>
