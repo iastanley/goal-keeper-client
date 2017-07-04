@@ -85,13 +85,23 @@ describe('NavBar', () => {
       value: '/home'
     });
     const dispatch = jest.fn();
+    const simEvent = {
+      preventDefault: jest.fn(),
+      currentTarget: {
+        getAttribute: jest.fn()
+      }
+    }
     const wrapper = shallow(
       <NavBar
         dispatch={dispatch}
         showGoalPane={false}
+        history={[]}
       />);
     wrapper.find('.right-navItem').simulate('click');
     expect(dispatch).toHaveBeenCalledWith(toggleGoalPane(true));
+
+    wrapper.find('.left-navItem').simulate('click', simEvent);
+    expect(dispatch).toHaveBeenCalledWith(toggleGoalPane(false));
 
     // return window.location to normal state
     Object.defineProperty(window.location, 'pathname', {
