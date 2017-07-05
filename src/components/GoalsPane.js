@@ -22,7 +22,7 @@ const GoalsPane = props => {
         {goalProgressList}
       </div>
       <button
-        className="btn btn-primary btn-new-goal"
+        className="btn btn-custom btn-new-goal"
         onClick={props.openNewGoal}>
         New Goal
       </button>

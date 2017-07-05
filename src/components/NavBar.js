@@ -11,9 +11,7 @@ import {
   logOut
 } from '../actions';
 
-//pass a prop that will determine the buttons displayed to the right
-
-class NavBar extends Component {
+export class NavBar extends Component {
   constructor(props) {
     super(props);
     this.handleHome = this.handleHome.bind(this);
@@ -42,7 +40,9 @@ class NavBar extends Component {
   }
 
   handleLogOut() {
-    delete localStorage.userToken;
+    if (localStorage.userToken) {
+      delete localStorage.userToken;
+    }
     this.props.dispatch(toggleGoalPane(false));
     this.props.dispatch(logOut());
   }
@@ -61,9 +61,11 @@ class NavBar extends Component {
           <Navbar.Collapse>
             <Nav pullRight>
             <NavItem
+              className="left-navItem"
               onClick={this.openLogin}
               >Login</NavItem>
             <NavItem
+              className="right-navItem"
               onClick={this.openSignUp}
               >Signup</NavItem>
             </Nav>
@@ -74,10 +76,12 @@ class NavBar extends Component {
           <Navbar.Collapse>
             <Nav pullRight>
             <NavItem
+              className="left-navItem"
               onClick={this.handleHome}
               href="/home"
               disabled={!this.props.showGoalPane}>Tasks</NavItem>
             <NavItem
+              className="right-navItem"
               onClick={this.openGoalPane}
               disabled={this.props.showGoalPane}
               >Goals</NavItem>
@@ -96,7 +100,7 @@ class NavBar extends Component {
           <Navbar.Header>
             <Navbar.Brand>
               <Link onClick={this.handleLogOut} to="/">
-                <strong>Goal Keeper</strong>
+                <strong>GOAL KEEPER</strong>
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />

@@ -3,14 +3,17 @@ h2 {
   margin-bottom: 20px;
 }
 
+img {
+  display: none;
+}
+
 .landing-body {
   text-align: center;
   padding-top: 50px;
-  padding-bottom: 40px;
 }
 
 .hero-section, .landing-section {
-  height: 300px;
+  height: auto;
 }
 
 .hero-section {
@@ -18,34 +21,64 @@ h2 {
   background: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
-    ), url(../images/steps-image-withblur.jpg) no-repeat center center fixed;
+    ), url(../images/steps-image-withblur-small.jpg) no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
-  height: 40vh;
+  color: #f6f4f3;
+  height: 50vh;
 }
 
 .landing-section {
-  background-color: #000;
-  color: #fff;
+  background-color: #191716;
+  color: #f6f4f3;
+  padding: 20px 0;
 }
 
 .landing-section:nth-of-type(3) {
-  background-color: #fff;
-  color: #000;
+  background-color: #1982c4;
+  color: #f6f4f3;
 }
 
 .landing-button {
   padding-top: 50px;
-  padding-bottom: 60px;
+  padding-bottom: 50px;
+  background-color: #1982c4;
+  color: #f6f4f3;
 }
 
-.tag-line {
-  margin-top: 50px;
+.landing-screenshot {
+  width: 80%;
+  border-radius: 5px;
 }
+
+.landing-screenshot-sm {
+  width: auto;
+  height: 500px;
+  border-radius: 5px;
+}
+
+.landing-section p {
+  text-align: center;
+}
+
+
 
 @media (min-width: 768px) {
   h1 {
     font-size: 5em;
+  }
+
+  h4 {
+    font-size: 1.5em;
+  }
+
+  .landing-section p {
+    font-size: 18px;
+    text-align: left;
+    padding-top: 20%;
+  }
+
+  img {
+    display: inline-block;
   }
 
   .hero-section {
@@ -54,11 +87,13 @@ h2 {
   }
 
   .landing-section {
-    padding: 0 20px;
+    padding: 30px;
   }
 
   .landing-button {
     padding-top: 100px;
-    padding-bottom: 120px;
+    padding-bottom: 100px;
   }
+
+
 }

@@ -64,6 +64,14 @@ class NewTaskModal extends Component {
       );
     });
 
+    // display reminder message if there are no goals
+    let makeGoalReminder = null;
+    if(!goalTitles.length) {
+      makeGoalReminder = (
+        <p className="make-goal-reminder">To get started first create a new goal in the Goal Progress pane</p>
+      );
+    }
+
     return (
       <Modal
         className="new-task-modal"
@@ -91,19 +99,20 @@ class NewTaskModal extends Component {
               <option disabled value="default">Choose a Group</option>
               {goalTitles}
             </select>
+            {makeGoalReminder}
           </div>
 
         </Modal.Body>
         <Modal.Footer>
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary save-btn"
             onClick={(e)=>this.handleSave(e)}>
             Save
           </button>
           <button
             type="button"
-            className="btn btn-default"
+            className="btn btn-default cancel-btn"
             onClick={()=>this.handleCancel()}>
             Cancel
           </button>

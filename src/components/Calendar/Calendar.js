@@ -64,11 +64,15 @@ export default class Calendar extends Component {
     return (
       <div className="Calendar">
         <div className="Calendar-header">
-          <button onClick={this.handlePrevMonth}>«</button>
+          <button onClick={this.handlePrevMonth}>
+            <i className="fa fa-chevron-left" aria-hidden="true"></i>
+          </button>
           <div className="Calendar-header-currentDate">
             {date.format('MMMM YYYY')}
           </div>
-          <button onClick={this.handleNextMonth}>»</button>
+          <button onClick={this.handleNextMonth}>
+            <i className="fa fa-chevron-right" aria-hidden="true"></i>
+          </button>
         </div>
         <WeekDayNames />
         <div className="Calendar-grid">

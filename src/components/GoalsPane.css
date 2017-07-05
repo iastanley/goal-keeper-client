@@ -9,6 +9,7 @@
   height: 100vh;
   background-color: #fff;
   padding: 50px 20px 40px 20px;
+  border: 1px solid #dfdfdf;
 }
 
 .goals-pane.show {
@@ -16,7 +17,7 @@
 }
 
 .goal-progress-list {
-  height: 75vh;
+  height: 73vh;
   overflow-y: scroll;
 }
 

@@ -24,7 +24,7 @@ import {
  } from '../actions';
 import './HomePage.css';
 
-class HomePage extends Component {
+export class HomePage extends Component {
   constructor(props) {
     super(props);
 
@@ -115,6 +115,10 @@ class HomePage extends Component {
   }
 
   render() {
+    let goalToEdit;
+    if (this.props.editGoalId) {
+      goalToEdit = this.props.goals[this.props.editGoalId];
+    }
     return (
       <div className="home-page">
         <CalendarContainer
@@ -152,7 +156,7 @@ class HomePage extends Component {
           createGoal={this.createGoal}
           setGoalError={this.setGoalError}/>
         <EditGoalModal
-          goal={this.props.goals[this.props.editGoalId]}
+          goal={goalToEdit}
           show={this.props.showEditGoal}
           isLoading={this.props.isLoading}
           goalError={this.props.goalError}

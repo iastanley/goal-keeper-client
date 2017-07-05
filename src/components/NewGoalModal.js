@@ -90,13 +90,13 @@ class NewGoalModal extends Component {
         <Modal.Footer>
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary save-btn"
             onClick={(e) => this.handleSave(e)}>
             Save
           </button>
           <button
             type="button"
-            className="btn btn-default"
+            className="btn btn-default cancel-btn"
             onClick={() => this.handleCancel()}>
             Cancel
           </button>
