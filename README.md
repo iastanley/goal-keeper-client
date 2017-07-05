@@ -2,7 +2,7 @@
 
 An app to help you set your own goals and track your progress as you complete the tasks you assign to each goal.
 
-![Screenshot](/src/images/full-calendar-screenshot.png)
+![Screenshot](/src/images/full-app-screenshot.png)
 
 ## Summary
 
