@@ -6,6 +6,9 @@ import LoginModal from '../components/LoginModal';
 import SignUpModal from '../components/SignUpModal';
 import Footer from '../components/Footer';
 import './LandingPage.css';
+import fullAppScreenshot from '../images/full-calendar-screenshot.png';
+import mobileScreenshot from '../images/goalkeeper-iphone.png';
+import goalScreenshot from '../images/goalprogress.png';
 
 import {
   toggleLogin,
@@ -75,23 +78,24 @@ export class LandingPage extends Component {
             <h2>Make Your Own Goals</h2>
             <div className="col-sm-12">
               <h4 className="tag-line">Successful people set goals and stick to them. Keep your goals in mind to increase productivity!</h4>
+              <img className="landing-screenshot" src={fullAppScreenshot} alt="full-app-screenshot"/>
             </div>
           </div>
           <div className="landing-section row">
             <h2>Break Each Goal Into Tasks</h2>
-            <div className="col-md-6 text-left">
+            <div className="col-md-6">
               <p>Breaking down a problem into steps is the key to solving complex problems. Or perhaps you just need to schedule time to practice a skill. Either way, Goal Keeper helps you break down your goals into small tasks that you schedule. Use the calendar to identify gaps in your schedule where you can squeeze in another task.</p>
             </div>
             <div className="col-md-6">
-              <p>[Screenshot placeholder]</p>
+              <img className="landing-screenshot-sm" src={mobileScreenshot} alt="mobile-screenshot"/>
             </div>
           </div>
           <div className="landing-section row">
             <h2>Track Your Progress</h2>
             <div className="col-md-6">
-              <p>[Screenshot placeholder]</p>
+              <img className="landing-screenshot" src={goalScreenshot} alt="goal-screenshot"/>
             </div>
-            <div className="col-md-6 text-left">
+            <div className="col-md-6">
               <p>Positive feedback always feels good! Once you have set up tasks for a specific goal you can check off tasks as you complete them and see how close you are to completing your goal</p>
             </div>
           </div>

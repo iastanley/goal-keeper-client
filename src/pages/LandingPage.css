@@ -3,13 +3,17 @@ h2 {
   margin-bottom: 20px;
 }
 
+img {
+  display: none;
+}
+
 .landing-body {
   text-align: center;
   padding-top: 50px;
 }
 
 .hero-section, .landing-section {
-  height: 300px;
+  height: auto;
 }
 
 .hero-section {
@@ -26,6 +30,7 @@ h2 {
 .landing-section {
   background-color: #191716;
   color: #f6f4f3;
+  padding: 20px 0;
 }
 
 .landing-section:nth-of-type(3) {
@@ -41,8 +46,26 @@ h2 {
 }
 
 .tag-line {
-  margin-top: 50px;
+  /*margin-top: 50px;*/
 }
+
+.landing-screenshot {
+  width: 80%;
+  border-radius: 5px;
+}
+
+.landing-screenshot-sm {
+  width: auto;
+  height: 500px;
+  border-radius: 5px;
+}
+
+.landing-section p {
+  text-align: center;
+
+}
+
+
 
 @media (min-width: 768px) {
   h1 {
@@ -53,8 +76,14 @@ h2 {
     font-size: 1.5em;
   }
 
-  p {
+  .landing-section p {
     font-size: 18px;
+    text-align: left;
+    padding-top: 20%;
+  }
+
+  img {
+    display: inline-block;
   }
 
   .hero-section {
@@ -63,11 +92,13 @@ h2 {
   }
 
   .landing-section {
-    padding: 0 20px;
+    padding: 30px;
   }
 
   .landing-button {
     padding-top: 100px;
     padding-bottom: 100px;
   }
+
+
 }
