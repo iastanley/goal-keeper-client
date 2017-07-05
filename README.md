@@ -16,6 +16,11 @@ Goal Keeper allows the user to:
 ## Live Site
 Visit: https://goal-keeper-app-ias.netlify.com/
 
+## Goal Keeper API
+API endpoint: https://goal-keeper-api.herokuapp.com/
+
+Github repo: https://github.com/iastanley/goal-keeper-api
+
 ## Implementation
 
 The front end client was created using React and Redux.
