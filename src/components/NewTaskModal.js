@@ -64,6 +64,13 @@ class NewTaskModal extends Component {
       );
     });
 
+    let makeGoalReminder = null;
+    if(!goalTitles.length) {
+      makeGoalReminder = (
+        <p className="make-goal-reminder">To get started first create a new goal in the Goal Progress pane</p>
+      );
+    }
+
     return (
       <Modal
         className="new-task-modal"
@@ -91,6 +98,7 @@ class NewTaskModal extends Component {
               <option disabled value="default">Choose a Group</option>
               {goalTitles}
             </select>
+            {makeGoalReminder}
           </div>
 
         </Modal.Body>
