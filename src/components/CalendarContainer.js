@@ -53,7 +53,6 @@ class CalendarContainer extends Component {
 
   handleDrop(event, date) {
     event.preventDefault();
-    const data = event.dataTransfer.getData("text");
     const goalId = event.dataTransfer.getData('goalId');
     const taskId = event.dataTransfer.getData('taskId');
     this.props.editTask({

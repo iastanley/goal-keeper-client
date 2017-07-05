@@ -3,7 +3,6 @@ import _ from 'lodash';
 import GoalListItem from './GoalListItem';
 import './TasksList.css';
 
-// This could be a functional component
 class TasksList extends Component {
   buildGoalList() {
     return _.map(this.props.goals, (goal) => {

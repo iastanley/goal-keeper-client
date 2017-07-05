@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import LoginModal from '../components/LoginModal';
 import SignUpModal from '../components/SignUpModal';
 import Footer from '../components/Footer';

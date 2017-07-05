@@ -28,13 +28,6 @@ describe('NavBar', () => {
     expect(wrapper.find(NavItem)).toHaveLength(2);
   });
 
-  // it('should dispatch on clicking Navbar.Brand link', () => {
-  //   const dispatch = jest.fn();
-  //   const wrapper = shallow(<NavBar dispatch={dispatch}/>);
-  //   wrapper.find('Link').simulate('click');
-  //   expect(dispatch).toHaveBeenCalledTimes(2);
-  // });
-
   it('should render correct NavItems at / path', () => {
     const wrapper = shallow(<NavBar />);
     //to store list of NavItem elements

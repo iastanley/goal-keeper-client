@@ -45,10 +45,6 @@ img {
   color: #f6f4f3;
 }
 
-.tag-line {
-  /*margin-top: 50px;*/
-}
-
 .landing-screenshot {
   width: 80%;
   border-radius: 5px;
@@ -62,7 +58,6 @@ img {
 
 .landing-section p {
   text-align: center;
-
 }
 
 

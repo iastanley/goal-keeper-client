@@ -64,6 +64,7 @@ class NewTaskModal extends Component {
       );
     });
 
+    // display reminder message if there are no goals
     let makeGoalReminder = null;
     if(!goalTitles.length) {
       makeGoalReminder = (

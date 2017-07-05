@@ -1,28 +1,11 @@
 .tasks-list {
-  /*position: relative;*/
   height: 50%;
-}
-
-.tasks-list button {
-  /*position: absolute;
-  bottom: 10px;
-  left: 0;*/
 }
 
 .btn-new-task {
   width: 100%;
   margin-top: 10px;
 }
-
-.btn-container {
-}
-
-/*
-.btn-container {
-  position: relative;
-  padding: 0;
-  /*bottom: 0;
-}*/
 
 .goal-list {
   height: 85%;
@@ -97,14 +80,10 @@ i {
   cursor: pointer;
 }
 
-
 .fa-lg {
   line-height: 1.2em;
 }
 
-
-
-/*Can't get calendar to fill height in desktop view*/
 @media (min-width: 768px) {
   .goal-list {
     display: none;
