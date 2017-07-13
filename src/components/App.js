@@ -15,7 +15,6 @@ export default function App(props) {
         <Route exact path="/home" component={HomePage}/>
         <Route exact path="/" component={LandingPage}/>
       </div>
-      <Footer/>
     </div>
   );
 }
