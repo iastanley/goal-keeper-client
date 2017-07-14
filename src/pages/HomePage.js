@@ -7,6 +7,7 @@ import NewGoalModal from '../components/NewGoalModal';
 import EditGoalModal from '../components/EditGoalModal';
 import GoalsPane from '../components/GoalsPane';
 import InstructionsBanner from '../components/InstructionsBanner';
+import LoadingOverlay from '../components/LoadingOverlay';
 import {
   toggleLogin,
   toggleSignUp,
@@ -121,6 +122,7 @@ export class HomePage extends Component {
     }
     return (
       <div className="home-page">
+        <LoadingOverlay isLoading={this.props.isLoading}/>
         <InstructionsBanner/>
         <CalendarContainer
           goals={this.props.goals}
