@@ -45,7 +45,6 @@ export class HomePage extends Component {
     this.setGoalError = this.setGoalError.bind(this);
   }
 
-  // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
   componentDidMount() {
     if (localStorage.userToken) {
       this.props.dispatch(loadGoal(this.props.user));
