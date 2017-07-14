@@ -27,7 +27,6 @@ describe('LandingPage', () => {
       />);
     expect(wrapper.find('LoginModal')).toHaveLength(1);
     expect(wrapper.find('SignUpModal')).toHaveLength(1);
-    expect(wrapper.find('Footer')).toHaveLength(1);
 
     const loginModal = wrapper.find('LoginModal');
     expect(loginModal.prop('show')).toEqual(false);

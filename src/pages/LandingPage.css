@@ -7,6 +7,19 @@ img {
   display: none;
 }
 
+/* Styling for landing page and home page*/
+footer {
+  padding: 1%;
+  background: #191716;
+  color: #f6f4f3;
+  width: 100%;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
 .landing-body {
   text-align: center;
   padding-top: 50px;
@@ -94,6 +107,4 @@ img {
     padding-top: 100px;
     padding-bottom: 100px;
   }
-
-
 }

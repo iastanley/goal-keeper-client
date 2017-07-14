@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import LoginModal from '../components/LoginModal';
 import SignUpModal from '../components/SignUpModal';
-import Footer from '../components/Footer';
 import './LandingPage.css';
 import fullAppScreenshot from '../images/full-calendar-screenshot.png';
 import mobileScreenshot from '../images/goalkeeper-iphone.png';
@@ -67,7 +66,7 @@ export class LandingPage extends Component {
         <div className="landing-body">
           <div className="hero-section row">
             <h1>GOAL KEEPER</h1>
-            <h4>An app to help you track your personal goals</h4>
+            <h4>Track the progress of your personal goals</h4>
             <br/>
             <br/>
             <p>username: defaultUser</p>
@@ -106,7 +105,10 @@ export class LandingPage extends Component {
             </button>
           </div>
           <div className="row">
-            <Footer />
+            <footer>
+              <p>&copy; 2017 Illana Stanley</p>
+              <p>Photo by Bruno Nascimento on Unsplash</p>
+            </footer>
           </div>
         </div>
         <LoginModal
