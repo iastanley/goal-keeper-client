@@ -20,11 +20,16 @@ export class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.closeLogin = this.closeLogin.bind(this);
+    this.openLogin = this.openLogin.bind(this);
     this.closeSignUp = this.closeSignUp.bind(this);
     this.openSignUp = this.openSignUp.bind(this);
     this.makeSignUp = this.makeSignUp.bind(this);
     this.makeLogin = this.makeLogin.bind(this);
     this.setUserError = this.setUserError.bind(this);
+  }
+
+  openLogin() {
+    this.props.dispatch(toggleLogin(true));
   }
 
   closeLogin() {
@@ -98,10 +103,32 @@ export class LandingPage extends Component {
             </div>
           </div>
           <div className="landing-button row">
+            <h2>To Get Started</h2>
+            <div className="row">
+              <div className="col-sm-4">
+                <h3 className="step-number">1</h3>
+                <p>Create a goal in the Goal Pane</p>
+              </div>
+              <div className="col-sm-4">
+                <h3 className="step-number">2</h3>
+                <p>Pick a date</p>
+                <p>Add tasks to your goal</p>
+              </div>
+              <div className="col-sm-4">
+                <h3 className="step-number">3</h3>
+                <p>Check off completed tasks</p>
+                <p>Track goal progress</p>
+              </div>
+            </div>
             <button
               className="btn btn-custom btn-lg"
               onClick={this.openSignUp}>
-              Get Started!
+              Sign Up Now!
+            </button>
+            <button
+              className="btn btn-custom btn-lg"
+              onClick={this.openLogin}>
+              Login
             </button>
           </div>
           <div className="row">
