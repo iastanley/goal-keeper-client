@@ -1,0 +1,11 @@
+.instructions-banner {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .instructions-banner.alert {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

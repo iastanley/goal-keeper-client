@@ -6,6 +6,7 @@ import NewTaskModal from '../components/NewTaskModal';
 import NewGoalModal from '../components/NewGoalModal';
 import EditGoalModal from '../components/EditGoalModal';
 import GoalsPane from '../components/GoalsPane';
+import InstructionsBanner from '../components/InstructionsBanner';
 import {
   toggleLogin,
   toggleSignUp,
@@ -121,6 +122,7 @@ export class HomePage extends Component {
     }
     return (
       <div className="home-page">
+        <InstructionsBanner/>
         <CalendarContainer
           goals={this.props.goals}
           selectedDay={this.props.selectedDay}
