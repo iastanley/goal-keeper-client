@@ -60,7 +60,8 @@ export class LandingPage extends Component {
   }
 
   render() {
-    if (this.props.loggedIn) {
+    // Eventually switch to check for userIsLoading OR goalIsLoading
+    if (this.props.userIsLoading) {
       return (
         <Redirect to="/home" />
       )
@@ -140,14 +141,14 @@ export class LandingPage extends Component {
         </div>
         <LoginModal
           show={this.props.showLogin} close={this.closeLogin}
-          isLoading={this.props.isLoading}
+          isLoading={this.props.userIsLoading}
           makeLogin={this.makeLogin}
           userError={this.props.userError}
           setUserError={this.setUserError}/>
         <SignUpModal
           show={this.props.showSignUp}
           close={this.closeSignUp}
-          isLoading={this.props.isLoading}
+          isLoading={this.props.userIsLoading}
           makeSignUp={this.makeSignUp}
           userError={this.props.userError}
           setUserError={this.setUserError}/>
@@ -163,7 +164,7 @@ const mapStateToProps = state => ({
   showSignUp: state.navigation.showSignUp,
   badCredentials: state.user.badCredentials,
   loggedIn: state.user.loggedIn,
-  isLoading: state.user.isLoading
+  userIsLoading: state.user.isLoading
 });
 
 export default connect(mapStateToProps)(LandingPage);

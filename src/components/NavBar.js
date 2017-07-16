@@ -42,6 +42,7 @@ export class NavBar extends Component {
   handleLogOut() {
     if (localStorage.userToken) {
       delete localStorage.userToken;
+      delete localStorage.user;
     }
     this.props.dispatch(toggleGoalPane(false));
     this.props.dispatch(logOut());
