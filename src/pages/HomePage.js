@@ -49,7 +49,7 @@ export class HomePage extends Component {
 
   // loads data if user refreshes home page
   componentDidMount() {
-    if (localStorage.userToken) {
+    if (this.props.loggedIn) {
       this.props.dispatch(loadGoal(this.props.user));
       this.props.dispatch(toggleLogin(false));
       this.props.dispatch(toggleSignUp(false));
@@ -58,10 +58,8 @@ export class HomePage extends Component {
 
   // loads data on first login from landingPage
   componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate() running, loggenIn = ', this.props.loggedIn);
     if ((this.props.loggedIn !== prevProps.loggedIn) &&
         this.props.loggedIn) {
-      console.log('dispatching loadGoal action');
       this.props.dispatch(loadGoal(this.props.user));
       this.props.dispatch(toggleLogin(false));
       this.props.dispatch(toggleSignUp(false));
@@ -128,12 +126,11 @@ export class HomePage extends Component {
   }
 
   render() {
-    // if (!this.props.goalIsLoading && this.props.badCredentials) {
-    //   return (
-    //     <Redirect to="/" />
-    //   )
-    // }
-    console.log('HomePage rendered with loggedIn = ', this.props.loggedIn);
+    if (this.props.badCredentials) {
+      return (
+        <Redirect to="/" />
+      )
+    }
 
     let goalToEdit;
     if (this.props.editGoalId) {

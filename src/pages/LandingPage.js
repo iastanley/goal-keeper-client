@@ -141,14 +141,12 @@ export class LandingPage extends Component {
         </div>
         <LoginModal
           show={this.props.showLogin} close={this.closeLogin}
-          isLoading={this.props.userIsLoading}
           makeLogin={this.makeLogin}
           userError={this.props.userError}
           setUserError={this.setUserError}/>
         <SignUpModal
           show={this.props.showSignUp}
           close={this.closeSignUp}
-          isLoading={this.props.userIsLoading}
           makeSignUp={this.makeSignUp}
           userError={this.props.userError}
           setUserError={this.setUserError}/>
