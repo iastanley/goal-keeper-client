@@ -122,12 +122,12 @@ export class LandingPage extends Component {
               </div>
             </div>
             <button
-              className="btn btn-custom btn-lg"
+              className="btn btn-custom btn-lg landing-btn-signup"
               onClick={this.openSignUp}>
               Sign Up Now!
             </button>
             <button
-              className="btn btn-custom btn-lg"
+              className="btn btn-custom btn-lg landing-btn-login"
               onClick={this.openLogin}>
               Login
             </button>
@@ -160,7 +160,6 @@ const mapStateToProps = state => ({
   userError: state.user.userError,
   showLogin: state.navigation.showLogin,
   showSignUp: state.navigation.showSignUp,
-  badCredentials: state.user.badCredentials,
   loggedIn: state.user.loggedIn,
   userIsLoading: state.user.isLoading
 });
