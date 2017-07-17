@@ -1,11 +1,49 @@
 .instructions-banner {
   margin-top: 5px;
   margin-bottom: 0;
+  font-size: 0.8em;
+}
+
+.instructions-banner ul li {
+  display: inline-block;
+  width: 30%;
+  vertical-align: text-top;
+}
+
+.instructions-banner li span {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto;
+  padding: 2px;
+  border: 1px solid #31708f;
+  border-radius: 50%;
+  line-height: 20px;
+}
+
+.instructions-banner ul {
+  list-style: none;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
+  .instructions-banner {
+    font-size: 1em;
+  }
+
   .instructions-banner.alert {
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+
+  .instructions-banner ul li {
+    display: inline-block;
+    width: 32%;
+  }
+
+  .instructions-banner li span {
+    display: inline-block;
+    margin: 0;
+    margin-right: 5px;
   }
 }

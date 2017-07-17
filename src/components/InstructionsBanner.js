@@ -22,7 +22,11 @@ class InstructionsBanner extends Component {
     if (this.state.alertVisible) {
       return (
         <Alert className="instructions-banner" bsStyle="info" onDismiss={this.handleDismiss}>
-          <p>To get started open the goals pane and create a new goal.</p>
+          <ul>
+            <li><span>1</span>Create a Goal</li>
+            <li><span>2</span>Add a Task</li>
+            <li><span>3</span>Track Progress</li>
+          </ul>
         </Alert>
       );
     } else {

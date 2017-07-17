@@ -108,7 +108,8 @@ export class LandingPage extends Component {
             <div className="row">
               <div className="col-sm-4">
                 <h3 className="step-number">1</h3>
-                <p>Create a goal in the Goal Pane</p>
+                <p>Open the goal pane</p>
+                <p>Create a new goal</p>
               </div>
               <div className="col-sm-4">
                 <h3 className="step-number">2</h3>
