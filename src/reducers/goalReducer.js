@@ -12,6 +12,7 @@ import {
 
 export const initialState = {
   isLoading: false,
+  loadGoalIsLoading: false,
   goalError: null,
   goalList: {}
 }
@@ -22,10 +23,10 @@ export default function goalReducer(state = initialState, action) {
       return handle(state, action, {
         start: prevState => ({
           ...prevState,
-          isLoading: true,
+          loadGoalIsLoading: true,
           goalError: null
         }),
-        finish: prevState => ({...prevState, isLoading: false}),
+        finish: prevState => ({...prevState, loadGoalIsLoading: false}),
         failure: prevState => ({...prevState, goalError: action.payload.data}),
         success: prevState => {
           return {

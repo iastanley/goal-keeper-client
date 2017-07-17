@@ -24,7 +24,6 @@
 }
 
 .goal-progress-list {
-  /*height: 73vh;*/
   flex-grow: 1;
   overflow-y: scroll;
 }

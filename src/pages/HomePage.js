@@ -138,7 +138,7 @@ export class HomePage extends Component {
     }
     return (
       <div className="home-page">
-        <LoadingOverlay isLoading={this.props.userIsLoading || this.props.goalIsLoading}/>
+        <LoadingOverlay isLoading={this.props.userIsLoading || this.props.loadGoalIsLoading}/>
         <InstructionsBanner/>
         <CalendarContainer
           goals={this.props.goals}
@@ -202,6 +202,7 @@ const mapStateToProps = state => ({
   showGoalPane: state.navigation.showGoalPane,
   goals: state.goal.goalList,
   goalIsLoading: state.goal.isLoading,
+  loadGoalIsLoading: state.goal.loadGoalIsLoading,
   goalError: state.goal.goalError
 });
 
