@@ -30,12 +30,11 @@ body {
 }
 
 .Calendar-header {
-  height: 50px;
-  /*background: #222;*/
+  height: 35px;
   background: #1982C4;
   color: #fff;
   text-align: center;
-  line-height: 50px;
+  line-height: 35px;
   display: flex;
   font-size: 20px;
   justify-content: space-between;
@@ -58,7 +57,7 @@ body {
   flex-grow: 0;
   flex-basis: 14.28571%;
   text-align: center;
-  min-height: 38px;
+  min-height: 30px;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   padding: 0.1rem;
@@ -86,6 +85,11 @@ body {
     justify-content: start;
     min-height: 12.5vh;
     padding: 1rem;
+  }
+
+  .Calendar-header {
+    height: 50px;
+    line-height: 50px;
   }
 
   #calendar {

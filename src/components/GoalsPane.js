@@ -12,7 +12,7 @@ const GoalsPane = props => {
 
   const componentClasses = ['goals-pane'];
   if (props.show) {
-    componentClasses.push('show');
+    componentClasses.push('show-pane');
   }
 
   return (

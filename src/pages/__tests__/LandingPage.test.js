@@ -23,21 +23,18 @@ describe('LandingPage', () => {
         showLogin={false}
         showSignUp={false}
         userError="userError"
-        isLoading={true}
+        userIsLoading={false}
       />);
     expect(wrapper.find('LoginModal')).toHaveLength(1);
     expect(wrapper.find('SignUpModal')).toHaveLength(1);
-    expect(wrapper.find('Footer')).toHaveLength(1);
 
     const loginModal = wrapper.find('LoginModal');
     expect(loginModal.prop('show')).toEqual(false);
     expect(loginModal.prop('userError')).toEqual("userError");
-    expect(loginModal.prop('isLoading')).toEqual(true);
 
     const signUpModal = wrapper.find('SignUpModal');
     expect(signUpModal.prop('show')).toEqual(false);
     expect(signUpModal.prop('userError')).toEqual('userError');
-    expect(signUpModal.prop('isLoading')).toEqual(true);
 
   });
 
@@ -47,10 +44,16 @@ describe('LandingPage', () => {
       <LandingPage
         dispatch={dispatch}
         showSignUp={false}
+        showLogin={false}
       />);
-    wrapper.find('button').simulate('click');
+
+    wrapper.find('.landing-btn-signup').simulate('click');
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(toggleSignUp(true));
+
+    wrapper.find('.landing-btn-login').simulate('click');
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(dispatch).toHaveBeenCalledWith(toggleLogin(true));
   });
 
   // only testing non-async actions

@@ -20,27 +20,31 @@ if (localStorage.user) {
   initialState.user = localStorage.user;
 }
 
+if (localStorage.userToken) {
+  initialState.loggedIn = true;
+}
+
 export default function userReducer(state = initialState, action) {
   switch(action.type) {
     case MAKE_LOGIN:
       return handle(state, action, {
-        start: prevState => ({...prevState, isLoading: true}),
+        start: prevState => ({...prevState, isLoading: true, badCredentials: false}),
         finish: prevState => ({...prevState, isLoading: false}),
         success: prevState => {
           localStorage.userToken = btoa(`${action.meta.username}:${action.meta.password}`);
           localStorage.user = action.meta.username;
-          return {...prevState, user: action.payload.data.username, badCredentials: false, loggedIn: true}
+          return {...prevState, user: action.payload.data.username, loggedIn: true}
         },
         failure: prevState => ({...prevState, badCredentials: true, userError: 'Login Failed. Try Again.'})
         });
     case MAKE_SIGNUP:
       return handle(state, action, {
-        start: prevState => ({...prevState, isLoading: true}),
+        start: prevState => ({...prevState, isLoading: true, badCredentials: false}),
         finish: prevState => ({...prevState, isLoading: false}),
         success: prevState => {
           localStorage.userToken = btoa(`${action.meta.username}:${action.meta.password}`);
           localStorage.user = action.meta.username;
-          return {...prevState, user: action.payload.data.username, badCredentials: false, loggedIn: true}
+          return {...prevState, user: action.payload.data.username, loggedIn: true}
         },
         failure: prevState => {
           return {...prevState, badCredentials: true, userError: action.payload.response.data}

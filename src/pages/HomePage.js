@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import CalendarContainer from '../components/CalendarContainer';
 import TasksList from '../components/TasksList';
 import NewTaskModal from '../components/NewTaskModal';
 import NewGoalModal from '../components/NewGoalModal';
 import EditGoalModal from '../components/EditGoalModal';
 import GoalsPane from '../components/GoalsPane';
+import InstructionsBanner from '../components/InstructionsBanner';
+import LoadingOverlay from '../components/LoadingOverlay';
 import {
   toggleLogin,
   toggleSignUp,
@@ -44,14 +47,22 @@ export class HomePage extends Component {
     this.setGoalError = this.setGoalError.bind(this);
   }
 
-  // REACTIVATE ONCE CLIENT SIDE STYLING IS FINISHED
+  // loads data if user refreshes home page
   componentDidMount() {
-    if (localStorage.userToken) {
+    if (this.props.loggedIn) {
       this.props.dispatch(loadGoal(this.props.user));
       this.props.dispatch(toggleLogin(false));
       this.props.dispatch(toggleSignUp(false));
-    } else {
-      console.log('Bad login');
+    }
+  }
+
+  // loads data on first login from landingPage
+  componentDidUpdate(prevProps, prevState) {
+    if ((this.props.loggedIn !== prevProps.loggedIn) &&
+        this.props.loggedIn) {
+      this.props.dispatch(loadGoal(this.props.user));
+      this.props.dispatch(toggleLogin(false));
+      this.props.dispatch(toggleSignUp(false));
     }
   }
 
@@ -115,12 +126,20 @@ export class HomePage extends Component {
   }
 
   render() {
+    if (this.props.badCredentials) {
+      return (
+        <Redirect to="/" />
+      )
+    }
+
     let goalToEdit;
     if (this.props.editGoalId) {
       goalToEdit = this.props.goals[this.props.editGoalId];
     }
     return (
       <div className="home-page">
+        <LoadingOverlay isLoading={this.props.userIsLoading || this.props.loadGoalIsLoading}/>
+        <InstructionsBanner/>
         <CalendarContainer
           goals={this.props.goals}
           selectedDay={this.props.selectedDay}
@@ -142,7 +161,7 @@ export class HomePage extends Component {
           goals={this.props.goals}
           date={this.props.selectedDay}
           show={this.props.showNewTask}
-          isLoading={this.props.isLoading}
+          isLoading={this.props.goalIsLoading}
           goalError={this.props.goalError}
           close={this.closeNewTask}
           createTask={this.createTask}
@@ -150,7 +169,7 @@ export class HomePage extends Component {
         <NewGoalModal
           user={this.props.user}
           show={this.props.showNewGoal}
-          isLoading={this.props.isLoading}
+          isLoading={this.props.goalIsLoading}
           goalError={this.props.goalError}
           close={this.closeNewGoal}
           createGoal={this.createGoal}
@@ -158,7 +177,7 @@ export class HomePage extends Component {
         <EditGoalModal
           goal={goalToEdit}
           show={this.props.showEditGoal}
-          isLoading={this.props.isLoading}
+          isLoading={this.props.goalIsLoading}
           goalError={this.props.goalError}
           close={this.closeEditGoal}
           editGoal={this.editGoal}
@@ -171,15 +190,19 @@ export class HomePage extends Component {
 
 const mapStateToProps = state => ({
   user: state.user.user,
-  goals: state.goal.goalList,
+  userError: state.user.userError,
+  badCredentials: state.user.badCredentials,
+  userIsLoading: state.user.isLoading,
+  loggedIn: state.user.loggedIn,
   selectedDay: state.selectedDay,
   showNewTask: state.navigation.showNewTask,
   showNewGoal: state.navigation.showNewGoal,
   showEditGoal: state.navigation.showEditGoal.show,
   editGoalId: state.navigation.showEditGoal.goalId,
   showGoalPane: state.navigation.showGoalPane,
-  loggedIn: state.user.loggedIn,
-  isLoading: state.goal.isLoading,
+  goals: state.goal.goalList,
+  goalIsLoading: state.goal.isLoading,
+  loadGoalIsLoading: state.goal.loadGoalIsLoading,
   goalError: state.goal.goalError
 });
 

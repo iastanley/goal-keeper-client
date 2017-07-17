@@ -71,6 +71,7 @@ describe('goalReducer', () => {
   ];
   const initialStateWithGoals = {
     isLoading: false,
+    loadGoalIsLoading: false,
     goalError: null,
     goalList: {
       1: {
@@ -188,6 +189,7 @@ describe('goalReducer', () => {
     }
     const expectedState = {
       isLoading: false,
+      loadGoalIsLoading: false,
       goalError: null,
       goalList: {
         1: {
@@ -261,6 +263,7 @@ describe('goalReducer', () => {
     }
     const expectedState = {
       isLoading: false,
+      loadGoalIsLoading: false,
       goalError: null,
       goalList: {
         [newGoal._id]: newGoal
@@ -387,6 +390,7 @@ describe('goalReducer', () => {
     const testGoalError = 'Test User Error';
     const expectedState = {
       isLoading: false,
+      loadGoalIsLoading: false,
       goalError: testGoalError,
       goalList: {}
     }

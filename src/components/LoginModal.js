@@ -16,7 +16,6 @@ class LoginModal extends Component {
     this.setState(inputObj);
   }
 
-  // It would be better if handleLogin was assigned to a onSubmit event
   handleLogin(event) {
     event.preventDefault();
     if (this.state.username.length && this.state.password.length) {
@@ -38,14 +37,10 @@ class LoginModal extends Component {
     this.props.close();
   }
 
-
-
   render() {
     let loginHeader;
 
-    if (this.props.isLoading) {
-      loginHeader = <h3>Loading...</h3>;
-    } else if (this.props.userError) {
+    if (this.props.userError) {
       loginHeader = <h3 style={{color: '#f00'}}>{this.props.userError}</h3>;
     } else {
       loginHeader = <h3>Login</h3>

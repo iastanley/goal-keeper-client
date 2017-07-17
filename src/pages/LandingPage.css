@@ -7,6 +7,19 @@ img {
   display: none;
 }
 
+/* Styling for landing page and home page*/
+footer {
+  padding: 1%;
+  background: #191716;
+  color: #f6f4f3;
+  width: 100%;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
 .landing-body {
   text-align: center;
   padding-top: 50px;
@@ -39,10 +52,15 @@ img {
 }
 
 .landing-button {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: #1982c4;
   color: #f6f4f3;
+}
+
+.landing-button button {
+  margin: 5px;
+  width: 135px;
 }
 
 .landing-screenshot {
@@ -60,6 +78,19 @@ img {
   text-align: center;
 }
 
+.step-number {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #fff;
+  padding: 2px;
+  border-radius: 50%;
+  line-height: 36px;
+}
+
+.landing-button .row {
+  margin-bottom: 20px;
+}
 
 
 @media (min-width: 768px) {
@@ -91,9 +122,14 @@ img {
   }
 
   .landing-button {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding: 30px;
   }
 
+  .landing-button p {
+    font-size: 18px;
+  }
 
+  .landing-button .row {
+    margin-bottom: 50px;
+  }
 }

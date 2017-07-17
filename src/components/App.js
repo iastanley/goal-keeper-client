@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Footer from './Footer';
 import NavBar from './NavBar';
 
 //views for each route
@@ -15,7 +14,6 @@ export default function App(props) {
         <Route exact path="/home" component={HomePage}/>
         <Route exact path="/" component={LandingPage}/>
       </div>
-      <Footer/>
     </div>
   );
 }

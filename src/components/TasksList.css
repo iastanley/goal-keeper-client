@@ -1,5 +1,5 @@
 .tasks-list {
-  height: 50%;
+  /*height: 50%;*/
 }
 
 .btn-new-task {
@@ -82,6 +82,18 @@ i {
 
 .fa-lg {
   line-height: 1.2em;
+}
+
+@media (max-width: 768px) {
+  .tasks-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .goal-list {
+    flex-grow: 1;
+  }
 }
 
 @media (min-width: 768px) {

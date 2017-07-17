@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import LoginModal from '../components/LoginModal';
 import SignUpModal from '../components/SignUpModal';
-import Footer from '../components/Footer';
 import './LandingPage.css';
 import fullAppScreenshot from '../images/full-calendar-screenshot.png';
 import mobileScreenshot from '../images/goalkeeper-iphone.png';
@@ -21,11 +20,16 @@ export class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.closeLogin = this.closeLogin.bind(this);
+    this.openLogin = this.openLogin.bind(this);
     this.closeSignUp = this.closeSignUp.bind(this);
     this.openSignUp = this.openSignUp.bind(this);
     this.makeSignUp = this.makeSignUp.bind(this);
     this.makeLogin = this.makeLogin.bind(this);
     this.setUserError = this.setUserError.bind(this);
+  }
+
+  openLogin() {
+    this.props.dispatch(toggleLogin(true));
   }
 
   closeLogin() {
@@ -56,7 +60,8 @@ export class LandingPage extends Component {
   }
 
   render() {
-    if (this.props.loggedIn) {
+    // Eventually switch to check for userIsLoading OR goalIsLoading
+    if (this.props.userIsLoading) {
       return (
         <Redirect to="/home" />
       )
@@ -67,7 +72,7 @@ export class LandingPage extends Component {
         <div className="landing-body">
           <div className="hero-section row">
             <h1>GOAL KEEPER</h1>
-            <h4>An app to help you track your personal goals</h4>
+            <h4>Track the progress of your personal goals</h4>
             <br/>
             <br/>
             <p>username: defaultUser</p>
@@ -99,26 +104,50 @@ export class LandingPage extends Component {
             </div>
           </div>
           <div className="landing-button row">
+            <h2>To Get Started</h2>
+            <div className="row">
+              <div className="col-sm-4">
+                <h3 className="step-number">1</h3>
+                <p>Open the goal pane</p>
+                <p>Create a new goal</p>
+              </div>
+              <div className="col-sm-4">
+                <h3 className="step-number">2</h3>
+                <p>Pick a date</p>
+                <p>Add tasks to your goal</p>
+              </div>
+              <div className="col-sm-4">
+                <h3 className="step-number">3</h3>
+                <p>Check off completed tasks</p>
+                <p>Track goal progress</p>
+              </div>
+            </div>
             <button
-              className="btn btn-custom btn-lg"
+              className="btn btn-custom btn-lg landing-btn-signup"
               onClick={this.openSignUp}>
-              Get Started!
+              Sign Up Now!
+            </button>
+            <button
+              className="btn btn-custom btn-lg landing-btn-login"
+              onClick={this.openLogin}>
+              Login
             </button>
           </div>
           <div className="row">
-            <Footer />
+            <footer>
+              <p>&copy; 2017 Illana Stanley</p>
+              <p>Photo by Bruno Nascimento on Unsplash</p>
+            </footer>
           </div>
         </div>
         <LoginModal
           show={this.props.showLogin} close={this.closeLogin}
-          isLoading={this.props.isLoading}
           makeLogin={this.makeLogin}
           userError={this.props.userError}
           setUserError={this.setUserError}/>
         <SignUpModal
           show={this.props.showSignUp}
           close={this.closeSignUp}
-          isLoading={this.props.isLoading}
           makeSignUp={this.makeSignUp}
           userError={this.props.userError}
           setUserError={this.setUserError}/>
@@ -132,9 +161,8 @@ const mapStateToProps = state => ({
   userError: state.user.userError,
   showLogin: state.navigation.showLogin,
   showSignUp: state.navigation.showSignUp,
-  badCredentials: state.user.badCredentials,
   loggedIn: state.user.loggedIn,
-  isLoading: state.user.isLoading
+  userIsLoading: state.user.isLoading
 });
 
 export default connect(mapStateToProps)(LandingPage);
